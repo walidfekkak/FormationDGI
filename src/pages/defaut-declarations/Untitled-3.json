@@ -1,0 +1,644 @@
+{
+    "data": [
+        {
+            "etat": "Saisie validée",
+            "dateFinImpoLettre": "déc. 2016",
+            "dateHeureAccuseReception": {
+                "year": 2017,
+                "month": 2,
+                "day": 24,
+                "timezone": 0,
+                "hour": 10,
+                "minute": 38,
+                "second": 47
+            },
+            "_dateHeureAccuseReception": "24-2-2017",
+            "_dateDebutPeriode": "1-1-2016",
+            "dateFinPeriode": {
+                "year": 2016,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DES TRAITEMENTS ET DES SALAIRES",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-12-2016",
+            "dateDebutImpLettre": "janv. 2016",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2016,
+                "month": 1,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201700003451287"
+        },
+        {
+            "etat": "Saisie validée",
+            "dateFinImpoLettre": "déc. 2015",
+            "dateHeureAccuseReception": {
+                "year": 2016,
+                "month": 2,
+                "day": 29,
+                "timezone": 0,
+                "hour": 16,
+                "minute": 53,
+                "second": 27
+            },
+            "_dateHeureAccuseReception": "29-2-2016",
+            "_dateDebutPeriode": "1-1-2015",
+            "dateFinPeriode": {
+                "year": 2015,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DES TRAITEMENTS ET DES SALAIRES",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-12-2015",
+            "dateDebutImpLettre": "janv. 2015",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2015,
+                "month": 1,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201600006461287"
+        },
+        {
+            "etat": "Saisie validée",
+            "dateFinImpoLettre": "déc. 2014",
+            "dateHeureAccuseReception": {
+                "year": 2015,
+                "month": 2,
+                "day": 27,
+                "timezone": 0,
+                "hour": 14,
+                "minute": 1,
+                "second": 12
+            },
+            "_dateHeureAccuseReception": "27-2-2015",
+            "_dateDebutPeriode": "1-1-2014",
+            "dateFinPeriode": {
+                "year": 2014,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DES TRAITEMENTS ET DES SALAIRES",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-12-2014",
+            "dateDebutImpLettre": "janv. 2014",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2014,
+                "month": 1,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201500006071287"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "mars 2014",
+            "dateHeureAccuseReception": {
+                "year": 2014,
+                "month": 4,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "30-4-2014",
+            "_dateDebutPeriode": "1-3-2014",
+            "dateFinPeriode": {
+                "year": 2014,
+                "month": 3,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-3-2014",
+            "dateDebutImpLettre": "mars 2014",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2014,
+                "month": 3,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201400035391115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "févr. 2014",
+            "dateHeureAccuseReception": {
+                "year": 2014,
+                "month": 3,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-3-2014",
+            "_dateDebutPeriode": "1-2-2014",
+            "dateFinPeriode": {
+                "year": 2014,
+                "month": 2,
+                "day": 28,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "28-2-2014",
+            "dateDebutImpLettre": "févr. 2014",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2014,
+                "month": 2,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201400026421115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "déc. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2014,
+                "month": 1,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-1-2014",
+            "_dateDebutPeriode": "1-12-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-12-2013",
+            "dateDebutImpLettre": "déc. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 12,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201400007931115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "nov. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-12-2013",
+            "_dateDebutPeriode": "1-11-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 11,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "30-11-2013",
+            "dateDebutImpLettre": "nov. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 11,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300074291115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "déc. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 11,
+                "day": 29,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "29-11-2013",
+            "_dateDebutPeriode": "1-1-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 12,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-12-2013",
+            "dateDebutImpLettre": "janv. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 1,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300066021115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "sept. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 10,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-10-2013",
+            "_dateDebutPeriode": "1-9-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 9,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "30-9-2013",
+            "dateDebutImpLettre": "sept. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 9,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300058631115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "août 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 9,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "30-9-2013",
+            "_dateDebutPeriode": "1-8-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 8,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-8-2013",
+            "dateDebutImpLettre": "août 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 8,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300050651115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "juil. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 8,
+                "day": 29,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "29-8-2013",
+            "_dateDebutPeriode": "1-7-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 7,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-7-2013",
+            "dateDebutImpLettre": "juil. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 7,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300042561115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "juin 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 7,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-7-2013",
+            "_dateDebutPeriode": "1-6-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 6,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "30-6-2013",
+            "dateDebutImpLettre": "juin 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 6,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300036291115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "mai 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 6,
+                "day": 28,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "28-6-2013",
+            "_dateDebutPeriode": "1-5-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 5,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-5-2013",
+            "dateDebutImpLettre": "mai 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 5,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300028101115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "avr. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 5,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "31-5-2013",
+            "_dateDebutPeriode": "1-4-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 4,
+                "day": 30,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "30-4-2013",
+            "dateDebutImpLettre": "avr. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 4,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300021221115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "mars 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 4,
+                "day": 29,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "29-4-2013",
+            "_dateDebutPeriode": "1-3-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 3,
+                "day": 31,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "31-3-2013",
+            "dateDebutImpLettre": "mars 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 3,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300011721115"
+        },
+        {
+            "etat": "Déposé",
+            "dateFinImpoLettre": "févr. 2013",
+            "dateHeureAccuseReception": {
+                "year": 2013,
+                "month": 3,
+                "day": 29,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "_dateHeureAccuseReception": "29-3-2013",
+            "_dateDebutPeriode": "1-2-2013",
+            "dateFinPeriode": {
+                "year": 2013,
+                "month": 2,
+                "day": 28,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "modele": "DECLARATION DE LA CONTRIBUTION A LA COHESION SOCIALE SUR LES BENEFICES ET REVENUS",
+            "codeTypeImpot": "IR",
+            "_dateFinPeriode": "28-2-2013",
+            "dateDebutImpLettre": "févr. 2013",
+            "_estRectificative": "Non",
+            "dateDebutPeriode": {
+                "year": 2013,
+                "month": 2,
+                "day": 1,
+                "timezone": 0,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "estRectificative": false,
+            "numeroDepot": "201300006181115"
+        }
+    ]
+}

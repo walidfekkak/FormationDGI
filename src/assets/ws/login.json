@@ -1,0 +1,30 @@
+{
+    "token": "eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJyYWppMTYiLCJleHAiOjE1NTU2ODQ4ODcsImp0aSI6IkF2c1d2R3llUWhEZmU5dHNkaFBaaVEiLCJpYXQiOjE1NTU2ODM5ODcsIm5iZiI6MTU1NTY4Mzg2Nywic3ViIjoicmFqaTE2Iiwicm9sZXMiOlsiUk9MRV9BREhFUkVOVCJdfQ.IUzS8NtRD5AAfAobSMTrXiq3dSbadlEQEWyNdIEZLUeC3wnwvAUcN9eIZ6qdBcZBcF4jwRRx1_KXTCtW8qnWSGJLjWbhv3-p-4Kf1p9B9DfQV1BRyHqdKusD4dann-dI47_UFhuUPr-PCBayx5w14TPdbczF5XArhTPeuenkHUYrsZQq2qS2yK9CTTHwpOrJfdRozuOzMuXMaRL0RsFNMWX_BzQP7tynCufZ0rRKiMprjnOmwk2tnBG_x8yvm7YjSeAvf9QpmYwiSwaoaCBKAZOW-Ja27_hDcAHlLIq37udvEomi9SYyw9kPU9c9yi2orn2icNkGZbY0dct-5XKDDw",
+    "user": {
+        "listRoles": [
+            "ROLE_ADHERENT"
+        ],
+        "isAgent": false,
+        "server": null,
+        "direction": "DIRECTION REGIONALE DES IMPOTS DE CASABLANCA",
+        "patente": "123456",
+        "subdivision": "lib",
+        "activite": "",
+        "raf": {
+            "recette": "Recette Test",
+            "id": 1,
+            "rib": "123456789012345678901234",
+            "code": "1"
+        },
+        "adresse": "lot 10 bolc a zone industrielle Rabat",
+        "dateCreation": null,
+        "formeJuridique": "PP",
+        "raisonSociale": "societe de test",
+        "ville": "111",
+        "identifiantFiscal": "1000003",
+        "idAdherent": 10,
+        "secteur": "1",
+        "numRegistreCommerce": "542",
+        "hasCertificat": null
+    }
+}

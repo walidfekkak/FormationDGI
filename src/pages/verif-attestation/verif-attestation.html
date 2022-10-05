@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <!--<ion-title>{{ 'VERIF_ATTESTATIONS' | translate }}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <br/><br/>
+
+  <div class="layout-container">
+
+    <h3 class="title">{{"VERIF_ATTESTATIONS" | translate}}</h3> 
+    <div class="line-border"></div>
+
+    <div class="content teleservices-container">
+        <ion-item>
+          <ion-label floating class="colorGreen floating-selectbox">{{ 'TYPE_ATTESTATION' | translate }}</ion-label>
+          <ion-select  interface="popover" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="type" class="custom-selectbox floatingLabel" style="width: 100%; min-width: 100%; margin:8px 0;">
+            <ion-option value="BulletinIF" selected>{{ "Bulletin de notification de l'identifiant fiscal" | translate }}</ion-option>
+            <ion-option value="AttestationCA" selected>{{ "Attestation du chiffre d'affaires" | translate }}</ion-option>
+            <ion-option value="AttestationTP" selected>{{ "Attestation Inscription TP" | translate }}</ion-option>
+            <ion-option value="AttestationRadiationTP" selected>{{ "Attestation Radiation TP" | translate }}</ion-option>
+            <ion-option value="AttestationRevenu" selected>{{ "Attestation du revenu" | translate }}</ion-option>
+            <ion-option value="AttestationVL" selected>{{ "Attestation de valeur locative" | translate }}</ion-option>
+            <ion-option value="ImpositionTH" selected>{{ "Attestation d'imposition à  la TH - TSC" | translate }}</ion-option>
+            <ion-option value="AttestationCAE" selected>{{ "Attestation du chiffre d'affaires réalisé à  l'exportation" | translate }}</ion-option>
+            <ion-option value="AttestationRESF" selected>{{ "Attestation de résidence fiscale (Certificate of residence)" | translate }}</ion-option>
+            <ion-option value="AttestationNI" selected>{{ "Attestation de non-imposition à la TH-TSC" | translate }}</ion-option>
+            <ion-option value="ImpositionFO" selected>{{ "Attestation d'imposition forfaitaire" | translate }}</ion-option>
+            <ion-option value="AttestationExoTva" selected>{{ "Attestations d'achat en exonération, en suspension de la TVA ou au taux réduit de 7%" | translate }}</ion-option>
+            <ion-option value="AttestationREGF" selected>{{ "Demande d'attestation de régularité fiscale" | translate }}</ion-option>
+            <ion-option value="AttestationExoP" selected>{{ "Attestation d'exonération de la taxe d'habitation- taxe de services communaux (TH/TSC)" | translate }}</ion-option>
+            <ion-option value="AttestationCoti" selected>{{ "Attestation de non déductibilité des cotisations d'assurance retraite complémentaire" | translate }}</ion-option>
+            <ion-option value="AttestationRetenu" selected>{{ "Attestation de retenue à  la source" | translate }}</ion-option>
+            <ion-option value="AttestationRSRF" selected>{{ "Attestation de paiement de la retenue à la source due au titre des revenus fonciers versés" | translate }}</ion-option>
+            <ion-option value="AttestationIrregulariteAdministration" selected>{{ "Etat des irrégularités constatées par l'Administration" | translate }}</ion-option>
+            <ion-option value="AttestationActe" selected>{{ "Attestation d'enregistrement" | translate }}</ion-option>
+            <ion-option value="Droit Immatriculation" selected>{{ "Droits d'immatriculation" | translate }}</ion-option>
+            <ion-option value="Complement DI" selected>{{ "Droits fixes appliqués au récépissé de mise en circulation" | translate }}</ion-option>
+            <ion-option value="RECEPTION A TITRE ISOLE" selected>{{ "Droits sur les PV de Réception au  Titre Isolé" | translate }}</ion-option>
+            <ion-option value="Droits W18" selected>{{ "Droits sur les cartes d'immatriculation dans la  série W18" | translate }}</ion-option>
+            <ion-option value="Droits MCPWW" selected>{{ "Droits sur les  demandes de récépissé de mise en circulation provisoire des véhicules automobiles dans la série WW" | translate }}</ion-option>
+            <ion-option value="DMV" selected>{{ "Droits de Mutation" | translate }}</ion-option>
+            <ion-option value="DMLV" selected>{{ "DROITS DE MAINLEVEE" | translate }}</ion-option>
+            <ion-option value="DDCG" selected>{{ "DROITS DUPLICATA DE CARTE GRISE" | translate }}</ion-option>
+            <ion-option value="DIE" selected>{{ "DROITS D'IMMATRICULATION ETRANGERE" | translate }}</ion-option>
+            <ion-option value="DECG" selected>{{ "DROITS D'ECHANGE DE CARTE GRISE" | translate }}</ion-option>
+            <!-- <ion-option value="TPIC">{{ 'TIMBRE_PERMIS_INTERNATIONAL' | translate }}</ion-option> -->
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'IDENTIFIANT' | translate }}</ion-label>
+          <ion-input [(ngModel)]="identifiant"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'ANNEE' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="annee"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'CODE_VERIFICATION' | translate }}</ion-label>
+          <ion-input [(ngModel)]="code_verification"></ion-input>
+        </ion-item>
+        
+        <br/><br/><br/>
+
+        <div style="text-align: center">
+          <button class="outline-btn default" ion-button color="primary" style="width: 160px; margin: auto;" (click)="submit()">{{ 'MSSG_VALIDER' | translate }}</button>
+
+          <img src="assets/img/misc/barcode-focus.png" style="width: 90px; margin: 20px auto; display: block;" (click)="scanQRCode()" />
+
+        <div style="text-align: center"><button class="outline-btn default-2" ion-button color="primary" style="width: auto; margin: auto; text-transform: uppercase;" (click)="scanQRCode()">{{ 'Scanner_QR_Code' | translate }}</button></div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+   
+</ion-content>

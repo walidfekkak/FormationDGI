@@ -1,0 +1,181 @@
+import { HttpInterceptor } from '../../services/httpInterceptor';
+// import { HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HTTP } from '@ionic-native/http';
+import { DatePipe } from '@angular/common';
+
+/**
+ * Api is a generic REST Api handler. Set your API url first.
+ */
+
+@Injectable()
+export class Api {
+
+url : string = ';'
+
+// app_url : string = 'compte_fiscal/rest'; // might be different for some other ws, e.g. : simpladhesion_aleg/rest;
+
+//  LINK PROD 
+
+//  url: string = 'https://simpl-cf-mob.tax.gov.ma/compte_fiscal/rest';
+ base_url : string = 'https://simpl-cf-mob.tax.gov.ma/';
+ adhesion_url : string = 'https://simpl-adhesion.tax.gov.ma/';
+ app_url : string = 'compte_fiscal_243/rest';
+ attestation_url : string = 'https://attestation.tax.gov.ma/';
+
+// Java8
+// base_url : string = 'https://cfmobile-qualif.tax.gov.ma/';
+// adhesion_url : string = 'https://adhesion-part-qualif.tax.gov.ma/';
+// app_url : string = 'comptefiscal_M/rest';
+// attestation_url : string = 'https://attestation-qualif.tax.gov.ma/';
+
+// LINK QUALIF
+
+//  url: string = 'https://simpl-qualif.tax.gov.ma/compte_fiscal/rest';
+// base_url : string = 'https://simpl-qualif.tax.gov.ma/';
+//  adhesion_url : string = 'https://simpl-qualif.tax.gov.ma/';
+//  attestation_url : string = 'https://simpl-qualif.tax.gov.ma/';
+//  app_url : string = 'compte_fiscal/rest';
+
+//LINK LOCAL 
+// base_url: string = 'http://192.168.250.20:9080/';
+//  app_url : string = 'comptefiscal243/rest';
+
+//LINK DEV 
+// base_url: string = 'http://192.168.250.20:9080/';
+// app_url: string ='comptefiscal243/rest'
+
+//LINK DEV Archos
+// app_url : string = 'compte-fiscal-tma/rest'; 
+//  base_url: string = 'http://192.168.200.98:8080/';
+
+
+// LINK QUALIF JV8
+//  url: string = 'https://simpl-qualif.tax.gov.ma/compte_fiscal/rest';
+// base_url : string = 'https://cfmobile-qualif.tax.gov.ma/';
+//  adhesion_url : string = 'https://simpl-qualif.tax.gov.ma/';
+//  attestation_url : string = 'https://simpl-qualif.tax.gov.ma/';
+//  app_url : string = 'comptefiscal_M/rest';
+
+
+  constructor(public http: HttpInterceptor) {
+  }
+
+  getAttestation(endpoint: string, params?: any, reqOpts?: any, custom_app_url?:string ) {
+    console.log("link app : "+custom_app_url);
+    let url = this.attestation_url+ custom_app_url;
+    return this.http.get(url + '/' + endpoint, reqOpts);
+  }
+
+  postAttestation(endpoint: string, body: any, reqOpts?: any, custom_app_url?:string) {
+    let url = this.attestation_url+ custom_app_url;
+    return this.http.post(url + '/' + endpoint, body, reqOpts);
+  }
+
+  getUrl(endpoint: string, custom_app_url?:string){
+    let url = this.base_url + this.app_url;
+    if(custom_app_url ) url = this.attestation_url + custom_app_url;
+    return url + '/' + endpoint;
+  }
+
+
+
+  getPDFCpu(endpoint: string, custom_app_url?:string){
+    let url = this.attestation_url + custom_app_url;
+    return "https://adhesion-part-qualif.tax.gov.ma/simpladhesion_aleg/rest/providers/TelechargerPdf";
+  }
+
+  getAchatTimbre(endpoint: string, params?: any, reqOpts?: any, custom_app_url?:string) {
+  
+
+    let url = 'https://simpl-cf-mob.tax.gov.ma/compte_fiscal_243/rest';
+    
+    return this.http.get(url + '/' + endpoint, reqOpts);
+  }
+  getUrlTimbre(){
+    let url = 'http://178.62.81.105/recu_pdf/generate.php';//?reference=000000004&montant=300,00&tel=06467647647&timbreLib=Timbre%20Permis%20de%20chasse&timbreLibAR=طابع%20رخصة%20الصيد';
+    
+    return url ;
+  }
+getVersionDaribati(){
+  console.log("call ws versionCheck");
+  let url ='http://178.62.81.105/dgi_app/version.php';
+  return this.http.get(url);
+}
+
+  get(endpoint: string, params?: any, reqOpts?: any, custom_app_url?:string) {
+    /*if (!reqOpts) {
+      reqOpts = {
+        params: new HttpParams()
+      };
+    }
+
+    // Support easy query params for GET requests
+    if (params) {
+      reqOpts.params = new HttpParams();
+      for (let k in params) {
+        reqOpts.params = reqOpts.params.set(k, params[k]);
+      }
+    }
+
+    params = new HttpParams({fromObject : {'firstParameter' : '1202}'}});*/
+    let url = this.base_url + this.app_url;
+    if(custom_app_url) url = this.adhesion_url + custom_app_url;
+    return this.http.get(url + '/' + endpoint, reqOpts);
+  }
+
+  post(endpoint: string, body: any, reqOpts?: any, custom_app_url?:string) {
+    let url = this.base_url + this.app_url;
+    if(custom_app_url) url = this.adhesion_url + custom_app_url;
+    return this.http.post(url + '/' + endpoint, body, reqOpts);
+  }
+
+  put(endpoint: string, body: any, reqOpts?: any) {
+    return this.http.put(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  delete(endpoint: string, reqOpts?: any) {
+    return this.http.delete(this.url + '/' + endpoint, reqOpts);
+  }
+
+  patch(endpoint: string, body: any, reqOpts?: any) {
+    return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  datePipeWs(date){
+console.log("date list-master :"+date);
+    return new DatePipe('en-US').transform(date, 'yyyyMMdd');
+    
+  }
+
+  datePipeTo(date){
+    console.log("date To :"+date);
+        return new DatePipe('en-US').transform(date, 'yyyy-MM-dd');
+        
+      }
+
+      datePipeFrom(date){
+        
+        date = date - 80000;
+
+        console.log("date From :"+date);
+            return new DatePipe('en-US').transform(date, 'yyyy-MM-dd');
+            
+          }
+
+          checkDiffDate(dateTo: string, dateFrom: string) {
+            let dateSo = new Date(dateTo).getTime()-new Date(dateFrom).getTime();
+             console.log("date time : "+ dateSo )
+            if( dateSo <= 157680000000 )
+           return true;
+        
+           else return false;
+          }
+
+          getDateFrom5years(){
+            let ddtate = (Date.now() - new Date(157680000000).getTime());
+            return new DatePipe('en-US').transform(new Date(ddtate).getTime(), 'yyyy-MM-dd');
+             
+          }
+         
+}

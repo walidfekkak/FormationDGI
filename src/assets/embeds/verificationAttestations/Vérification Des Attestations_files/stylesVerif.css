@@ -1,0 +1,331 @@
+body {
+	background: #cccccc url('../imagesVerif/bodybg.png') repeat-x scroll top left;
+	margin:0;
+	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #555555;
+}
+
+* {
+	margin:0;
+	padding:0;
+}
+
+/** element defaults **/
+table {
+	width: 100%;
+	text-align: left;
+}
+
+th, td {
+	padding: 10px 10px;
+}
+
+th {
+	color: #fff;
+	background-color: #0A3C79;
+}
+
+td {
+	background: #fff;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+code, blockquote {
+	display: block;
+	border-left: 5px solid #ddd;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+blockquote {
+	border-left: 5px solid #0A3C79;
+}
+
+blockquote p {
+	font-style: italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin: 0;
+	color: #666;
+	height: 1%;
+}
+
+p {
+	line-height: 1.9em;
+	margin-bottom: 20px;
+}
+
+a {
+	color: #25567B;
+}
+
+a:hover {
+	color: #333333;
+}
+
+a:focus {
+	outline: none;
+}
+
+fieldset {
+	display: block;
+	border: none;
+	border-top: 1px solid #e0e0e0;
+}
+
+fieldset legend {
+	font-weight: bold;
+	font-size: 13px;
+	padding-right: 10px;
+	color: #222;
+}
+
+fieldset form {
+	padding-top: 15px;
+}
+
+fieldset p label {
+	float: left;
+	width: 150px;
+}
+
+form input, form select, form textarea {
+	padding: 5px;
+	color: #333333;
+	border: 1px solid #ddd;
+}
+
+form input.formbutton {
+	border: none;
+	background-color: #0A3C79;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 6px 10px;
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+	letter-spacing: 1px;
+	width: auto;
+	overflow: visible;
+}
+
+form.searchform p {
+	margin: 5px 0;
+}
+
+form.searchform input.s {
+	border: 1px solid #B8D0EA;
+}
+
+span.required {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ff0000;
+}
+
+h1 {
+	color: #083E76;
+	font-weight: normal;
+	font-size: 19px;
+	margin-bottom: 10px;
+}
+
+h2 {
+	color: #083E76;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	letter-spacing: 0.5px;
+	font-weight: normal;
+	padding: 0 0 5px;
+	margin: 0;
+}
+
+h3 {
+	color: #E35326;
+	font-weight: normal;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+h4 {
+	padding-bottom: 10px;
+	font-size: 15px;
+	color: #083E76;
+}
+
+h5 {
+	padding-bottom: 10px;
+	font-size: 13px;
+	color: #083E76;
+}
+
+ul, ol {
+	margin: 0 0 35px 35px;
+}
+
+li {
+	padding-bottom: 5px;
+}
+
+li ol, li ul {
+	font-size: 1.0em;
+	margin-bottom: 0;
+	padding-top: 5px;
+}
+
+
+#container {
+	width: 1110px;
+	margin:0 auto;
+	padding: 0;
+	background: transparent url("../imagesVerif/top.png") no-repeat scroll top right;
+}
+
+#header {
+	padding: 40px 25px;
+	width: 960px;
+	margin: 0 auto;
+	background: transparent url("../imagesVerif/body-top.png") no-repeat scroll bottom center;
+}
+
+#header h1 a {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #0A3C79;
+	font-size: 50px;
+	font-weight: normal;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+
+#header h2 {
+	color: #E15418;
+	padding-left: 4px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#body {
+	background: #fff none repeat-y scroll 0 0;
+	margin:0 65px;
+	padding: 0px 0px 0px 10px;
+}
+
+#content {
+	float: left;
+	width: 650px;
+	margin: 0;
+}
+
+.sidebar {
+	width: 280px;
+	padding: 0;
+	float: right;
+}
+
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar ul li {
+	margin-bottom: 20px;
+	line-height: 1.9em;
+}
+
+.sidebar li ul {
+	margin-right: 6px;
+	background: #DFEAF6 url("../imagesVerif/section-bg.png") repeat-x scroll top left;
+	border-bottom: 1px solid #CBDDF0;
+}
+
+.sidebar li ul li {
+	display: block;
+	border-top: none;
+	padding: 6px 7px;
+	color: #777;
+	margin: 0;
+	line-height: 1.5em;
+	font-size: 13px;
+	color: #568FCD;
+}
+
+.sidebar li ul li a {
+	font-weight: normal;
+	color: #2B5D91;
+}
+
+.sidebar li ul.blocklist li {
+	padding: 0;
+}
+
+.sidebar li ul.blocklist li a {
+	display: block;
+	padding: 7px 8px;
+	text-decoration: none;
+}
+
+.sidebar li ul li a:hover {
+	color: #222;
+}
+
+.sidebar h4 {
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	background: transparent url("../imagesVerif/h4-bg.png") no-repeat scroll top left;
+	font-size: 15px;
+	letter-spacing: 0.5px;
+	margin: 0;
+	padding: 10px 7px 10px 20px;
+	position: relative;
+	left: -10px;
+	width: 288px;
+	font-weight: bold;
+}
+
+.clear {
+	clear: both;
+}
+
+.body-end {
+	background: transparent url("../imagesVerif/body-bottom.png") no-repeat scroll top left;
+	margin:0 auto 15px auto;
+	height: 6px;
+	display: block;
+	width: 980px;
+}
+
+#footer {
+	width: 980px;
+	margin:0 auto 15px;
+}
+
+.footer-content {
+	background: #05264E url("../imagesVerif/footer-content.png") repeat-x scroll top left;
+	padding: 7px 5px;
+}
+
+.footer-top {
+	background: transparent url("../imagesVerif/footer-top.png") no-repeat scroll top left;
+	display: block;
+	height:6px;
+}
+
+.footer-bottom {
+	background: transparent url("../imagesVerif/footer-bottom.png") no-repeat scroll top left;
+	display: block;
+	height:6px;
+}
+
+#footer p {
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+#footer p a {
+	color: #fff;
+}

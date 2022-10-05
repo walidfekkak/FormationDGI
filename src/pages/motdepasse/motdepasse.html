@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="layout-container">
+    <h3 class="title">{{"reinitialisation-title" | translate}}</h3> 
+    <div class="line-border"></div>
+
+    <div class="content">
+
+      <div *ngIf="step == 'START'">
+    		<!-- <h2 style="color: rgb(54, 91, 159);text-transform: uppercase; text-align: center; font-size: 17px;margin-top: 20px;font-weight: bold;;">Réintialisation Mot de passe </h2> -->
+        <br/><br/><br/><br/>
+        <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 14px;margin-top: 20px;font-weight: bold;;">{{ 'reinitialisation-reintialisation' | translate }}</h2>
+
+    		<ion-item>
+              <ion-label floating class="colorGreen">{{ 'reinitialisation-login' | translate }}</ion-label>
+              <ion-input type="text"  [(ngModel)]="data.login"> </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating class="colorGreen">{{ 'reinitialisation-email' | translate }}</ion-label>
+              <ion-input type="text"  [(ngModel)]="data.email"> </ion-input>
+            </ion-item>
+            <br/>
+            <br/>
+            <div style="text-align: center;">
+              <button  ion-button class="login-btn outline-btn default" (click)="confirmer()">{{ 'CONFIRMER' | translate }}</button>
+            </div>
+            
+
+            <!--<ion-item>
+              <ion-label stacked>Tapez les caractères qui s'affichent dans l'image</ion-label>
+              <ion-input type="text"  [(ngModel)]="data.codeVerification" placeholder="Code d'accès"> </ion-input>
+            </ion-item>-->
+            <br/>
+            <br/>
+           
+      </div>
+          
+      <div *ngIf="step == 'FINISHED'">
+        <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'reinitialisation-success1' | translate }}</h2>
+        <ion-card>
+          <ion-card-content>
+            {{ 'reinitialisation-success2' | translate }}
+             
+          </ion-card-content>
+          <br/>
+          
+          <button ion-button class="login-btn outline-btn default" color="light" (click)="abondonner()"> {{ 'QUITTER' | translate}}</button>
+          
+        </ion-card>
+      </div>
+    </div>
+  </div>
+
+  
+</ion-content>

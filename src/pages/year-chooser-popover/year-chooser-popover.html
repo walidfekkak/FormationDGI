@@ -1,0 +1,7 @@
+<ion-content padding class="year-chooser-container">
+  <div class="title">{{ 'SELECT_ITEM' | translate}}</div>
+  <div *ngFor="let year of years" (click)="select(year)">
+    <button class="outline-btn">{{year}}</button>
+  </div>
+  
+</ion-content>

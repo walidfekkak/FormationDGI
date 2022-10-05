@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Daribati</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- cordova.js required for cordova apps (remove if not needed) -->
+  <script src="cordova.js"></script>
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>-->
+
+  <script>
+    
+     document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+
+       console.log("INITIALISATION new.");
+     
+       //var ref = window.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+
+      // cordova.InAppBrowser.open('https://google.com','_blank');
+    }
+
+        window.addEventListener(
+          "load",
+          function (e) {
+            var t = document.createElement("div"),
+              d = document.createElement("script"),
+              n = document.body;
+            (t.id = "root"), (d.type = "text/javascript"), (d.async = !0), (d.src = "https://dgi-bot.netlify.app/js/app.bundle.js"), n.appendChild(t), n.appendChild(d);
+            //(t.id = "root"), (d.type = "text/javascript"), (d.async = !0), (d.src = "http://178.62.81.105/chatbot.bundle.js"), n.appendChild(t), n.appendChild(d);appendChild(t), n.appendChild(d);
+            //(t.id = "root"), (d.type = "text/javascript"), (d.async = !0), (d.src = "http://192.168.1.80/chatbot.bundle.js"), n.appendChild(t), n.appendChild(d);appendChild(t), n.appendChild(d);
+
+            var chatbot_visible = true;
+
+            setTimeout(function(){
+              function applyFix(){
+                if(document.getElementsByClassName('rcw-launcher') == null || document.getElementsByClassName('rcw-launcher')[0] == null){
+                  console.log('retry applyFix')
+                  setTimeout(applyFix, 200);
+                  return;
+                }
+
+                console.log('applying the fix')
+
+                //document.getElementsByClassName('rcw-close-launcher')[0].src = "assets/img/chatbot.png";
+                var fixChatBotUIInterraction = function(){
+                  //alert("funct 1    document.getElementsById('root').style.zIndex = '-1'")
+                  /*document.getElementById('root').style.position = "absolute"
+                  document.getElementById('root').style.zIndex = "-1"
+                  document.getElementById('root').style.width = "80px"
+                  document.getElementById('root').style.height = "80px"
+                  document.getElementById('root').style.zIndex = "-1"*/
+                  if(chatbot_visible){
+                    /*setTimeout(function(){
+                      if(document.getElementsByClassName('rcw-close-launcher')[0])
+                        document.getElementsByClassName('rcw-close-launcher')[0].src = "assets/img/chatbot-close.png";
+                    }, 500)*/
+                    chatbot_visible = false;
+                    document.getElementsByClassName('rcw-widget-container')[0].classList.add("hidden")
+                  }else{
+                    /*setTimeout(function(){
+                      if(document.getElementsByClassName('rcw-open-launcher')[0])
+                        document.getElementsByClassName('rcw-open-launcher')[0].src = "assets/img/chatbot.png";
+                    }, 500)*/
+                    document.getElementsByClassName('rcw-widget-container')[0].classList.remove("hidden")
+                    chatbot_visible = true;
+                  }
+                }
+
+                document.addEventListener('click', function(e) {
+                    e = e || window.event;
+                    //console.log(e)
+                    if(e.target.className == 'rcw-close-third'){
+                      fixChatBotUIInterraction()
+                    }
+                    
+                }, false);
+
+                document.getElementsByClassName('rcw-launcher')[0].addEventListener('click', fixChatBotUIInterraction, false);
+
+                setTimeout(function(){
+                    document.getElementsByClassName('rcw-launcher')[0].click();
+                    setTimeout(function(){
+                      document.getElementById('root').style.display = "block";
+                    }, 500)
+                }, 200)
+              }
+              
+              applyFix()
+              
+              
+            }, 200)
+
+          },
+          !1
+        );
+
+  </script>
+
+  <link href="build/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+</body>
+</html>

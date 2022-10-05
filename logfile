@@ -1,0 +1,13 @@
+2022-09-12 17:30:41.967 GMT [83697] LOG:  starting PostgreSQL 14.5 (Homebrew) on aarch64-apple-darwin21.6.0, compiled by Apple clang version 13.1.6 (clang-1316.0.21.2.5), 64-bit
+2022-09-12 17:30:41.970 GMT [83697] LOG:  listening on IPv6 address "::1", port 5432
+2022-09-12 17:30:41.970 GMT [83697] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-09-12 17:30:41.970 GMT [83697] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-09-12 17:30:41.976 GMT [83698] LOG:  database system was shut down at 2022-09-09 01:39:29 GMT
+2022-09-12 17:30:41.979 GMT [83697] LOG:  database system is ready to accept connections
+2022-09-12 20:52:20.472 GMT [84509] ERROR:  syntax error at or near "FROM" at character 2
+2022-09-12 20:52:20.472 GMT [84509] STATEMENT:  	FROM bd_fire.incendies;
+2022-09-12 22:10:39.154 GMT [83697] LOG:  received fast shutdown request
+2022-09-12 22:10:39.154 GMT [83697] LOG:  aborting any active transactions
+2022-09-12 22:10:39.155 GMT [83697] LOG:  background worker "logical replication launcher" (PID 83704) exited with exit code 1
+2022-09-12 22:10:39.156 GMT [83699] LOG:  shutting down
+2022-09-12 22:10:39.164 GMT [83697] LOG:  database system is shut down

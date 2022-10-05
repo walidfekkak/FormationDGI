@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0059)https://attestation.tax.gov.ma/attestations/verifAttest.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Vérification Des Attestations</title>
+<link rel="stylesheet" href="./Vérification Des Attestations_files/stylesVerif.css" type="text/css">
+
+
+<script language="javascript" type="text/javascript">
+function show(aval) {
+    if (aval == "AttestationActe") {
+    hiddenDiv.style.display='inline-block';
+    NormalDiv.style.display='none'
+    hiddenDivIm.style.display='none';
+    } else
+    if (aval == "DECG" || aval == "DIE" || aval == "DDCG" || aval == "DMLV" || aval == "DMV" || aval == "Droit Immatriculation" || aval == "RECEPTION A TITRE ISOLE" || aval == "Droits W18" || aval == "Droits MCPWW" || aval == "Complement DI") {
+        hiddenDivIm.style.display='inline-block';
+        NormalDiv.style.display='none'
+      	hiddenDiv.style.display='none';
+        } 
+    else{
+    	
+    hiddenDiv.style.display='none';
+    NormalDiv.style.display='inline-block'
+   	hiddenDivIm.style.display='none';
+    }
+  }
+</script></head>
+
+<body data-new-gr-c-s-check-loaded="14.1029.0" data-gr-ext-installed="">
+<div id="container">
+
+    
+    <div id="body">
+    
+
+
+<form name="VerifAttesForm" method="post" action="https://attestation.tax.gov.ma/verifAttest/verifyAttest.do">
+<br>
+	<div id="content">
+	<table style="border:0px">
+	<tbody><tr><td></td></tr>
+	<tr><td></td></tr>
+	<tr><td>Type d'attestation:</td><td>
+	
+	<select name="type" onchange="java_script_:show(this.options[this.selectedIndex].value)">
+		<option value="BulletinIF">Bulletin de notification de l'identifiant fiscal</option>
+   		<option value="AttestationCA">Attestation du chiffre d'affaires</option>
+   		<option value="AttestationTP">Attestation Inscription TP</option>
+   		<option value="AttestationRadiationTP">Attestation Radiation TP</option> 
+   		<option value="AttestationRevenu">Attestation du revenu</option>
+   		<option value="AttestationVL">Attestation de valeur locative</option>
+   		<option value="ImpositionTH">Attestation d'imposition à la TH - TSC</option>
+   		<option value="AttestationCAE">Attestation du chiffre d'affaires réalisé à l'exportation</option>
+   		<option value="AttestationRESF">Attestation de résidence fiscale (Certificate of residence)</option>
+   		<option value="AttestationNI">Attestation de non-imposition à la TH-TSC</option>
+   		<option value="ImpositionFO">Attestation d'imposition forfaitaire</option>
+   		<option value="AttestationExoTva">Attestations d'achat en exonération, en suspension de la TVA ou au taux réduit de 7%</option>
+   		<option value="AttestationREGF">Demande d'attestation de régularité fiscale</option>
+   		<option value="AttestationExoP">Attestation d'exonération de la taxe d'habitation- taxe de services communaux (TH/TSC)</option>
+   		<option value="AttestationCoti">Attestation de non déductibilité des cotisations d'assurance retraite complémentaire</option> 
+   		<option value="AttestationRetenu">Attestation de retenue à la source</option>
+   		<option value="AttestationRSRF">Attestation de paiement de la retenue à la source due au titre des revenus fonciers versés</option>
+   		<option value="AttestationIrregulariteAdministration">Etat des irrégularités constatées par l'Administration</option>
+   		<option value="AttestationActe">Attestation d'enregistrement</option>
+   		<option value="Droit Immatriculation">Droits d’immatriculation</option>
+		<option value="Complement DI">Droits fixes appliqués au récépissé de mise en circulation</option>
+		<option value="RECEPTION A TITRE ISOLE">Droits sur les PV de Réception à Titre Isolée</option>
+   		<option value="Droits W18">Droits sur les cartes d’immatriculation dans la  série W18</option>
+   		<option value="Droits MCPWW">Droits sur les  demandes de récépissés de mise en circulation provisoire des véhicules automobiles dans la série WW</option>
+   		<option value="DMV">Droits de Mutation</option>
+   		<option value="DMLV">DROITS DE MAINLEVEE</option>
+   		<option value="DDCG">DROITS DUPLICATA DE CARTE GRISE</option>
+   		<option value="DIE">DROITS D'IMMATRICULATION ÉTRANGÈRE</option>
+		<option value="DECG">DROITS D'ECHANGE DE CARTE GRISE</option>
+   		
+</select> <br>
+	</td></tr>
+	<tr>
+	<td><div id="NormalDiv">Identifiant Fiscal :</div><div id="hiddenDiv" style="display:none">N° Registre Entrée :</div><div id="hiddenDivIm" style="display:none">Identifiant :</div></td><td> <input type="text" name="ifu" value=""><br></td></tr>
+<tr><td>Année : </td><td><input type="text" name="annee" value=""><br></td></tr>
+<tr><td>Code de vérification : </td><td><input type="text" name="numSerie" value=""><br></td></tr>
+<tr><td><input type="hidden" value="verify" name="method"></td></tr>
+<tr><td><input type="submit" value="Vérifier"></td></tr>
+</tbody></table>
+		
+	</div>
+
+</form>
+
+
+						    
+        
+        <div class="sidebar">
+            <ul>	
+               <li>
+                    <h4> Vérification Des Attestations</h4>
+                </li>
+                
+                
+                
+            </ul> 
+        </div>
+    	<div class="clear"></div>
+    </div>
+    <div class="body-end"></div>
+  
+    </div>
+</div>
+
+
+</body></html>

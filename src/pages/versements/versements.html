@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-navbar hideBackButton="false">
+    <ion-buttons start>
+        <!-- <ion-back-button></ion-back-button> -->
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button> 
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <!--<ion-title>{{ 'VERSEMENTS' | translate}}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+   <br/>
+    <div class="company-infos" style="text-align:center">
+    <div>
+      <img src="assets/img/societe-icon.png" height="40px" />
+    </div>
+    <div class="inlineBlock">
+      <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+      <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+    </div>
+    </div>
+    <br/>
+
+    <div class="filterContainer">
+      <div class="block-1">
+        <ion-select interface="popover" interfaceOptions="selectOptions" class="custom-selectbox blue-select" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" (ionChange)="loadData()" placeholder="{{ 'TYPE_IMPOT' | translate}}" [(ngModel)]="filter.type">
+          <ion-option  value="TVA">{{'TVA' | translate }}   </ion-option>
+          <ion-option  value="IS">{{'IS' | translate }}    </ion-option>
+          <ion-option   value="IR">{{'IR' | translate }}    </ion-option>
+        </ion-select>
+      </div>
+      <div class="block-2 date-filter" (click)="showCalendarModal()">
+        {{ 'FILTER_FROM' | translate}} <span class="date-from">{{filter.from | date: 'dd/MM/yyyy'}}</span>
+        {{ 'FILTER_TO' | translate}} <span class="date-to">{{filter.to | date: 'dd/MM/yyyy'}}</span>
+        <img src="assets/img/calendar-icon.png" class="icon"/>
+      </div>
+    </div>
+
+  <div class="layout-container noBgColor">
+    <h3 class="title">{{"VERSEMENTS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+
+          <ion-row class="align-items-flex-end">
+            <button class="outline-btn default-3" ion-button color="primary" style="width: 130px; margin: auto;" (click)="loadData()">{{ 'RECHERCHER' | translate}}</button>
+          </ion-row>
+        
+        <div>
+        <!--<ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+            <ion-row *ngFor="let item of data" (click)="redirect('DetailPage', {item : item, itemType : 'versement'})">
+                <ion-col  col-9 >
+                  <div>
+                      <ion-row>{{item.codeTypeImpot | translate}}</ion-row>
+                      <ion-row class="colorGreen">{{item._montantPrincipal}} {{ 'DH' | translate }}</ion-row>
+                      <ion-row class="colorBlue">{{item.dateDebutImpLettre}}-{{item.dateFinImpoLettre}}</ion-row>
+                      <hr class="custom" style="margin-left: 0% !important;">
+                  </div>
+                </ion-col>
+             
+                <ion-col col-3 pull-sm-4>
+                  <div>
+                      <ion-row class="colorGreen"> {{item._dateOperation}} </ion-row> 
+                      <ion-row><div class="tag">...</div></ion-row>
+                  </div>
+                </ion-col>
+              
+              </ion-row>
+             
+            </ion-grid>-->
+
+          <ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+        <div *ngFor="let yearKey of dataKeys">
+          <div class="groupTitle">{{ 'ANNEE' | translate }} {{ yearKey}}</div>
+          <div *ngFor="let item of data[yearKey]"  (click)="showDetails(item)" class="shadow-block">
+            <ion-col col-12>
+              <div class="floatRight">
+                <div *ngIf="!item.expanded"><ion-icon name="arrow-down"></ion-icon></div>
+                <div *ngIf="item.expanded"><ion-icon name="arrow-up"></ion-icon></div>
+              </div>
+              <div>
+                <ion-row class="colorGray light">{{item.natureOperationRecouvrement}} </ion-row>
+                <ion-row class="colorGreen">{{item.dateDebutImpLettre}} - {{item.dateFinImpoLettre}} </ion-row>
+                  <ion-row class="colorGray light"> {{ 'MONTANT_TOTAL' | translate }} {{item._montantPrincipal}} {{ 'DH' | translate }}</ion-row>
+                
+
+                  <!--<ion-row class="colorGray light">{{item.dateDebutImpLettre}}-{{item.dateFinImpoLettre}}</ion-row>-->
+                  <hr class="custom" style="margin-left: 0% !important;">
+              </div>
+              <div class="details-block" *ngIf="item.expanded==true">
+                <div class="details-title">{{ 'DETAILS'| translate }}</div>
+                <div><span class="lib">{{ 'NATURE_OPERATION' | translate }}:</span> {{item.raf | translate}}</div>
+                <div><span class="lib">{{ 'DATE_OPERATION' | translate }}:</span> {{item._dateOperation | translate}} </div>
+                <div><span class="lib">{{ 'MONTANT_PRINCIPAL' | translate }}:</span> {{item._montantPrincipal }} {{ 'DH'  | translate }}</div>
+                <div><span class="lib">{{ 'MONTANT_MAJORATION' | translate }}:</span> {{item.montantMajorations }} {{ 'DH'  | translate }}</div>
+                <div><span class="lib">{{ 'MONTANT_PENALITE' | translate }}:</span> {{item.montantAmendes}} {{ 'DH'  | translate }}</div>
+                <div><span class="lib">{{ 'MONTANT_FRAIS_POURSUITE' | translate }}:</span> {{item.montantFraisPoursuites }} {{ 'DH'  | translate }}</div>
+                <div><span class="lib">{{ 'MONTANT_TOTAL_PAYE' | translate }}:</span> {{item._montantTotalPaye}} {{ 'DH'  | translate }}</div>
+              </div>
+            </ion-col>
+         
+            <!--<ion-col col-3 pull-sm-4>
+              <div>
+                  <ion-row class="colorGreen">{{item._dateHeureAccuseReception}}</ion-row> 
+                  <ion-row><div class="tag">...</div></ion-row>
+              </div>
+            </ion-col>-->
+           
+          </div>
+
+        </div>
+         
+      </ion-grid>
+
+                 <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+               
+           
+        <ion-grid  class="datagrid" *ngIf=" data == '' || data == null || data == '{}' ">
+          <p style="text-align: center;">{{ 'no_data' | translate }} </p>            
+        </ion-grid>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,514 @@
+<ion-header [@blurAnimation]='blurState'>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <!-- <button class="blue-bg-btn" ion-button icon-only (click)="backToPrevious()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button> -->
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <!--<ion-title class="nav-title">{{ 'APP_TITLE' | translate }}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate:false})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content @content no-bounce [ngClass]="{'no-scroll':displayOverlayMenu}">
+
+  <ion-list [@blurAnimation]='blurState'>
+      <br/>
+      <div class="company-infos" style="text-align:center">
+        <div>
+          <img src="assets/img/societe-icon.png" height="40px" />
+        </div>
+        <div class="inlineBlock">
+          <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+          <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+        </div>
+      </div>
+      
+      <hr class="custom margin-left"/>
+
+      <div class="layout-container noBgColor">
+        <h3 class="title">{{"DERNIERS_EVENEMENTS" | translate}}</h3> 
+        <div class="line-border"></div> 
+     
+      <ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+        <div *ngFor="let yearKey of dataKeys">
+          <div class="groupTitle">{{ 'ANNEE' | translate }} {{ yearKey}}</div>
+          <div *ngFor="let item of data[yearKey]"  (click)="showDetails(item)" class="shadow-block">
+            <ion-col col-12>
+              <div class="floatRight">
+                <div *ngIf="!item.expanded"><ion-icon name="arrow-down"></ion-icon></div>
+                <div *ngIf="item.expanded"><ion-icon name="arrow-up"></ion-icon></div>
+              </div>
+              <div>
+                  <ion-row class="colorGreen">{{item.codeTypeImpot | translate}}</ion-row>
+                  <ion-row class="colorGray light">{{item.modele | translate | translate}}</ion-row>
+                  <ion-row class="colorGray light">{{item.dateDebutImpLettre}}-{{item.dateFinImpoLettre}}</ion-row>
+                  <hr class="custom" style="margin-left: 0% !important;">
+              </div>
+              <div class="details-block" *ngIf="item.expanded==true">
+                <div class="details-title">{{ 'DETAILS'| translate }}</div>
+                <div><span class="lib">{{ 'IMPOT' | translate }}:</span> {{item.codeTypeImpot | translate}}</div>
+                <div><span class="lib">{{ 'PERIODE_IMPOSITION'| translate }}:</span> {{item.dateDebutImpLettre}} <-> {{item.dateFinImpoLettre}}</div>
+                <div><span class="lib">{{ 'DATE_IMPOT' | translate }}:</span> {{item._dateHeureAccuseReception}}</div>
+                <div><span class="lib">{{ 'NUMERO_DEPOT' | translate }}:</span> {{item.numeroDepot}}</div>
+              </div>
+            </ion-col>
+         
+            <!--<ion-col col-3 pull-sm-4>
+              <div>
+                  <ion-row class="colorGreen">{{item._dateHeureAccuseReception}}</ion-row> 
+                  <ion-row><div class="tag">...</div></ion-row>
+              </div>
+            </ion-col>-->
+           
+          </div>
+
+        </div>
+         
+      </ion-grid>
+
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+        <ion-grid  class="datagrid" *ngIf=" data == '' || data == null ">
+
+          <p style="text-align: center;">{{ 'no_data' | translate }} </p>            
+                       
+                      
+                     </ion-grid>
+    <!--       
+      <table class="datagrid">
+        <tr class="header">
+          <td>Impôts</td>
+          <td>Type</td>
+          <td>Période imposition</td>
+          <td>Date dépôt</td>
+          <td></td>
+        </tr><br/>
+        <tr  (click)="redirect('DetailPage')">
+          <td>TVA</td>
+          <td>Déclaration mensuelle</td>
+          <td>Sept-2018 / Déc-2019</td>
+          <td class="colorGreen">11-09-2018</td>
+          <td><div class="tag">...</div></td>
+        </tr><br/>
+        <tr  (click)="redirect('DetailPage')">
+          <td>IS</td>
+          <td>Déclaration mensuelle</td>
+          <td>Sept-2018 / Déc-2019</td>
+          <td class="colorGreen">27-03-2018</td>
+          <td><div class="tag">...</div></td>
+        </tr><br/>
+        <tr (click)="redirect('DetailPage')">
+          <td>IR</td>
+          <td>Déclaration mensuelle</td>
+          <td>Sept-2018 / Déc-2019</td>
+          <td class="colorGreen">27-03-2018</td>
+          <td><div class="tag">...</div></td>
+        </tr><br/>
+        <tr  (click)="redirect('DetailPage')">
+            <td>TVA</td>
+            <td>Déclaration mensuelle</td>
+            <td>Sept-2018 / Déc-2019</td>
+            <td class="colorGreen">11-09-2018</td>
+            <td><div class="tag">...</div></td>
+          </tr><br/>
+          <tr  (click)="redirect('DetailPage')">
+            <td>IS</td>
+            <td>Déclaration mensuelle</td>
+            <td>Sept-2018 / Déc-2019</td>
+            <td class="colorGreen">27-03-2018</td>
+            <td><div class="tag">...</div></td>
+          </tr><br/>
+          <tr (click)="redirect('DetailPage')">
+            <td>IR</td>
+            <td>Déclaration mensuelle</td>
+            <td>Sept-2018 / Déc-2019</td>
+            <td class="colorGreen">27-03-2018</td>
+            <td><div class="tag">...</div></td>
+          </tr><br/>
+          <tr  (click)="redirect('DetailPage')">
+              <td>TVA</td>
+              <td>Déclaration mensuelle</td>
+              <td>Sept-2018 / Déc-2019</td>
+              <td class="colorGreen">11-09-2018</td>
+              <td><div class="tag">...</div></td>
+            </tr>
+            <br/>
+            <tr  (click)="redirect('DetailPage')">
+              <td>IS</td>
+              <td>Déclaration mensuelle</td>
+              <td>Sept-2018 / Déc-2019</td>
+              <td class="colorGreen">27-03-2018</td>
+              <td><div class="tag">...</div></td>
+            </tr>
+            <br/>
+            <tr (click)="redirect('DetailPage')">
+              <td>IR</td>
+              <td>Déclaration mensuelle</td>
+              <td>Sept-2018 / Déc-2019</td>
+              <td class="colorGreen">27-03-2018</td>
+              <td><div class="tag">...</div></td>
+            </tr>
+            <br/>
+            <tr (click)="redirect('DetailPage')">
+              <td>IR</td>
+              <td>Déclaration mensuelle</td>
+              <td>Sept-2018 / Déc-2019</td>
+              <td class="colorGreen">27-03-2018</td>
+              <td><div class="tag">...</div></td>
+            </tr>
+      </table>-->
+
+       <!-- <ion-grid>
+          <ion-row (click)="redirect('DetailPage',{test: hey})">
+            <ion-col  col-9 >
+              <div>
+                  <ion-row>TVA</ion-row>
+                  <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                  <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                  <hr class="custom" style="margin-left: 0% !important;">
+              </div>
+            </ion-col>
+         
+            <ion-col col-3 pull-sm-4>
+              <div>
+                  <ion-row class="colorGreen">27-03-2018</ion-row>
+                  <ion-row><div class="tag">...</div></ion-row>
+                  
+              </div>
+            </ion-col>
+           
+          </ion-row>
+         
+          <ion-row (click)="redirect('DetailPage')">
+              <ion-col  col-9 >
+                <div>
+                    <ion-row>TVA</ion-row>
+                    <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                    <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                    <hr class="custom" style="margin-left: 0% !important;">
+                </div>
+              </ion-col>
+           
+              <ion-col col-3 pull-sm-4>
+                <div>
+                    <ion-row class="colorGreen">27-03-2018</ion-row>
+                    <ion-row><div class="tag">...</div></ion-row>
+                    
+                </div>
+              </ion-col>
+             
+            </ion-row>
+            <ion-row (click)="redirect('DetailPage')">
+                <ion-col  col-9 >
+                  <div>
+                      <ion-row>TVA</ion-row>
+                      <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                      <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                      <hr class="custom" style="margin-left: 0% !important;">
+                  </div>
+                </ion-col>
+             
+                <ion-col col-3 pull-sm-4>
+                  <div>
+                      <ion-row class="colorGreen">27-03-2018</ion-row>
+                      <ion-row><div class="tag">...</div></ion-row>
+                      
+                  </div>
+                </ion-col>
+               
+              </ion-row>
+              <ion-row (click)="redirect('DetailPage')">
+                  <ion-col  col-9 >
+                    <div>
+                        <ion-row>TVA</ion-row>
+                        <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                        <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                        <hr class="custom" style="margin-left: 0% !important;">
+                    </div>
+                  </ion-col>
+               
+                  <ion-col col-3 pull-sm-4>
+                    <div>
+                        <ion-row class="colorGreen">27-03-2018</ion-row>
+                        <ion-row><div class="tag">...</div></ion-row>
+                        
+                    </div>
+                  </ion-col>
+                 
+                </ion-row>
+                <ion-row (click)="redirect('DetailPage')">
+                    <ion-col  col-9 >
+                      <div>
+                          <ion-row>TVA</ion-row>
+                          <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                          <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                          <hr class="custom" style="margin-left: 0% !important;">
+                      </div>
+                    </ion-col>
+                 
+                    <ion-col col-3 pull-sm-4>
+                      <div>
+                          <ion-row class="colorGreen">27-03-2018</ion-row>
+                          <ion-row><div class="tag">...</div></ion-row>
+                          
+                      </div>
+                    </ion-col>
+                   
+                  </ion-row>
+                  <ion-row (click)="redirect('DetailPage')">
+                      <ion-col  col-9 >
+                        <div>
+                            <ion-row>TVA</ion-row>
+                            <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                            <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                            <hr class="custom" style="margin-left: 0% !important;">
+                        </div>
+                      </ion-col>
+                   
+                      <ion-col col-3 pull-sm-4>
+                        <div>
+                            <ion-row class="colorGreen">27-03-2018</ion-row>
+                            <ion-row><div class="tag">...</div></ion-row>
+                            
+                        </div>
+                      </ion-col>
+                     
+                    </ion-row>
+                    <ion-row (click)="redirect('DetailPage')">
+                        <ion-col  col-9 >
+                          <div>
+                              <ion-row>TVA</ion-row>
+                              <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                              <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                              <hr class="custom" style="margin-left: 0% !important;">
+                          </div>
+                        </ion-col>
+                     
+                        <ion-col col-3 pull-sm-4>
+                          <div>
+                              <ion-row class="colorGreen">27-03-2018</ion-row>
+                              <ion-row><div class="tag">...</div></ion-row>
+                              
+                          </div>
+                        </ion-col>
+                       
+                      </ion-row>
+                      <ion-row (click)="redirect('DetailPage')">
+                          <ion-col  col-9 >
+                            <div>
+                                <ion-row>TVA</ion-row>
+                                <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                                <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                                <hr class="custom" style="margin-left: 0% !important;">
+                            </div>
+                          </ion-col>
+                       
+                          <ion-col col-3 pull-sm-4>
+                            <div>
+                                <ion-row class="colorGreen">27-03-2018</ion-row>
+                                <ion-row><div class="tag">...</div></ion-row>
+                                
+                            </div>
+                          </ion-col>
+                         
+                        </ion-row>
+                        <ion-row (click)="redirect('DetailPage')">
+                            <ion-col  col-9 >
+                              <div>
+                                  <ion-row>TVA</ion-row>
+                                  <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                                  <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                                  <hr class="custom" style="margin-left: 0% !important;">
+                              </div>
+                            </ion-col>
+                         
+                            <ion-col col-3 pull-sm-4>
+                              <div>
+                                  <ion-row class="colorGreen">27-03-2018</ion-row>
+                                  <ion-row><div class="tag">...</div></ion-row>
+                                  
+                              </div>
+                            </ion-col>
+                           
+                          </ion-row>
+                          <ion-row (click)="redirect('DetailPage')">
+                              <ion-col  col-9 >
+                                <div>
+                                    <ion-row>TVA</ion-row>
+                                    <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                                    <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                                    <hr class="custom" style="margin-left: 0% !important;">
+                                </div>
+                              </ion-col>
+                           
+                              <ion-col col-3 pull-sm-4>
+                                <div>
+                                    <ion-row class="colorGreen">27-03-2018</ion-row>
+                                    <ion-row><div class="tag">...</div></ion-row>
+                                    
+                                </div>
+                              </ion-col>
+                             
+                            </ion-row>
+                            <ion-row (click)="redirect('DetailPage')">
+                                <ion-col  col-9 >
+                                  <div>
+                                      <ion-row>TVA</ion-row>
+                                      <ion-row class="colorBlue">Déclaration mensuelle</ion-row>
+                                      <ion-row class="colorBlue">Sept-2018 / Déc-2019</ion-row>
+                                      <hr class="custom" style="margin-left: 0% !important;">
+                                  </div>
+                                </ion-col>
+                             
+                                <ion-col col-3 pull-sm-4>
+                                  <div>
+                                      <ion-row class="colorGreen">27-03-2018</ion-row>
+                                      <ion-row><div class="tag">...</div></ion-row>
+                                      
+                                  </div>
+                                </ion-col>
+                               
+                              </ion-row>
+        </ion-grid>  -->
+      <br/>
+      <br/>
+    </div>
+
+  </ion-list>
+</ion-content>
+
+<div class="footer-menu" [ngStyle]="{'display' : displayFooter ? 'initial' : 'none'}">
+
+   <div class="iconsBottom">
+
+      <div class="left-part">
+        <div class="circle-button">
+          <img (click)="redirectAchatTimbre()" src="assets/img/main-menu/new-set-2/main-achat-timbre-{{translateService.currentLang}}.png"/>
+        </div>
+        <div class="circle-button">
+          <img (click)="redirect('PaiementPage', {})" src="assets/img/main-menu/new-set-2/main-payer-une-reference-{{translateService.currentLang}}.png"/>
+        </div>
+      </div>
+      <div class="middle-part" style="text-align: center">
+        <div class="text">{{ 'MENU' | translate }}</div>
+        <div class="button open-menu-btn" (click)="animateMenu()"></div>
+      </div>
+      <div class="right-part">
+        <div class="circle-button">
+          <img (click)="redirectWeb('https://vignette.ma/attestTsava/consulterTSAVA.do?method=init')"  src="assets/img/main-menu/new-set-2/main-attestations-{{translateService.currentLang}}.png"/>
+        </div>
+        <div class="circle-button">
+          <img (click)="redirect('TeleservicesPage', {})" src="assets/img/main-menu/new-set-2/main-tele-services-{{translateService.currentLang}}.png"/>
+        </div>
+      </div>
+    </div>
+
+<!--<ion-toolbar>
+<div class="left-part"></div>
+<div class="middle-part" style="text-align: center">
+  <div class="button" (click)="animateMenu()"></div>
+</div>
+<div class="right-part"></div>
+</ion-toolbar>-->
+</div>
+
+<div class="overlayMenu-container" @container [ngStyle]="{'display' : displayOverlayMenu ? 'block' : 'none'}">
+
+  <div  style="display: inline-block;
+  font-size: 5.2em;
+  position: absolute;
+   margin-top :-200px; color: #1da6b0 !important;" (click)="animateMenu()" >
+      <!-- <img src="assets/img/logo/logo-100x100.png"/>-->
+      <!-- <img src="assets/img/logo/logo-100x100.png" />  -->
+      <!-- <ion-icon size ="larger" ios="ios-close" md="md-close" item-right></ion-icon> -->
+      <ion-icon name ="close" item-left></ion-icon>
+  </div>
+
+  <div class="message" @message>
+
+    <!-- <div class="circle-button small inlineBlock">
+        <img (click)="redirect('IdentificationDataPage')" src="assets/img/main-menu/main-identification-200.png"/>
+      </div> -->
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('DeclarationsListPage')" src="assets/img/main-menu/inapp/item1-{{translateService.currentLang}}.png"/>
+    </div>
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('VersementsPage')" src="assets/img/main-menu/inapp/item2-{{translateService.currentLang}}.png"/>
+    </div>
+
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('AvisImpositionPage')" src="assets/img/main-menu/inapp/item3-{{translateService.currentLang}}.png"/>
+    </div>
+
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('RestitutionsPage')" src="assets/img/main-menu/inapp/item4-{{translateService.currentLang}}.png"/>
+    </div>
+
+    <div class="circle-button small inlineBlock">
+        <img (click)="redirect('RemboursementsPage')" src="assets/img/main-menu/inapp/item5-{{translateService.currentLang}}.png"/>
+    </div>
+    <div class="circle-button small inlineBlock" >
+        <img (click)="redirect('DefautDeclarationsPage')" src="assets/img/main-menu/inapp/item6-{{translateService.currentLang}}.png"/>
+    </div>
+
+    <div class="circle-button small inlineBlock">
+        <img (click)="redirect('ResteAPayerPage')" src="assets/img/main-menu/inapp/item7-{{translateService.currentLang}}.png"/>
+    </div>
+    
+    
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('PaiementPrivatePage', {})" src="assets/img/main-menu/inapp/item8-{{translateService.currentLang}}.png"/>
+    </div>
+    <div class="circle-button small inlineBlock">
+      <img (click)="redirect('TeleServicesPrivatePage', {})" src="assets/img/main-menu/inapp/item9-{{translateService.currentLang}}.png"/>
+    </div>
+
+    <!-- <div class="circle-button small inlineBlock">
+      <img (click)="redirect('AvisImpositionPage')" src="assets/img/main-menu/main-restitutions-200.png"/>
+    </div> -->
+   
+    <!-- <div class="circle-button small inlineBlock">
+      <img (click)="redirectWeb('https://simpl-reclamation.tax.gov.ma/reclamation/login')" src="assets/img/main-menu/new-set/main-reclamationsxhdpi.png"/>
+    </div>
+
+    <div class="circle-button small inlineBlock">
+        <img (click)="redirectWeb('https://simpl-attestation.tax.gov.ma/AttestationCA/')" src="assets/img/main-menu/new-set/main-attestationsxhdpiOLD.png"/>
+      </div> -->
+
+    <div class="arrow-down"></div>
+
+  </div>
+
+
+</div>
+
+<!-- <div  style="display: inline-block;
+font-size: 5.2em;
+position: absolute;
+margin-left: 80%;  margin-top :20%; color: #1da6b0 !important;"
+*ngIf="displayOverlayMenu" class="medal" (click)="animateMenu()" >
+
+  
+<ion-icon name ="close" item-left></ion-icon>
+
+</div> -->

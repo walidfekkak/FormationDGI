@@ -1,0 +1,11 @@
+0. Remove USB connection from device
+
+1.  Kill adb server
+	adb kill-server
+
+
+2. Paramétres -> options developpeur -> detacher ....
+
+3. adb start-server
+
+4. Reconnect USB

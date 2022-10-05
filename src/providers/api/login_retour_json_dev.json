@@ -1,0 +1,37 @@
+{
+    "email": null,
+    "raisonSocialNP": null,
+    "ifu": null,
+    "logged": true,
+    "properties": {
+        "token": "eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJyYWppMTYiLCJleHAiOjE1NzI2MDkxMTEsImp0aSI6Ikx2Tkg4N1FqX0IzTFh5RFBvTFgtYmciLCJpYXQiOjE1NzI2MDgyMTEsIm5iZiI6MTU3MjYwODA5MSwic3ViIjoicmFqaTE2Iiwicm9sZXMiOlsiUk9MRV9BREhFUkVOVCJdfQ.KX2X6Sl05EmSLgB8-XUszWrdrGMPdZ0MQdq5odPQ7q7s89SFsQHq9etk3UE-iuQQf9hwzWFdDTr1hLVS90q7-rqdLhDR61lOAfhjHFzTc0FOKPrZU3xh-8-N-AaLXFs9pnRHv4Dio-t6kmsP4WbfuvdpvyqIppiYG052IAEcCfWltJWRwfB0O4xvJ26Y4TiLDfM5hTmDSePV-0-oaqlTfOa11qWlAcaXtEwb-lKUCT4lfFDtrlYGj4OfXoR2BBBZ9jBkJQeS3_kEjmBchKH4fJfPn5Aq08VRa1yKny6PIttktr-je5IoqTG8yN2C_WriXXcdQbkvsjHjRGNEo6Y2_A",
+        "user": {
+            "listRoles": [
+                "ROLE_ADHERENT"
+            ],
+            "isAgent": false,
+            "server": null,
+            "direction": "DIRECTION REGIONALE DES IMPOTS DE CASABLANCA",
+            "patente": "",
+            "subdivision": "lib",
+            "activite": "CULTURE DE CEREALES",
+            "raf": {
+                "recette": "Recette Test",
+                "id": 1,
+                "rib": "123456789012345678901234",
+                "code": "1"
+            },
+            "adresse": "test adresse",
+            "dateCreation": null,
+            "formeJuridique": "PP",
+            "raisonSociale": "UNIVERS MOTORS ASIE SA",
+            "ville": "111",
+            "identifiantFiscal": "1000003",
+            "idAdherent": 10,
+            "secteur": "1",
+            "numRegistreCommerce": "542",
+            "hasCertificat": null
+        }
+    },
+    "name": null
+}

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <div style="text-align: center;">
+        <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<br/>
+    <div class="layout-container">
+      <h3 class="title">{{"AttestationIMPOTH" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+        <br/>
+        <div class="company-infos" style="text-align:center">
+          <div>
+            <img src="assets/img/societe-icon.png" height="40px" />
+          </div>
+          <div class="inlineBlock">
+            <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+            <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+          </div>
+        </div>
+    <table style="margin: 0 20px;">
+      <tr>
+        <td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+        <td style="width:80%"></td>
+        <td><hr class="custom blue"/></td>
+      </tr>
+    </table>
+  	<br/><br/>
+    <br/>
+    <br/>
+    <br/>
+	<div class="infos">
+		<!-- Votre bulletin de notification du n° d'identification fiscale sera généré et envoyé à l'adresse email indiquée. -->
+  	</div>
+  	<!-- <br/><br/> -->
+  	<!-- <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="email" placeholder="Tapez votre email ici"></ion-input>
+    </ion-item> -->
+  	<br/><br/>
+  	<div style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="generate()">{{'CONFIRMER' | translate}}</button></div>
+  </div>
+</div>
+
+</ion-content>

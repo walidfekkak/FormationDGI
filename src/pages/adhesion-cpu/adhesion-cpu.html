@@ -1,0 +1,225 @@
+<ion-header>
+  <ion-navbar>
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="layout-container">
+    <h3 class="title">{{"ADHESION_PARTICULIERS_CPU" | translate}}</h3> 
+    <div class="line-border"></div>
+
+    <div class="content">
+      <div  *ngIf="step == 'CONNECT'"> 
+      	<ion-list>
+      		<!--<h2 style="color: rgb(54, 91, 159);text-transform: uppercase; text-align: center; font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TITLE_1_CPU' | translate }}</h2>
+          <br/><br/><br/><br/>
+          <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TITLE_2' | translate }}</h2>-->
+
+      		<ion-item>
+              <ion-label floating class="colorGreen">{{ 'IDENTIFIANT_FISCAL' | translate }}</ion-label>
+                <ion-input type="text"  [(ngModel)]="data.identifiantFiscal"> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating class="colorGreen">{{ 'NUM_CIN' | translate }}</ion-label>
+                <ion-input type="text"  [(ngModel)]="data.cin"> </ion-input>
+              </ion-item>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <!-- <ion-item style="min-height: initial;">
+                <ion-label stacked>Changement mot de passe</ion-label>
+              <ion-checkbox slot="end" val="Changement mot de passe" [(ngModel)]="data.isChecked"> </ion-checkbox>
+            </ion-item> -->
+              <br/>
+
+              <!--<ion-item>
+                <ion-label stacked>Tapez les caractères qui s'affichent dans l'image</ion-label>
+                <ion-input type="text"  [(ngModel)]="data.codeVerification" placeholder="Code d'accès"> </ion-input>
+              </ion-item>-->
+              <br/>
+              <br/>
+              <button ion-button float-right class="login-btn outline-btn default" style="min-width: auto !important" (click)="seConnecter()">{{ 'SE_CONNECTER' | translate }}</button>
+              <button  ion-button  color="light" class="login-btn outline-btn default-3" (click)="resetPassword()">{{ 'RESET_PASSWORD' | translate }}</button>
+      	</ion-list>
+      </div>
+      <div *ngIf="step == 'LOGIN_TP'"> 
+        <ion-list>
+      		<h2 style="color: rgb(54, 91, 159);text-transform: uppercase; text-align: center; font-size: 17px;margin-top: 40px;font-weight: bold;;">{{ 'ADHESION_TITLE_1_CPU' | translate }}</h2>
+          <br/><br/><br/><br/>
+          <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TITLE_2' | translate }}</h2>
+
+      		<ion-item>
+            <ion-label stacked>{{ 'IDENTIFIANT_FISCAL' | translate }}</ion-label>
+            <ion-input type="text" readonly [(ngModel)]="data.identifiantFiscal" placeholder="Identifiant fiscal"> </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked >{{ 'NUM_TP' | translate }}</ion-label>
+            <ion-input type="text"  [(ngModel)]="data.numTP" placeholder="Numéro TP"> </ion-input>
+          </ion-item>
+            <ion-item>
+            <ion-label stacked >{{ 'Montant_TP' | translate }}</ion-label>
+            <ion-input type="text"  [(ngModel)]="data.montantTP" placeholder="Montant TP"> </ion-input>
+          </ion-item>
+              <br/>
+
+              <!--<ion-item>
+                <ion-label stacked>Tapez les caractères qui s'affichent dans l'image</ion-label>
+                <ion-input type="text"  [(ngModel)]="data.codeVerification" placeholder="Code d'accès"> </ion-input>
+              </ion-item>-->
+              <br/>
+              <br/>
+              <button  ion-button (click)="seConnecter()" float-right>{{ 'SE_CONNECTER' | translate }}</button>
+
+              
+      	</ion-list>
+      </div>
+
+
+        
+        
+
+      	<div *ngIf="step == 'VERIFICATION'">
+      		<h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'VERIFI_IDENTITE' | translate}}</h2>
+      		<ion-item>
+                <ion-label stacked>{{ 'IDENTIFIANT_FISCAL' | translate }}</ion-label>
+                <ion-input type="text" readonly [(ngModel)]="data.identifiantFiscal" placeholder="Identifiant fiscal"> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'NOM_PRENOM_DENOMINATION' | translate }}</ion-label>
+                <ion-input type="text" readonly [(ngModel)]="data.raisonSociale" placeholder="..."> </ion-input>
+              </ion-item>
+              <br/>
+              <ion-card>
+      		  <ion-card-header>
+      		    {{ 'VERIFICATION' | translate }}
+      		  </ion-card-header>
+      		  <ion-card-content>
+      		    {{ 'ADHESION_TEXT_1' | translate}}
+      		  </ion-card-content>
+      		</ion-card>
+      		<br/>
+      		<br/>
+          	<button ion-button color="light" (click)="abondonner()">{{ 'ABONDONNER' | translate }}</button>
+          	<button ion-button float-right (click)="verification()">{{ 'SUIVANT' | translate }}</button>
+          
+      	</div>
+
+      	<div *ngIf="step == 'INFOS_EDIT'">
+      		<h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TEXT_ETAPE_2' | translate }}</h2>
+      		
+      		<ion-card>
+      			<ion-card-content>
+      		{{ 	'COMPLETE_INFOS' | translate }}
+      		  </ion-card-content>
+      		</ion-card>
+      		<ion-item>
+                <ion-label stacked>{{ 'NOM' | translate }}</ion-label>
+                <ion-input disabled="true" type="text" [(ngModel)]="data.nomPhys" placeholder=""> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'PRENOM' | translate }}</ion-label>
+                <ion-input disabled="true" type="text"  [(ngModel)]="data.prenomPhys" placeholder=""> </ion-input>
+              </ion-item>
+              <ion-item>
+                
+                <ion-label stacked >{{ 'NUM_CIN' | translate }}</ion-label>
+                <ion-input disabled="true" type="text" [(ngModel)]="data.cni" placeholder="ex : AB"> </ion-input> 
+              </ion-item>
+      		<ion-item>
+                <ion-label stacked >{{ 'OR_CARTE_SEJOUR' | translate }}</ion-label>
+                <ion-input disabled="true" type="text" [(ngModel)]="data.carteSejour" placeholder="..."> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'NUM_TEL_FIXE' | translate }}</ion-label>
+                <ion-input  disabled="false" type="text" [(ngModel)]="data.telephone" placeholder="ex : 0512345678"> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'NUM_PORTABLE' | translate }}</ion-label>
+                <ion-input disabled="false" type="text" [(ngModel)]="data.telephoneMobile" placeholder="ex : 0612345678"> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'ADRESSE_EMAIL' | translate }} <ion-text style="color: brown" >*</ion-text> </ion-label> 
+                <ion-input #myinput type="text" [(ngModel)]="data.email" placeholder="..." autofocus> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'CONFIRM_ADRESSE_EMAIL' | translate }}<ion-text style="color: brown" >*</ion-text> </ion-label> 
+                <ion-input type="text" [(ngModel)]="data.emailConf" placeholder="..."> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'PASSWORD' | translate }} <ion-text style="color: brown" >*</ion-text> </ion-label> 
+                <ion-input #myinput type="password"  [(ngModel)]="data.password" placeholder="..." autofocus> </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked >{{ 'CONFIRM_PASSWORD' | translate }}<ion-text style="color: brown" >*</ion-text> </ion-label> 
+                <ion-input type="password" [(ngModel)]="data.passwordConfirm" placeholder="..."> </ion-input>
+              </ion-item>
+              <br/>
+            
+
+            <br/><br/>
+
+
+          	<button ion-button color="light" (click)="abondonner()">{{ 'ABONDONNER' | translate }}</button>
+          	<button *ngIf="!data.isChecked" ion-button float-right (click)="edit_infos()">{{ 'ADHERER' | translate }}</button>
+            <button *ngIf="data.isChecked" ion-button float-right (click)="edit_infos()">{{ 'RESET_PASSWORD' | translate }}</button>
+          
+      	</div>
+
+      	<div *ngIf="step == 'MODES_PAIEMENT'">
+      		<h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TEXT_ETAPE_3' | translate }}</h2>
+      		<ion-item>
+      			<ion-label>{{ 'MULTICANAL' | translate }}</ion-label>
+                	<ion-checkbox checked="true" disabled="true" slot="end" color="primary" [(ngModel)]="data.modeMulticanal"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+      			<ion-label>{{ 'PRELEVEMENT_BANCAIRE' | translate }}</ion-label>
+                	<ion-checkbox (click)="hideRib()" checked="false" slot="end" color="primary" [(ngModel)]="data.modePrelevementBancaire"></ion-checkbox>
+              </ion-item>
+      <div *ngIf="rib" >
+              <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;">
+      			{{ 'ADHESION_TEXT_3' | translate }}
+      		  </h2>
+      		<ion-item  >
+                <ion-label stacked >{{ 'BANQUE' | translate }}</ion-label>
+                <ion-select [(ngModel)]="data.banqueId">
+                  <ion-option [value]="banque.id" *ngFor="let banque of banqueList">{{banque.libelle}}</ion-option>
+      		      </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stacked >{{ 'RIB' | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="data.rib" placeholder=""> </ion-input>
+              </ion-item>
+          
+            </div>
+            <br/><br/>
+
+            <ion-card-content>
+              {{ 'ADHESION_TEXT_4' | translate }}
+              </ion-card-content>
+
+          	<!-- <button ion-button color="light" (click)="abondonner()">Terminer</button> -->
+          	<button ion-button float-right (click)="validerModesPaiement()">{{ 'TERMINER' | translate }}</button>
+          
+      	</div>
+
+        <div *ngIf="step == 'FINISHED'">
+          <h2 style="color: rgb(54, 91, 159);text-transform: uppercase;font-size: 17px;margin-top: 20px;font-weight: bold;;">{{ 'ADHESION_TEXT_5' | translate }}</h2>
+          <ion-card>
+            <ion-card-content>
+            {{ 'ADHESION_TEXT_6' | translate }}
+            </ion-card-content>
+            <br/>
+            <br/>
+            <button ion-button color="light" (click)="abondonner()">{{ 'QUITTER' | translate }}</button>
+            <button ion-button float-right>{{ 'IMPRIMER' | translate }}</button>
+          </ion-card>
+        </div>
+    </div>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,792 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+$text-color:        #000;
+$background-color:  #fff;
+
+
+// app direction rtl / ltr support
+$app-direction: multi;
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  darkblue :  #01579b
+);
+
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+// $loading-ios-background: transparent;
+// $loading-md-background: $loading-ios-background;
+// $loading-wp-background: $loading-ios-background;
+// $loading-md-box-shadow: none;
+
+
+// /* Make clicks pass-through */
+// #loading-bar,
+// #loading-bar-spinner {
+//   pointer-events: none;
+//   -webkit-pointer-events: none;
+//   -webkit-transition: 350ms linear all;
+//   -moz-transition: 350ms linear all;
+//   -o-transition: 350ms linear all;
+//   transition: 350ms linear all;
+// }
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+ion-loading.my-loading-class {
+	.loading-wrapper {
+	background: transparent;
+	  box-shadow: none;
+	  
+	}
+	.spinner-bubbles circle {
+		fill:#24407b !important;
+		stroke-width: 20px !important;
+		r:8px;
+	  }
+	
+	
+  }
+
+//   .loading-ios 
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+.custom-loader-class{
+    --background:rgba(255, 255, 255, 0);
+    --spinner-color:#064cc4;
+}
+
+.login-frame{
+	margin-top: 5% !important;
+}
+
+.bg-img-blured{
+	background-image: url('assets/img/background/splash-screen-bg-1770.png') !important;
+	background-size: contain;
+}
+
+
+
+.back-button-text{
+	display:none !important;
+}
+
+.inlineBlock{
+	display:inline-block !important;
+}
+
+ion-menu ion-header{
+	display:none;
+}
+
+ion-menu ion-list, ion-menu .item-block{
+	background-color:transparent;
+}
+
+
+ion-menu .item-block:first-child, ion-menu .item-block:last-child{
+	border-top:none !important;
+}
+
+ion-menu .item-block .item-inner{
+	/* background-color: red; */
+	background-repeat: no-repeat;
+	border:0 !important;
+	background-image: none !important;
+}
+.datagrid{
+	margin-top:15px;
+	width: calc(100% - 20px);
+}
+.datagrid td{
+	/*font-size:11px;*/
+	font-size:0.7em;
+	padding-right:4px 2px;
+	vertical-align:top;
+}
+
+.datagrid .header td{
+	padding-bottom:15px;
+	color:#000 !important;
+	font-weight:bold;
+}
+.datagrid .tag{
+	background-color:silver;
+	color:#fff;
+}
+
+.datagrid td{
+	color: #24407b;
+	padding-bottom:10px;
+}
+
+.colorBlue{
+	color: #24407b !important;
+}
+
+.colorGreen{
+	color: #07a6b1 !important;
+	font-size:  13px !important; 
+	font-weight: bold;
+}
+
+/* Tag style*/
+
+.tag{
+	float: left;
+	height: 14px;
+	width: 12px;
+	line-height: 7px;
+	position: relative;
+	font-size: 11px;
+	margin: 2px 5px 2px 5px;
+	padding: 0 0 0 2px;
+	background: silver;
+	color: #fff;
+	/* text-decoration: none; */
+	border-bottom-left-radius: 1px;
+	border-top-left-radius: 1px;
+}
+
+.tag:before {
+	content: "";
+	float: left;
+	position: absolute;
+	top: 0;
+	left: 12px;
+	width: 0;
+	height: 0;
+	border-color: transparent transparent transparent silver;
+	border-style: solid;
+	border-width: 7px 0px 7px 7px;
+}
+
+/* Buttons styles*/
+
+.outline-btn{
+	color:#000;
+	background-color:transparent;
+	border: 0px solid green;
+	border-radius: 25px !important;
+	height:30px !important;
+	font-size:96% !important;
+	padding: 4% !important;
+}
+
+.outline-btn.default{
+	color:#fff;
+	background-color:#0c3478;
+	/*border: 2px solid #1da6b0;*/
+	border:none;
+	border-radius: 20px;
+	font-size:110% !important;
+	min-width: 150px !important;
+}
+
+.outline-btn.default-2{
+	background-color:#07a6b1 !important;
+}
+
+.outline-btn.default-3{
+	background-color:#fff;
+	color:#003378 !important;
+	border:2px solid #07a6b1;
+}
+
+.outline-btn.gray{
+	color:#fff;
+	background-color:rgb(159, 159, 159);
+	border: 2px solid rgb(159, 159, 159);
+}
+
+.blue-bg-btn{
+	color : #24407b !important;
+	display: inline-block !important;
+}
+
+hr.custom{
+	height: 1px !important;
+	width: 40px;
+	left: 0;
+	float: left;
+	margin-left: 20px;
+	background-color: rgb(175, 212, 223) !important;
+}
+
+hr.custom.blue{
+	background-color: #24407b !important;
+}
+
+.infosData-container .infosData{
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.infosData-container .infosData tr td{
+	padding-bottom:15px;
+	vertical-align: top;
+}
+
+.infosData .checkbox-icon{
+	border-radius: 1px !important;
+	position: relative !important;
+	top: -2px !important;
+	border-color: #323a75 !important;
+	border-width: 1px !important;
+}
+
+ion-title{
+	padding: 0 !important;
+}
+
+/* ION MENU */
+
+ion-menu .menu-inner .scroll-content{
+	padding-top: 16px !important;
+}
+
+ion-menu .groupItem{
+    /*background-color: rgb(224, 224, 224) !important;
+	background-image: linear-gradient(to right, rgb(224, 224, 224), rgb(224, 224, 224), rgb(224, 224, 224), rgb(224, 224, 224), #c9c9c9) !important;*/
+	color: #24407b !important;
+}
+ion-menu .groupItem ion-label{
+	border-bottom: 1px solid #d8e0eb;
+	padding-bottom:4px;
+}
+ion-menu .simpleItem{
+	/*background-color: #f8f8f8 !important;
+	background-image: none !important;
+	background-image: linear-gradient(to right, #f8f8f8, #f8f8f8, #f8f8f8, #f8f8f8, #c9c9c9) !important;*/
+	font-size: 97%;
+	min-height:20px;
+	
+}
+
+ion-menu .simpleItem img{
+	height:20px;
+	position: relative;
+	top: 5px;
+	margin-right: 10px;
+	color:#0c3478;
+}
+.shadow-block .colorGreen{
+	color:#07a6b1 !important;
+}
+
+.shadow-block .light{
+	font-weight: 400;
+}
+
+.shadow-block .colorGray{
+	color:#606060 !important;
+}
+
+ion-menu .simpleItem ion-label{
+	color:#0c3478;
+	text-shadow: 0px 0px 1px #122a51;
+	font-weight:300;	
+	margin: 0px 8px 0px 0;
+}
+
+ion-menu ion-content{
+	background:transparent !important;
+}
+
+ion-menu .menu-inner{
+ 	background-image: url(../assets/img/menu-bg-right-part-sm-fr.png) !important;
+	background-position: top right !important;
+	background-size: 20% !important;
+	background-repeat: no-repeat !important;
+}
+
+html[dir="rtl"] .menu-inner{
+ 	background-image: url(../assets/img/menu-bg-right-part-sm-ar.png) !important;
+	background-position: top left !important;
+	background-size: 20% !important;
+	background-repeat: no-repeat !important;
+}
+
+/*ion-menu .menu-inner{
+	background-color : #f7f7f7 !important;
+	background-image: linear-gradient(to right, #f4f4f4, #e9e9e9, #dedede, #d4d4d4, #c9c9c9) !important;
+}
+
+ion-menu .scroll-content{
+	margin-top: 0 !important;
+	background-color: #f8f8f8 !important;
+	background-image: linear-gradient(to right, #f8f8f8, #f8f8f8, #f8f8f8, #f8f8f8, #c9c9c9) !important;
+}*/
+
+.button-ios-p {
+	background-color: #01579b !important;
+}
+
+.message {
+
+	bottom: 110px !important;
+}
+
+/* ---------------------------------------- */
+/* 			Responsive rules */
+/* ---------------------------------------- */
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px){
+	html{
+		font-size: 100% !important;
+	}
+
+	.bg-img-blured{
+		background-size: cover !important;
+	}
+
+	page-login .logo {
+		width: 25% !important;
+	}
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	html{
+		font-size: 100% !important;
+	}
+	.bg-img-blured{
+		background-size: cover !important;
+	}
+	page-login .logo {
+		width: 23% !important;
+	}
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+	.captcha {
+		padding: 2px 2px 2px 30px;
+	}
+  
+  html{
+  	font-size: 120% !important;
+  }
+
+  .circle-button{
+  	margin: 0 1px !important;
+  }
+  .input-wrapper {
+		font-weight: 640;
+	}
+
+	#paiement-cb {
+		margin: 22px 2px 22px 12px;
+	}
+
+	.filterContainer .datetime-text, .filterContainer ion-label{
+		font-size: 13px ;
+	}
+
+	.filterContainer .select-text{
+		font-size: 13px ;
+		margin-top: 4px;
+	}
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 411px) and (max-width: 480px) {
+
+	.captcha {
+		padding: 2px 2px 2px 30px;
+	}
+  
+  html{
+  	font-size: 62% !important;
+  }
+
+  .circle-button{
+  	margin: 0 1px !important;
+  }
+
+  .row {
+	font-weight: 700;
+}
+
+
+.input-wrapper {
+	font-weight: 640;
+}
+.ion-label{ 
+white-space: pre !important; }
+.text-input-ios {
+	font-weight: 500;
+font-size: smaller;
+}
+
+.button-inner {
+	font-weight: 700;
+}
+
+#paiement-cb {
+	margin: 22px 2px 22px 12px;
+}
+
+.filterContainer .datetime-text, .filterContainer ion-label{
+	font-size: 13px ;
+}
+
+.filterContainer .select-text{
+	font-size: 13px ;
+	margin-top: 4px;
+}
+  
+}
+
+@media (min-width: 375px) and (max-width: 410px) {
+	.captcha {
+		padding: 2px 2px 2px 30px;
+	}
+	.rc-anchor-logo-portrait{
+		margin: 10px 0 0 0px !important;
+	}
+  
+  html{
+  	font-size: 59% !important;
+  }
+
+  .circle-button{
+  	margin: 0 1px !important;
+  }
+  .row {
+	  font-weight: 800;
+  }
+
+  .tag{
+	margin: 6px !important;
+}
+.input-wrapper {
+	font-weight: 640;
+}
+
+.text-input-ios {
+	font-weight: 500;
+	font-size: smaller;
+}
+
+.button-inner {
+	font-weight: 700;
+}
+
+#paiement-cb {
+	margin: 22px 2px 22px 12px;
+}
+.filterContainer .datetime-text, .filterContainer ion-label{
+	font-size: 12px ;
+}
+
+.filterContainer .select-text{
+	font-size: 12px ;
+	margin-top: 4px;
+}
+}
+
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+
+@media (min-width: 300px) and (max-width: 320px) {
+	.recaptcha-checkbox-border{
+		height:14px !important;
+		width:14px!important;
+	
+	}
+
+	.rc-anchor-logo-portrait{
+		margin: 10px 0 0 0px !important;
+	}
+	.rc-anchor-normal{
+		width:80% !important;
+	}
+	.recaptcha-checkbox-borderAnimation{
+		height:14px !important;
+		width:14px !important;
+	}
+
+	.captcha {
+		padding: 2px 2px 2px 0px !important;
+		margin-left: -20px;
+
+	}
+  
+	html{
+		font-size: 40% !important;
+	}
+  
+	.circle-button{
+		margin: 0 1px !important;
+	}
+  
+	ion-app.ios {
+		font-size: 1.0 rem !important;
+	}
+	.row {
+		font-weight: 700;
+	}
+
+	.tag {
+		margin :1px !important;
+	}
+
+	.input-wrapper {
+		font-weight: 640;
+	}
+
+	.text-input-ios {
+		font-weight: 500;
+	font-size: smaller;
+	}
+	
+	.button-inner {
+		font-weight: 700;
+	}
+	
+	#paiement-cb {
+		margin: 12px 2px 12px 12px;
+	}
+
+	.filterContainer .datetime-text, .filterContainer ion-label{
+		font-size: 11px ;
+	}
+	
+	.filterContainer .select-text{
+		font-size: 11px ;
+		margin-top: 4px;
+	}
+  }
+
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 375px) {
+  
+	.captcha {
+		padding: 2px 2px 2px 10px;
+	}
+  html{
+  	font-size: 50% !important;
+  }
+
+  .circle-button{
+  	margin: 0 1px !important;
+}
+  .input-wrapper {
+	font-weight: 640;
+}
+
+.row {
+	font-weight: 700;
+}
+
+#paiement-cb {
+	margin: 12px 12px 12px 12px;
+}
+
+.filterContainer .datetime-text, .filterContainer ion-label{
+	font-size: 10.5px ;
+}
+
+.filterContainer .select-text{
+	font-size: 10.5px ;
+	margin-top: 4px;
+}
+  
+}
+
+.no-scroll{
+	overflow: hidden !important;
+}
+
+.no-scroll *{
+	overflow: hidden !important;	
+}
+
+.filterContainer {
+	/*max-width: 40% !important;*/
+}
+
+.filterContainer ion-label{
+	margin: 0 !important;
+}
+
+.filterContainer ion-select{
+	min-width:100% ;
+	padding: 0 ;
+}
+
+// .filterContainer .datetime-text, .filterContainer ion-label{
+// 	font-size: 12px;
+// }
+
+// .filterContainer .select-text{
+// 	font-size: 12px;
+// 	margin-top: 4px;
+// }
+
+/* arabic */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  src: url('../assets/fonts/Cairo-Regular.ttf');
+}
+
+/* arabic */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/Cairo-Bold.ttf');
+}
+
+/**{
+	font-family: 'Roboto', sans-serif !important;
+}*/
+
+
+html[dir="rtl"] p, html[dir="rtl"] span, html[dir="rtl"] div, html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3
+, html[dir="rtl"] h4, html[dir="rtl"] h5, html[dir="rtl"] h6{
+  font-family: "Cairo";
+}
+
+.ar-txt{
+	font-family: "Cairo";
+}
+
+html[dir="rtl"] input{
+    text-align: right;
+}
+
+[dir="rtl"] ion-menu[side=left] > .menu-inner{
+	right: 0 !important;
+}
+
+.align-left{
+	text-align: left;
+}
+
+.align-right{
+	text-align: right;
+}
+
+[dir="rtl"] .align-left{
+	text-align: right;
+}
+
+[dir="rtl"] .align-right{
+	text-align: left;
+}
+
+.margin-left{
+	margin-left: 20px;
+}
+
+[dir="rtl"] .margin-left{
+	margin-right: 20px;
+	margin-left: 0;
+}
+
+[dir="rtl"] hr.custom{
+	float: right;
+	margin-left: 0;
+}

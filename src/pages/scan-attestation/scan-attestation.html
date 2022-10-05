@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <!--<ion-title>    {{'VERIF_ATTESTATIONS' | translate}}  </ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="layout-container">
+    <h3 class="title">{{"VERIF_ATTESTATIONS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+
+        <br/>    <br/>
+        <br/>    <br/>  <br/>    <br/>
+        <br/>    <br/>
+        <br/>    <br/>
+        <button style="border:double" class="button-ios-p" ion-button (click)="redirectFormulaire()" block>
+           <!-- <ion-icon name="ios-card"></ion-icon> -->
+         {{'Remplir_Formulaire' | translate}} </button>
+       
+          <br/>
+          <br/>    
+          <br/>    <br/>
+          <br/>    <br/>
+          <br/>
+           <!-- <div class='captcha'>
+            <re-captcha  (resolved)="captchaResolved($event)" 
+           
+
+            siteKey='6Lfak7EUAAAAABQH17CkCfMYQFFBUeod_P78iMXl
+            '
+            lang='fr'
+            
+            ></re-captcha>       
+          </div> -->
+          
+      </div>
+
+      <div >
+        <button style="border:double" shape="round" fill="outline-btn" class="button-ios-p" ion-button (click)="scanQRCode()" block>    {{'Scanner_QR_Code' | translate}}  </button>
+        <div style="margin :40px 10px 40px" id="paiement-pb" *ngIf="ppb"> 
+          <ion-card-content style="font-weight: bold ;text-align: center;color:brown">
+              {{'Scanner_QR_Code' | translate}}
+          </ion-card-content>
+          
+        </div>
+    </div>
+  </div>
+</ion-content>

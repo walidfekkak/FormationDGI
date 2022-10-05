@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+      <ion-buttons start>
+          <button class="blue-bg-btn" ion-button icon-only (click)="redirect('LoginPage',null,{animate: true, direction: back})">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+     
+      </ion-buttons>
+    <!--<ion-title>{{ 'ACHAT_TIMBRE' | translate }}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+        <!--<button class="blue-bg-btn" ion-button icon-only (click)="reload()">
+         <ion-icon name="ios-refresh" > </ion-icon>
+        </button>-->
+       
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="layout-container">
+      <h3 class="title">{{"ACHAT_TIMBRE" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+      <!--<iframe id="iframe" src="assets/embeds/achatTimbre/page-test.html" contenteditable="true" style="width:100%; height: 100%;border:none">
+      </iframe>-->
+
+        <!--<ion-list-header class="title"><fa-icon [icon]="faListAlt" size="xs"></fa-icon>&nbsp;&nbsp;{{ 'CHOIX_TIMBRE' | translate }}</ion-list-header>-->
+
+        <ion-item>
+          <ion-label floating class="colorGreen floating-selectbox">{{ 'CHOIX_TIMBRE' | translate }}</ion-label>
+          <ion-select interface="popover" [interfaceOptions]="selectOptions" class="custom-selectbox floatingLabel" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="timbreType" style="width: 100%; min-width: 100%; margin:8px 0;">
+            <ion-option value="TP" selected>{{ 'TIMBRE_PASSEPORT' | translate }}</ion-option>
+            <ion-option value="TPC">{{ 'TIMBRE_PERMIS_CHASSE' | translate }}</ion-option>
+            <ion-option value="TPA">{{ 'TIMBRE_PORT_ARME' | translate }}</ion-option>
+            <!-- <ion-option value="TPIC">{{ 'TIMBRE_PERMIS_INTERNATIONAL' | translate }}</ion-option> -->
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'QUANTITE' | translate }}</ion-label>
+          <!--<ion-input type="number" [(ngModel)]="qty"></ion-input>-->
+          <ion-select interface="popover" [interfaceOptions]="selectOptions" class="custom-selectbox floatingLabel" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="qty" style="width: 100%; min-width: 100%; margin:8px 0;">
+              <ion-option *ngFor="let value of qtyValues;" value="{{value}}">{{value}}</ion-option>
+  
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <!--<ion-list-header class="title"><fa-icon [icon]="faCreditCard"></fa-icon>&nbsp;&nbsp;{{ 'MODE_PAIEMENT' | translate }}</ion-list-header>-->
+          <ion-label floating class="colorGreen floating-selectbox">{{ 'MODE_PAIEMENT' | translate }}</ion-label>
+          <ion-select interface="popover" [interfaceOptions]="selectOptions" class="custom-selectbox floatingLabel" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="paiementMode" style="width: 100%; min-width: 100%; margin:8px 0;">
+              <ion-option value="1" selected>{{ 'PAIEMENT_CARTE_BANCAIRE' | translate }}</ion-option>
+              <ion-option value="2" selected>{{ 'PAIEMENT_MULTI_CANAL' | translate }}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <!--<ion-list (ionChange)="reset()" radio-group [(ngModel)]="paiementMode">
+          <ion-item >
+            <ion-label class="colorGreen">{{ 'PAIEMENT_CARTE_BANCAIRE' | translate }}</ion-label>
+            <ion-radio slot="start" value="1"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label class="colorGreen">{{ 'PAIEMENT_MULTI_CANAL' | translate }}</ion-label>
+            <ion-radio slot="start" value="2"></ion-radio>
+          </ion-item>
+        </ion-list>-->
+        <!--<ion-list-header class="title"><fa-icon [icon]="faInfoCircle"></fa-icon>&nbsp;&nbsp;{{ 'INFORMATIONS_A_SERVIR' | translate }}</ion-list-header>-->
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'NUM_TELEPHONE' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="tel" placeholder="+212 6 12 34 45 56"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'RESAISIR_NUM_TELEPHONE' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="telConfirmation" placeholder="+212 6 12 34 45 56"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="paiementMode==1">
+          <ion-label  floating class="colorGreen">{{ 'EMAIL' | translate }}</ion-label>
+          <ion-input placeholder="email@adresse.com" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="paiementMode==1">
+          <ion-label placeholder="email@adresse.com" floating class="colorGreen">{{ 'EMAIL_CONFIRMATION' | translate }}</ion-label>
+          <ion-input placeholder="email@adresse.com" [(ngModel)]="emailConfirmation"></ion-input>
+        </ion-item>
+      <br/><br/>
+      <div style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 160px; margin: auto;" (click)="submit()">{{ 'VALIDER' | translate }}</button></div>
+
+      <br/><br/>
+    </div>
+  </div>
+  
+  
+</ion-content>

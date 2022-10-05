@@ -1,0 +1,13 @@
+<ion-content padding class="modal-container">
+  <div style="text-align: center;"><img src="assets/img/calendar-icon.png" style="width: 28px;"/></div>
+  <div style="text-align: center; font-size:20px; color:#06a6b1;margin-bottom: 4px">{{'FILTER_FROM' | translate }}</div>
+  <ion-calendar #calendar lang="en"  (onDaySelect)="onDayFromSelect($event)" [(selectedDate)]="initial_date_from"></ion-calendar>
+
+  <div style="text-align: center; font-size:20px; color:#06a6b1; margin-bottom: 4px;">{{'FILTER_TO' | translate }}</div>
+  <ion-calendar #calendar lang="en"  (onDaySelect)="onDayToSelect($event)" [(selectedDate)]="initial_date_to"></ion-calendar>
+  
+  <br/><br/>
+  <div style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="background: #1a428a; color: #fff; font-size: 13px !important; border: none; width: 120px; margin: auto;" (click)="submit()">{{ 'VALIDER' | translate }}</button></div>
+  <div class="dismiss-btn"  (click)="dismiss()"></div>
+  
+</ion-content>

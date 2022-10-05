@@ -1,0 +1,153 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 13, 2016, 9:36:25 PM
+    Author     : CHEDDADI
+*/
+.content{
+	padding: 0px !important;
+}
+
+nav {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav .button-collapse i {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav .brand-logo { 
+    font-size: 1.6rem; 
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 50px;
+        line-height: 50px;
+    }
+}
+#drop{
+    top: 50px !important;
+
+}
+
+
+#info{
+    border-left: 1px solid #e1e1e1;
+    color: rgba(255,255,255,.87);
+    margin-left: 15px;
+    padding-left: 15px;
+}
+
+
+/***************Style Administration******************/
+.side {
+    padding: 0px !important;
+   
+    background-color: #F4F4F4;
+	
+    height: 90vh;
+
+}
+.menu-admin{
+
+    border: none;
+
+
+
+
+}
+.menu-admin  .collection-item{
+
+    background-color: transparent !important; 
+    color:#546E7A !Important;
+    padding: 20px 10px 20px 10px;
+    font-weight: bolder
+}
+.menu-admin  .collection-item:hover{
+
+    background-color:#546E7A !important; 
+    color:white !important;
+}
+
+
+
+#sec-nav{
+    padding: 0px 20px 0px 20px
+}
+.lean-overlay{
+    opacity: 0.2 !important;
+}
+.usertable td{
+    font-size: 18px;
+}
+.modalAddUser{
+    bottom: 82%; right: 24px;
+}
+.editbtn i,.deletebtn i{
+    font-size: 25px;
+    color:#546E7A;
+    padding: 5px 5px;
+}
+.pagination li.active{
+	background-color: #00695C !important;
+}
+.picker__date-display{
+	display:none;
+}
+.pagination{
+	text-align: center;
+}
+
+
+tr.even {
+    background-color: #fdfdfd  !important;
+}
+
+body{
+	margin : 0;
+	padding : 0;
+}
+.element{
+	width : 100px;
+	margin-top : 20px;
+	margin-right :auto;
+	margin-left : auto;
+}
+.infobulle{
+	transform : scale(0) rotateX(-180deg);
+	position : absolute;
+	background-color : #2e3048;
+	color : white;
+	border-radius : 5px;
+	padding : 8px;
+	margin-top : 10px;
+	box-shadow : 1px 1px 0 0.5px rgba(0,0,0,0.3);
+	border-bottom : 3px solid rgba(255,255,255,0.3);
+	border-left : 10px solid transparent;
+	border-right : 10px solid transparent;
+	transition : 1s;
+}
+.infobulle::before{
+	content : '';
+	position : absolute;
+	border-bottom : 8px solid #2e3048;
+	border-left : 8px solid transparent;
+	border-right : 8px solid transparent;
+	margin-top : -16px;
+	margin-left : 10px;
+}
+.element:hover > .infobulle{
+	transform : scale(1) ;
+}
+

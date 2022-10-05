@@ -1,0 +1,30 @@
+{
+    "token": "eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJzc2R0XzQ4IiwiZXhwIjoxNTcyNjA5MDA5LCJqdGkiOiJYZEhVVHp3YUs5Mm15Rlk1LXRDRE9nIiwiaWF0IjoxNTcyNjA4MTA5LCJuYmYiOjE1NzI2MDc5ODksInN1YiI6InNzZHRfNDgiLCJyb2xlcyI6WyJST0xFX0FESEVSRU5UIl19.YRC7cl_CEy0aljaKiBwzVAYrufzcIEaESp_V1Q_y7-frrF65Gtxac7xharYa3GjCYOJPyiGRWGF04S78rmDi9rYDRKkmskXZ9rkJYFsS5wDQJER7ey2Wi0swCVbQ9Z_yDXe25isELU1e-JWHMYfUZsU2rylzXkmxTHdLcFgyb7zShCk27vRsvh-dFak2HbK0lkXazbGWvh2JpiuTz_L_YjxNxKjXkEp7K0-W3sBcwPuyOjLSaS5Y8a3_z6hMvxwu-mWlLanA_pcx3wDn-xpu_cL853xanXeZsjFOvSuS1Ar6Ml5p0XoLZfsmR7EEFwl5VV5luOcvLmvNPsO31Tttbw",
+    "user": {
+        "listRoles": [
+            "ROLE_ADHERENT"
+        ],
+        "isAgent": false,
+        "server": null,
+        "direction": "",
+        "patente": "",
+        "subdivision": "",
+        "activite": "",
+        "raf": {
+            "recette": "TEST-ONLY",
+            "id": 1,
+            "rib": "123456789012345678901234",
+            "code": "1"
+        },
+        "adresse": "                                                                                                                                                                                                                                                              ",
+        "dateCreation": null,
+        "formeJuridique": "30                                                                                                  ",
+        "raisonSociale": "STE TEST 48                                                                                                                                                                                                                                                   ",
+        "ville": "",
+        "identifiantFiscal": "48",
+        "idAdherent": 26863,
+        "secteur": "",
+        "numRegistreCommerce": "",
+        "hasCertificat": false
+    }
+}

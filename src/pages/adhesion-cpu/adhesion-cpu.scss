@@ -1,0 +1,17 @@
+page-adhesion {
+    .checkbox-checked .checkbox-inner { position: absolute;  left: 13px; height: 11px; width: 5 px; }
+
+
+    .checkbox-ios .checkbox-icon {
+        height: 18px !important;
+        width: 16px !important;
+    }
+    .checkbox-ios .checkbox-checked .checkbox-inner {
+        left: 5px !important;
+        height: 6px !important;;
+    }
+
+    .label{
+    	font-size: 16px !important;
+    }
+}

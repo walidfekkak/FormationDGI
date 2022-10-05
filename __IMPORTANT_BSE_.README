@@ -1,0 +1,38 @@
+Building notes for android & fingerprint support
+ - - - - - - - - - - - - - - - - - - - - - - -
+
+
+Build using cordova-android 9
+
+	cordova platform rm android
+
+	cordova platform add android@9
+
+
+Use node 12 :
+	
+	nvm use 12 
+
+	#Use node 12 (exact version used to build: v12.22.1)
+
+
+
+To build and support some libraries we should use 'cordova-plugin-androidx-adapter' :
+
+	cordova plugin add cordova-plugin-androidx-adapter
+
+
+
+If any issues regarding ios build or to build for cordova 8 
+
+	Remove cordova-plugin-androidx-adapter
+
+		cordova plugin rm cordova-plugin-androidx-adapter
+
+	Use node 8
+
+		nvm use 8 
+
+		cordova platform add android
+
+		cordova build android

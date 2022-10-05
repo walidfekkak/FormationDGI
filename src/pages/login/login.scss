@@ -1,0 +1,150 @@
+.toolbar-title{margin-top: 5px;
+	font-weight: 900 !important;
+    color: #1da6b0 !important; font-size: 2.1rem;
+}
+.toggle{
+	--background:#d33939;
+	--background-checked:#10dc60;
+	
+  }
+  ion-toggle {
+	zoom: 0.44;
+  }
+
+ 
+
+  .toggle-ios.toggle-checked .toggle-icon {
+    background-color: #4c6eab;
+}
+
+.toggle-ios {
+
+	--background: rgba(255, 255, 255, 0);
+	--background-checked: #24407b;
+  
+	--handle-background: #24407b;
+	--handle-background-checked: #000;
+  }
+
+.adherent 
+{margin-top : 0.3rem !important ;font-size: small !important;
+	text-align: center;
+	font-weight: 700;
+	color: #fff !important;
+	background-color:#07a6b1;
+	width:auto;
+	display:inline-block;
+	padding: 4px 10px;
+	margin-left:-10px;
+	padding-right:16px;
+	border-bottom-right-radius:45px;
+}
+
+html[dir="rtl"] .adherent{
+	margin-left:0;
+	margin-right:-10px;
+	padding-right:30px;
+	padding-left:30px;
+	border-bottom-right-radius:0;
+	border-bottom-left-radius:45px;	
+}
+
+page-login {
+
+	.lang-indicator .active{
+		color :#07a6b1;
+		font-weight:bold;
+	}
+
+	.lang-indicator .lang{
+		margin: 0 4px;
+	}
+	.button-ios-primary.activated {
+		background-color: rgb(29, 166, 176);
+		.outline-btn.default { color: white;}
+	}
+	
+
+	.login-frame {
+		// background: #ffffffcf;
+		background-color:rgba(255, 255, 255, 0.8);
+    margin: 45px;
+    padding: 15px 10px 5px;
+    margin-top: 60px !important;
+    border-radius: 25px; 
+    /* border-top: none; */
+    margin-bottom: 6px;
+	}
+
+	.login-frame ion-icon{
+		font-size:180%;
+		color:#06959e;;
+	}
+
+	.login-frame ion-input{
+		font-size:120%;
+	}
+
+	.login-frame .list-ios > .item-block:first-child{
+		
+	}
+	.login-frame ion-item{
+		border-top: none !important;
+		background-color: transparent !important;
+	}
+
+	.logo{
+		width:50%;
+	}
+
+
+	.login-btn{
+		background-clor:#0c3478;
+	}
+
+	@media (min-width: 400px){
+		.login-frame {
+			/*border:1px solid black;*/
+			margin-top: 90px;
+			margin: 65px;
+		}
+	}
+
+	@media (min-height: 650px){
+		.login-frame {
+			padding: 28px 10px 30px !important;
+		}
+	}
+
+	
+}
+
+.navbar-logo{
+    height: 30px;
+	margin-left: 15px;
+}
+
+
+.bottom-menu-btn{
+	margin-bottom: 10px;
+	background-color: rgb(29, 166, 176);
+	height: 64px;
+	width: 64px;
+	transition: none;
+	border-radius: 207px;
+}
+
+.bottom-menu-btn img{
+	height: 34px;
+	filter: contrast(200) invert(1) !important;
+}
+
+
+.btn.fingerprint{
+	width: 34px;
+	margin-right: 10px;
+}
+
+html[dir="rtl"] ion-toggle.remember-me{
+	margin-top: 10px;
+}

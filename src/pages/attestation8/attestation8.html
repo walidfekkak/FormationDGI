@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <div style="text-align: center;">
+        <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+</ion-content>
+
+
+<ion-content padding>
+	<br/>
+
+  <div class="layout-container">
+      <h3 class="title">{{"AttestationExoTva" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+        <br/>
+        <div class="company-infos" style="text-align:center">
+          <div>
+            <img src="assets/img/societe-icon.png" height="40px" />
+          </div>
+          <div class="inlineBlock">
+            <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+            <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+          </div>
+        </div>
+  	<br/><br/>
+    <br/>
+    <br/>
+    <br/>
+	<div class="infos">
+		<!-- Votre attestation d'inscription à la taxe professionnelle sera générée et envoyée à l'adresse email indiquée. -->
+  	</div>
+    <br/><br/>
+
+    <ion-item style="font-size: small;">
+      <ion-label floating class="colorGreen">{{'CIN' | translate }} </ion-label>
+      <ion-input  disabled="{{isDisabled}}" [(ngModel)]="cni" placeholder=""></ion-input>
+    </ion-item>
+  	<ion-item *ngIf="ishidden">
+      <ion-label floating class="colorGreen">{{'NOM' | translate }}</ion-label>
+      <ion-input [(ngModel)]="nom" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="ishidden" >
+      <ion-label floating class="colorGreen">{{'PRENOM' | translate }}</ion-label>
+      <ion-input [(ngModel)]="prenom" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="ishidden">
+      <ion-label floating class="colorGreen">{{'ADRESSE' | translate }}</ion-label>
+      <ion-input [(ngModel)]="adresse" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item *ngIf="ishidden">
+      <ion-label floating class="colorGreen">{{'VILLE' | translate }}</ion-label>
+      <ion-input [(ngModel)]="ville" placeholder=""></ion-input>
+    </ion-item>
+  
+  	<br/><br/>
+    <div  *ngIf="!ishidden" style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="verifier()">{{'VERIFIER' | translate}}</button></div>
+  	<div  *ngIf="ishidden"style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="generate()">{{'CONFIRMER' | translate}}</button></div>
+  </div>
+</div>
+</ion-content>

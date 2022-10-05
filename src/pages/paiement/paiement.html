@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <!--<ion-title>{{ 'PAIEMENTS' | translate }} </ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="layout-container">
+      <h3 class="title">{{"PAIEMENTS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+        <div>
+            <!--<button class="button-ios-p" ion-button (click)="hidepcb()" block>
+              {{ 'PAIEMENT_CARTE_BANCAIRE' | translate }}</button>-->
+            <div  id="paiement-cb" *ngIf="pcb"> 
+
+              <ion-item>
+          <ion-label floating class="colorGreen">{{ 'EMAIL' | translate }}</ion-label>
+          <ion-input [(ngModel)]="reference.email" placeholder="email@adresse.com"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'REFERENCE_PAIEMENT' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="reference.ref"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating class="colorGreen">{{ 'montant' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="reference.montant"></ion-input>
+        </ion-item>
+
+        <!--<ion-item>
+            <ion-icon item-left name="ios-mail-outline"></ion-icon>
+            <ion-input type="text"  [(ngModel)]="reference.email" name="email" placeholder="{{ 'VEUILLEZ_SAISIR_EMAIL' | translate }} "> </ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-icon item-left name="ios-create-outline"></ion-icon>
+              <ion-input type="text"  [(ngModel)]="reference.ref" name="reference" placeholder="{{ 'VEUILLEZ_SAISIR_REFERENCE' | translate }}"> </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon item-left name="ios-cash-outline"></ion-icon>
+              <ion-input type="text"  [(ngModel)]="reference.montant" name="montant" placeholder="{{ 'VEUILLEZ_SAISIR_MONTANT_COMMANDE' | translate }}"> </ion-input>
+            
+            </ion-item> -->
+
+           <br/>
+           <br/>
+           <!-- <div class='captcha'>
+            <re-captcha  (resolved)="captchaResolved($event)" 
+           
+
+            siteKey='6Lfak7EUAAAAABQH17CkCfMYQFFBUeod_P78iMXl
+            '
+            lang='fr'
+            
+            ></re-captcha>       
+          </div> -->
+
+          <br/><br/>
+        <div style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 160px; margin: auto;" (click)="getLink()">{{ 'ENVOYER' | translate }}</button></div>
+
+        <br/><br/>
+
+        </div>
+      </div>
+
+          <!--<div>
+            <button class="button-ios-p" ion-button (click)="hideppb()" block>{{ 'PAIEMENT_PAR_PRELEVEMENT_BANCAIRE' | translate }}</button>
+            <div style="margin :40px 10px 40px" id="paiement-pb" *ngIf="ppb"> 
+              <ion-card-content style="font-weight: bold ;text-align: center;color:brown">
+                  {{ 'PARTIE_RESERVEE_ADHERENTS' | translate }}
+              </ion-card-content>
+              <ion-list>
+                  <div *ngFor="let service of teleservices">  
+                    <ion-item *ngFor="let lien of keys(service)" (click) ="redirectWeb(service, {service : service, lien : service[lien] })" >
+                        
+                     
+                        <ion-icon size ="small" name="arrow-forward" item-right></ion-icon>
+                        <ion-icon name="globe" item-left></ion-icon>
+                        <ion-label>
+                          <h3 class="colorBlue" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"> 
+                             {{lien | translate}} </h3> 
+                        </ion-label>
+                    </ion-item>
+                    </div>
+                </ion-list>
+            </div>
+          </div>-->
+        </div>
+      </div>
+</ion-content>

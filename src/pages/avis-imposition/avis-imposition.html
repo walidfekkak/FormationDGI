@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <!--<ion-title>{{ 'ARTICLES_EMIS' | translate}}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <br/>
+    <div class="company-infos" style="text-align:center">
+      <div>
+        <img src="assets/img/societe-icon.png" height="40px" />
+      </div>
+      <div class="inlineBlock">
+        <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+        <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+      </div>
+    </div>
+    <br/>
+
+    <div class="filterContainer">
+      <div class="block-1">
+        <ion-select interface="popover" interfaceOptions="selectOptions" class="custom-selectbox blue-select" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" (ionChange)="loadData()" placeholder="{{ 'TYPE_IMPOT' | translate}}" [(ngModel)]="filter.type">
+          <ion-option value="TP">{{'Taxe professionnelle' | translate}}</ion-option>
+              <ion-option value="TH">{{'Taxe habitation' | translate}} </ion-option>
+        </ion-select>
+      </div>
+      <div class="block-2 date-filter" style="border: 0">
+          <ion-select  interface="popover" class="custom-selectbox blue-select" placeholder="{{ 'ANNEE' | translate}}" [(ngModel)]="filter.year" style="width: calc(100% - 100px)">
+            <ion-option *ngFor="let year of years" [value] = "year">{{year}}</ion-option>
+          </ion-select>
+        <!--<img src="assets/img/calendar-icon.png" class="icon"/>-->
+      </div>
+    </div>
+
+    <div class="layout-container noBgColor">
+
+      <h3 class="title">{{"ARTICLES_EMIS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+
+      <table style="margin: 0 20px;">
+        <tr>
+          <td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+          <td style="width:80%"></td>
+          <td><hr class="custom blue"/></td>
+        </tr>
+      </table>
+      <br/>
+      <ion-row class="align-items-flex-end">
+        <button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="loadData()">{{ 'RECHERCHER' | translate}}</button>
+      </ion-row>
+      <br/>
+      <br/>
+
+      <div class="margin-left">
+        <ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+          <ion-row *ngFor="let item of data" (click)="redirect('DetailPage', {item : item, itemType : 'avis-imposition'})">
+            <ion-col  col-9>
+              <div>
+                  <ion-row>{{item.codeTypeImpot | translate}}</ion-row>
+                  <ion-row class="colorBlue"> {{item.numTaxe}} / {{item.anneeBudgetaire}}</ion-row>
+                  <!-- <ion-row class="colorBlue"> </ion-row> -->
+                  <hr class="custom" style="margin-left: 0% !important;">
+              </div>
+            </ion-col>
+            <ion-col col-3 pull-sm-4>
+              <div>
+                  <ion-row class="colorGreen">{{item.montantTotalDroitsDus}}  {{ 'DH'  | translate }} </ion-row> 
+                  <ion-row><div class="tag">...</div></ion-row>
+                  <!-- <hr class="customgrid"> -->
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <ion-grid  class="datagrid" *ngIf=" data == '' || data == null ">
+
+          <p style="text-align: center;">{{ 'no_data' | translate }} </p>            
+                       
+                      
+                     </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

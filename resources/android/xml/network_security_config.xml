@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+   <base-config cleartextTrafficPermitted="true">
+       <trust-anchors>
+           <certificates src="system" />
+       </trust-anchors>
+   </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+      <domain includeSubdomains="true">localhost</domain>
+      <domain includeSubdomains="true">tax.gov.ma</domain>
+      <domain includeSubdomains="true">vignette.ma</domain>
+      <domain includeSubdomains="true">178.62.81.105</domain>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,31 @@
+
+<ion-header>
+  <ion-navbar hideBackButton="true">
+      <ion-buttons start>
+          <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ScanAttestationPage',null,{animate: true, direction: back})">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+     
+      </ion-buttons>
+    <ion-title>Vérification Attestations</ion-title>
+    <ion-buttons end>
+        <button class="blue-bg-btn" ion-button icon-only (click)="reload()">
+         <ion-icon name="ios-refresh" > </ion-icon>
+        </button>
+       
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <iframe id="iframe" src="assets/embeds/verificationAttestations/page.html" contenteditable="true" style="width:100%; height: 100%;border:none">
+    
+  </iframe>
+
+  <!-- <iframe name="reference" id="iframe2"  contenteditable="true" style="width:100%; height: 0%;border:none">
+    
+  </iframe> -->
+
+  <!-- <button (click) = "screenShot()"></button> -->
+  
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="backToPrevious()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <ion-title>Content</ion-title>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>
+    en cours de construction.
+  </p>
+</ion-content>

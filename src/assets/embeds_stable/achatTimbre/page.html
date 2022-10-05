@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>E-Timbre</title>
+
+<link rel="stylesheet" href="assets/frontAssets/myStyle.css" />
+<link rel="stylesheet" href="assets/frontAssets/materialize/css/materialize.min.css" />
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="assets/frontAssets/front.css" />
+
+<script src="assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/frontAssets/jquery.datetimepicker.css" />
+
+<script type="text/javascript" >
+	/**
+ * Initialisation des paramettres DOM Materialze Select
+ */
+
+var dataTableLng = {
+		processing : "Traitement en cours...",
+		search : "Rechercher&nbsp;:",
+		lengthMenu : "Afficher _MENU_ &eacute;l&eacute;ments",
+		info : "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+		infoEmpty : "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+		infoFiltered : "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+		infoPostFix : "",
+		loadingRecords : "Chargement en cours...",
+		zeroRecords : "Aucun &eacute;l&eacute;ment &agrave; afficher",
+		emptyTable : "Aucune donn&eacute;e disponible",
+		paginate : {
+			first : "<<",
+			previous : "<",
+			next : ">",
+			last : ">>"
+		},
+		aria : {
+			sortAscending : ": activer pour trier la colonne par ordre croissant",
+			sortDescending : ": activer pour trier la colonne par ordre d&eacute;croissant"
+		}
+	}
+
+//Conversion date
+function convertDateTime(inputFormat) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())]
+        .join('-') + " " + [pad(d.getUTCHours()), pad(d.getUTCMinutes()), pad(d.getUTCSeconds())].join(':');
+}
+//Conversion date
+function convertDate(inputFormat) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())]
+        .join('-');
+}
+
+/**
+ * Gestion du menu
+ * Affichage et fermeture
+ */
+function showAdminMenu() {
+	$('#showmenu').hide();
+	$('#hidemenu').show();
+	$('.side').show(100);
+	$('.content').removeClass('m12');
+	$('.content').addClass('m10')
+}
+function hideAdminMenu() {
+	$('#hidemenu').hide();
+	$('#showmenu').show();
+	$('.side').hide(100);
+	$('.content').removeClass('m10');
+	$('.content').addClass('m12')
+
+}
+
+
+
+//Validation du mail
+	function confirmEmail() {
+	$('#errorMsg3').html(" ");
+	var email = document.getElementById("email").value
+	var confemail = document.getElementById("confemail").value
+	var etat;
+	if (email != confemail) {
+
+		etat = false;
+		$('#errorMsg3').html("L'adresse Email doit &ecirc;tre valide pour proc&eacute;der &agrave; la validation.");
+		$('#confemail').addClass("validate invalid");
+	} else {
+		etat = true
+	}
+
+	return etat;
+}
+
+//Validation telephone
+function confirmTel() {
+	$('#errorMsg4').html(" ");
+	var gsm = document.getElementById("gsm").value
+	var gsmValidation = document.getElementById("gsmValidation").value
+	var etat = false;
+	var regEx = /^(\(?00212\)?[0-9]{9})|(\(?\+212\)?[0-9]{9})|(0[0-9]{9})$/;
+	var res = gsm.match(regEx);
+	if (res == null) {
+		etat = false;
+		$('#errorMsg4').html("Le num&eacute;ro de t&eacute;l&eacute;phone est invalide."/* Il doit &ecirc;tre sous forme 0123456789"*/);
+		$('#gsm').addClass("validate invalid");
+		
+	} else if (gsm != gsmValidation) {
+
+		etat = false;
+		$('#errorMsg4').html("Le num&eacute;ro de t&eacute;l&eacute;phone de v&eacute;rification doit &ecirc;tre identique au num&eacute;ro de t&eacute;l&eacute;phone renseign&eacute;.");
+		$('#gsmValidation').addClass("validate invalid");
+	} else {
+		etat = true
+	}
+
+	return etat;
+}
+
+//Validation email regEx
+function validateEmail(email) {
+	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+
+//Validation formulaire recuperation
+function formRecuperationValidation() {
+	var etat = true;
+
+	if ($('#listTimbres').val() == null) {
+		$('#errorMsg1').html("- Veuillez choisir un timbre.");
+//		$('#listTimbres').addClass("validate invalid");
+		etat = false;
+	}else{
+		$('#errorMsg1').html("");
+		etat = true;
+	}
+//	if ($('#email').val() == "") {
+//		$('#errorMsg2').html("Email oblogatoire.");
+//		$('#email').addClass("validate invalid");
+//		etat = false;
+//	} else {
+//		if (!validateEmail($('#email').val())) {
+//			$('#errorMsg2').html("Email incorrect.");
+//			$('#email').addClass("validate invalid");
+//			etat = false;
+//		}
+//	}
+	if ($('#gsm').val() == "") {
+		$('#errorMsg3').html("- Le num&eacute;ro de t&eacute;l&eacute;phone est obligatoire.");
+//		$('#gsm').addClass("validate invalid");
+		etat = false;
+	} else {
+		if ($('#gsm').val().length < 10) {
+
+			$('#errorMsg3').html("- Format GSM incorrect. ");
+//			$('#gsm').addClass("validate invalid");
+			etat = false;
+		}else{
+			$('#errorMsg3').html("");
+//			$('#gsm').addClass("validate invalid");
+			etat = true;
+		}
+	}
+	if ($('#captcha2').val() == "") {
+		$('#errorMsg4').html("- Code de v&eacute;rification incorrect.");
+		etat = false;
+	}
+	
+	if ($('#date').val() == "") {
+		$('#errorMsg5').html("- la date est oblogatoire. ");
+		etat = false;
+	}else{
+		$('#errorMsg5').html("");
+		etat = true;
+	}
+//	$('#modalValidation').closeModal();
+	return etat;
+
+}
+
+//Validation formulaire commande
+function formCommandeValidation() {
+	
+	var etat = true;
+	$('#errorMsg').html(" ");
+	var paiementMode = $('input[name=mp]:checked').val();
+	if (paiementMode == '2') {  // CB
+		if ($('#email').val() != "") {
+			if (!validateEmail($('#email').val())) {
+				$('#errorMsg2').html("L'adresse Email doit &ecirc;tre valide pour proc&eacute;der &agrave; la validation.");
+				$('#email').addClass("validate invalid");
+				$('#errorMsg').append("<span class='red-text'>- L'adresse Email doit &ecirc;tre valide pour proc&eacute;der &agrave; la validation </span><br/>");
+				etat = false;
+			}
+			if (!confirmEmail()) {
+				etat = false;
+			}			
+		} else {
+			$('#errorMsg2').html("L'adresse Email est obligatoire dans le cas de paiement par carte bancaire.");
+			$('#email').addClass("validate invalid");
+			$('#errorMsg').append("<span class='red-text'>- L'adresse Email est obligatoire dans le cas de paiement par carte bancaire </span><br/>");
+			etat = false;			
+		}		
+	}
+	
+	if ($('#gsm').val() == "") {
+		$('#errorMsg4').html("Le num&eacute;ro de t&eacute;l&eacute;phone est obligatoire");
+		$('#errorMsg').append("<span class='red-text'>- Le num&eacute;ro de t&eacute;l&eacute;phone est obligatoire </span><br/>");
+		$('#gsm').addClass("validate invalid");
+		etat = false;
+	} else {
+		if ($('#gsm').val().length < 10) {
+			$('#errorMsg').append("<span class='red-text'>- Format GSM incorrect </span><br/>");
+			$('#errorMsg4').html("Format GSM incorrect !");
+			$('#gsm').addClass("validate invalid");
+			etat = false;
+		}
+	}
+	if ($('input[name=mp]:checked').val() == null) {
+		$('#errorMsg').append("<span class='red-text'>- Le mode de paiement est obligatoire pour proc&eacute;der &aacute; la validation. </span><br/>");
+		$('#errorMsg5').html("Le mode de paiement est obligatoire pour proc&eacute;der &aacute; la validation.");
+
+	}
+	if ($('#loginRequiredId').val() == 'true') {
+	 
+	  if($('#j_username').val() == ""){
+		$('#errorMsgLogin').html("Login obligatoire");
+		$('#errorMsg').append("<span class='red-text'>- Login est obligatoire </span><br/>");
+		$('#j_username').addClass("validate invalid");
+		etat = false;
+	  }
+	  if($('#j_password').val() == ""){
+			$('#errorMsgPass').html("Mot de passe obligatoire");
+			$('#errorMsg').append("<span class='red-text'>- Mot de passe est obligatoire </span><br/>");
+			$('#j_password').addClass("validate invalid");
+			etat = false;
+		  }
+	}
+	if ( $('#captcha').val() == "" ) {
+		$('#errorMsg').append("<span class='red-text'>- Code de v&eacute;rification incorrect. </span><br/>");
+		$('#errorMsg6').html("Code de v&eacute;rification incorrect.");
+		etat = false;
+	} 
+//	$('#modalValidation').closeModal();
+	if (!confirmTel()) {
+		etat = false;
+	}
+	return etat;
+
+}
+
+
+// Execution au chargement de la page
+$(document).ready(function() {
+	$('#captcha').keypress(function(e) {
+	    if(e.which == 13) {
+			if (formCommandeValidation()) {
+				$('#modalValidation').openModal();
+				generateCodeSms();
+			} else {
+				$('#modalError').openModal();
+				changeCaptcha();
+				$('#modalValidation').closeModal();
+			}
+			
+		
+	    }
+	});
+	$('#captcha2').keypress(function(e) {
+	    if(e.which == 13) {
+	    	if (formRecuperationValidation()) {
+				findCmd();
+			}else{
+				$('#modalValidation').closeModal();
+			}
+	    }
+	});
+
+	$('#validation').click(function(e) {
+	    if(e.which == 13) {
+	    	if (formRecuperationValidation()) {
+				findCmd();
+			}else{
+				$('#modalValidation').closeModal();
+			}
+	    }
+	});
+
+	function showCodeSmsModal(){
+	if (formCommandeValidation()) {
+		if (confirmEmail() && confirmTel()) {
+			saveCmd();
+			generateCodeSms();
+
+		}
+	} else {
+		
+		$('#modalError').openModal();
+		changeCaptcha();
+		$('#modalValidation').closeModal();
+	}
+	
+}
+	// Commande
+	$('.modal-trigger').leanModal({ // TODO
+		dismissible : false,
+		opacity : .5,
+		in_duration : 30,
+		out_duration : 20,
+		ready : function() {
+			if (formCommandeValidation()) {
+					//saveCmd();
+					generateCodeSms();
+					//$('#modalSms').openModal();
+				} else {
+				$('#modalError').openModal();
+				changeCaptcha();
+				$('#modalValidation').closeModal();
+			}
+			
+		},
+		complete : function() {
+		}
+	});
+
+	// Recuperation
+	$('.modal-trigger2').leanModal({
+		dismissible : false,
+		opacity : .5,
+		in_duration : 300,
+		out_duration : 200,
+		ready : function() {
+			if (formRecuperationValidation()) {
+				findCmd();
+				
+			}else{
+				$('#modalValidation').closeModal();
+			}
+			
+		},
+		complete : function() {
+		}
+	});
+	$('.modal-trigger3').leanModal({
+		dismissible : false,
+		opacity : .5
+	});
+	
+	
+	/*$('#listTimbres').select2({
+		placeholder : "Veuillez choisir un timbre "
+
+	});
+	$('#etatConso').select2({
+		placeholder : "Etat consomation"
+	});
+	
+	$('#modePaiement').select2({
+		placeholder : "Mode de paiement"
+	});
+	
+	$('#listTimbresP').select2({
+		placeholder : "Mode de paiement"
+	});
+	$('#role').select2({
+		placeholder : "Role"
+	});*/
+	
+	
+
+	//$("#listTimbres").select2("val", "");
+	
+	$("#captcha").attr("placeholder", "Code de vérification ");
+	$("#date").attr("placeholder", "Date de la commande ");
+
+});
+
+//Recuperation du contextPath
+function getContextPath() {
+	var path;
+	if (!window.location.origin) {
+		window.location.origin = window.location.protocol + "//"
+				+ window.location.hostname
+				+ (window.location.port ? ':' + window.location.port : '');
+		path = window.location.origin+"/"+ context;
+	}else{
+		path = window.location.origin +"/"+ context;
+	}
+	return path;
+}
+
+function preloader(data) {
+	Materialize.toast(data, 2000);
+}
+
+// CODE SMS VALIDATION
+function regenerateCodeSms() {
+$("#codeSms").val('');	
+  $.ajax({
+		  url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/generateCodeSms?gsm='+$("#gsm").val(),
+		  "cache": false,
+		  type: 'GET',
+		   success: function(data) {
+		  }
+	});
+	}
+
+function generateCodeSms() {
+$("#codeSms").val('');
+	
+
+	//if (formCommandeValidation()) {		
+	$.ajax({
+		url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/generateCodeSms?gsm='+$("#gsm").val()+'&captcha='+$("#captcha").val(),
+		"cache": false,
+		type: 'GET',
+		success: function(data) {
+			$('#codeSms').text('');	
+			if (data == 'success') {
+				$('#modalSms').openModal();
+				$('#errorMsgCodeSms').html('');			
+			} else {
+				$('#modalValidation').closeModal();
+				$('#modalError').openModal();
+				$('#errorMsg').append("<span class='red-text'>- " + data + "</span><br/>");				
+				//$('#errorMsg6').html(data);
+			}
+		}
+	});
+	//}
+	
+}
+
+function validateCodeSms() {
+	  $.ajax({
+	  
+url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/validateCodeSms?codeSms='+$("#codeSms").val(),
+"dataType": 'json',
+"cache": false,
+type: 'GET',
+success: function(data) {
+	     if(data==true){
+		      $('#modalSms').closeModal();
+		      $('#errorMsgCodeSms').html('');
+		      $('#codeSms').html('');
+		      saveCmd();
+	     }else{
+	    	 $('#errorMsgCodeSms').html('Code erronÃ© ! veuillez le rÃ©introduire.Si vous n\'avez pas reÃ§u le code SMS,cliquez sur le bouton "Renvoyer Moi un autre SMS"');
+	     }
+
+		}
+	});
+}
+
+function refreshPage() {
+	clearTmbr();
+	changeCaptcha();
+	//window.location = 'https://timbre-fiscal.tax.gov.ma/etimfisc/accueil';
+	
+}
+</script>
+<!--<script type="text/javascript" src="assets/frontAssets/jquery.datetimepicker.js"></script>-->
+<script type="text/javascript" src="assets/js/qrcode.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+var context = 'etimfisc';
+</script>
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 8]>
+	<script src="plugins/flot/js/excanvas.min.js"></script>
+<![endif]-->
+<style>
+	select{
+		display: inherit !important
+	}
+	.row .col.s12, .col.s12{
+		max-height: 100% !important;
+	}
+
+	.blue-text {
+		color: #247d7d !important;
+	}
+
+	.light-blue.darken-4{
+		background-color: #2ab6a9 ;
+		box-shadow: none
+	}
+
+	.content{
+		background: #fff !important;
+	}
+
+	.container{
+        width:100% !important;
+    }
+
+	.btn{
+		width:80%;
+		box-shadow: none
+	}
+	.btn label{
+		font-size: 13px;
+		font-family: sans-serif;
+		font-weight: bold;
+	}
+
+	.card-title.blue-text{
+		color: #2196F3 !important;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 15px;
+	}
+
+	.btn:hover, .btn-large:hover {
+background-color:#5ba1d6 !important;
+}
+.btn, .btn-large{
+	background-color:#01579b !important;
+
+}
+
+label {
+color: #d2d2d2 !important;
+}
+
+h4 {
+font-size: 1.28rem !important;
+line-height: 210% !important;
+}
+</style>
+</head>
+<body style="overflow-x: hidden;">
+<div>
+
+
+
+
+	<div class="navbar-fixed" style="display: none">
+		<nav class=" light-blue darken-4 ">
+
+
+			<div class="nav-wrapper  ">
+
+				<ul class="left " style="margin-left: 20px">
+					<li><a class="brand-logo left" href="#" style="display: none" id="showmenu" onclick="showAdminMenu()"> <i class="fa fa-indent "></i>
+
+					</a> <a class="brand-logo left" href="#" id="hidemenu" onclick="hideAdminMenu()"> <i class="fa fa-outdent "></i>
+
+					</a></li>
+
+				</ul>
+
+				<!-- <a style="margin-left: 20px;" href="#" data-activates="slide-out"
+					class="button-collapse "><i class="material-icons">menu</i></a> -->
+
+
+
+				<div style="margin-right: 20px">
+					<ul>
+						
+
+						<li class="right hide-on-med-and-down">
+							<i class="fa fa-shopping-cart"></i>
+								  <span id="nbrObj">0</span>  &eacute;l&eacute;ments
+								  <span id="total" class="hide">nullDH</span> 
+						</li>
+
+					</ul>
+
+				</div>
+
+
+
+				<ul id="drop" class="dropdown-content  ">
+					<li class="divider"></li>
+					
+
+
+					<li class="waves-effect waves-ripple "><h5 class=" center-align">
+							&nbsp;&nbsp;Total : <span id="total"></span>
+							DH
+						</h5></li>
+				</ul>
+
+
+			</div>
+
+
+		</nav>
+	</div>
+
+</div>
+
+
+
+
+	<div class=" ">
+	
+		<div>
+
+	<div class="col s12 m2 side  " style="display: none">
+		<div class="center" style="margin-top: 20px; font-size: 12px">
+			<!--<img id="logoImg" width="200" height="130" src="assets/frontAssets/img/Logo-DGI-1.png" /> -->
+		</div>
+		
+		<div class="collection menu-admin  center-align  ">
+<!-- 		<a th:href="@{/acceuil}"  class="collection-item"><i -->
+<!-- 				class="fa fa-home"></i> &nbsp; Acceuil</a> -->
+			<a class="collection-item" href="https://timbre-fiscal.tax.gov.ma/etimfisc/accueil">
+				<i class="fa fa-shopping-cart"></i> 
+				<span>Achat de timbres</span> 
+			</a> 
+			<a class="collection-item" href="https://timbre-fiscal.tax.gov.ma/etimfisc/recuperation"> 
+				<i class="fa fa-refresh"></i> 
+				R&eacute;cup&eacute;ration de timbres</span>
+			</a>
+<!-- 			<a th:href="@{/adherent}" class="collection-item">&nbsp;Droits de timbre</a> -->
+
+
+		</div>
+		<div style="text-align: center">
+		<label class="collection-item ">Version 3.5</label>
+		</div>
+
+	</div>
+</div>
+
+		<div class=" content col s12 m10">
+
+			<div class=" ">
+
+	<div id="test"></div>
+
+	<!-- Contenu de la page -->
+	<div class=" main " style="margin-top: 20px">
+		<div class="card-content container">
+			<div class="">
+				<!--<div class="col m6"><p style="color:gray;font-size: 1.2em;margin: 0;">Procédez à l'achat de timbre en remplissant ce forumulaire</p></div>-->
+				<!--<div class="col m6"><h4 style="text-align:right"><span>طلب الطوابع</span></h4></div>-->
+			</div>
+			
+
+			<!-- Formulaire d'ajout de timbres -->
+
+			<!-- Liste des timbres ajouter -->
+			<div id="step1" class=" ">
+				<div class="">
+					<span class="card-title blue-text"><i class="fa fa-list-alt"></i> <span>Choix des timbres</span> </span>
+					<div class="divider"></div>
+
+					<div class="col s12 m12 center-align ">
+						<div class=" ">
+							<div class="card-content center-align">
+								<div class="col s12 m12 ">
+									<div class=" ">
+										<div class="input-field col s12 m9">
+
+											<select id="listTimbres">
+												<option value="1">Timbre Passeport</option>
+												<option value="2">Timbre Permis de chasse</option>
+												<option value="3">Timbre Port d&#39;arme</option>
+												<!-- <option value="4">Timbre de permis international de conduire</option> -->
+											</select>
+
+										</div>
+
+										<div class="input-field col s12 m2" style="margin-left: 5px">
+											<label for="mp1">Quantité</label>
+											<br/>
+												<input id="qte" width="30%" type="number" min="1" value="1" step="1" max="5" />
+
+										</div>
+
+										</div>
+										<a title="Ajouter un timbre" class="waves-effect waves-light btn light-blue darken-4" onclick="addTimb()">
+											<i class="fa fa-cart-plus">
+												<label style="color:#fff">Ajouter au panier</label>
+											</i>
+										</a>
+
+								</div>
+								<span class="card-title blue-text hide">
+									<i class="fa fa-list-alt"></i>
+									<span>Liste des timbres choisis</span>
+								</span>
+								<div class="divider hide"></div>
+								<!-- Panier  -->
+								<h5 id="msg" style="color:#888; margin: 30px 0">Votre commande est vide</h5>
+								<div id="panier" class="hide">
+									<div style="overflow-x: auto;">
+										<table class="bordered highlight centered " id="mytable">
+											<thead>
+												<tr>
+													<th>Timbre</th>
+													<th>Prix</th>
+													<!-- 												<th th:text="${getLibelleTableDateexp}"></th> -->
+													<th>Quantité</th>
+												</tr>
+											</thead>
+											<tbody id="data">
+												
+											</tbody>
+										</table>
+									</div>
+									<!-- TOTAL du montant  -->
+									<div class=" right">
+										<span>Total : </span>
+										<span id="total2"></span> 
+										<span>Dh</span>
+									</div>
+								</div>
+
+								<a href="#" class="btn" onclick="clearTmbr()" title="Vider la liste" style="/* position: fixed; *//* top: 5px; *//* right: 5px; */background: #e5e6e5;border-radius: 2px;color: #000;text-transform: uppercase; margin-bottom: 10px">
+									<i class="fa fa-trash-o" style="font-size: 18px"></i>
+									<label>Vider le panier</label>
+								</a>
+								<br/><br/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ************************* Login information ************************** -->
+			<div class="  " id="authId" style="display: none;">
+				<div class=" col s12 m12 left-align">
+
+					<div class="col s12 m12">
+
+						<div class=" " style="height: 250px">
+							<div class="card-content">
+								<!-- *********** login Information  *********** -->
+								<span class="card-title blue-text"><i class="fa fa-info-circle"></i> <span>Veuillez saisir votre identifiant et votre mot de passe </span></span>
+								<div class="divider"></div>
+
+								<div class="input-field " id="usernameId" style="display: none;">
+									<i class=" prefix"></i> <input type="text" class="validate" name="j_username" id="j_username" required="required" /> <label for="j_username">Login</label> <span id="errorMsgLogin" class="right red-text"></span> <br />
+
+
+								</div>
+								<div class="input-field " id="passwordId" style="display: none;">
+									<i class=" prefix"></i> <input type="password" class="validate" name="j_password" id="j_password" required="required" /> <label for="j_password">Mot de passe</label> <span id="errorMsgPass" class="right red-text"></span> <br />
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<!-- ********************************************************************** -->
+			<!-- Informations ajouter -->
+			<div id="step2" class="  ">
+				<div class=" col s12 m12">
+					<!-- Informations info preso -->
+					<div class="col s12 m12">
+						<div class=" ">
+							<div class="">
+								<div class="col s12 m5">
+									<div class="card-content">
+
+										<span class="card-title blue-text"><i class="fa fa-credit-card"></i> <span>Mode de paiement</span> </span>
+										<div class="divider"></div>
+
+										<div id="paiement">
+											<div class="input-field   ">
+												<input name="mp" type="radio" id="mp1" value="2" onchange="changePaiementMode('2');" /> 
+												<label for="mp1">Paiement par carte bancaire</label>
+
+											</div>
+											<div class="input-field  ">
+												<input name="mp" type="radio" id="mp2" value="3" onchange="changePaiementMode('3');" /> 
+												<label for="mp2">Paiement par Multicanal</label>
+											</div>
+											<br /> 
+											<span id="errorMsg5" class="red-text right"></span>
+											<br />
+
+										</div>
+									</div>
+								</div>							
+								<div class="col s12 m7">
+									<div class="card-content">
+										<span class="card-title blue-text">
+											<i class="fa fa-info-circle"></i> <span>Informations à servir </span></span>
+										<div class="divider"></div>
+
+										<div class="input-field ">
+											<i class="fa fa-phone prefix"></i> <input id="gsm" type="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" class="validate" /> <label for="gsm">No de téléphone portable</label>
+
+
+
+										</div>
+										<div class="input-field ">
+											<i class=" prefix"></i> <input id="gsmValidation" type="tel" class="validate" onpaste="return false;" onblur="confirmTel()" /> <label for="gsmValidation">Resaisir le num. de tél. portable</label> <span id="errorMsg4" class="right red-text"></span> <br />
+
+										</div>
+										<div class="input-field " id="emailInput">
+											<i class="fa fa-envelope-o prefix" title="البريد الإلكتروني"></i> 
+											<input id="email" type="email" class="validate" />
+											<label for="email">Veuillez saisir votre adresse mail   - </label>
+											<span class=" right red-text" id="errorMsg2"></span>
+										</div>
+										<div class="input-field " id="emailValidationInput">
+											<i class=" prefix"></i> <input name="emailConfirm" type="text" id="confemail" onpaste="return false;" onblur="confirmEmail()" /> <label for="confemail">Valider votre e-mail</label> <span id="errorMsg3" class="right red-text"></span>
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Informations paiement -->
+
+
+				</div>
+			</div>
+
+			<div id="step3" class=" hidden">
+				<div class=" col s12 m12 center-align">
+					<form style="display: none" action="https://timbre-fiscal.tax.gov.ma/etimfisc/printRecu.do" method="post" id="print" target="_blank">
+						<input type="hidden" id="idCmdToPrint" name="id" />
+					</form>
+
+
+
+					<!-- Informations paiement -->
+					<div class="col s12 m12">
+
+						<div class=" " style="height: 300px">
+							<div class="card-content">
+
+								<div class="col s12 m12">
+									<div class="col s12 m5">
+										<img id="captchaImg" src="https://timbre-fiscal.tax.gov.ma/etimfisc/captcha" /> <a  title="Rafraichir code captcha" onclick="changeCaptcha()"><i class="fa fa-refresh" style="top: -10px;left: 5px;position: relative;font-size: 40px;"></i></a>
+									</div>
+
+									<div class="col s12 m4">
+
+										<input type="text" name="txtInput" id="captcha" size="15" placeholder="Répetez le code sur l'image ici"/>
+									</div>
+									<span id="errorMsg6" class="red-text center-allign"></span>
+								</div>
+								<div class="col s12 m12" >
+<!-- 									<a id="validation" -->
+<!-- 										class="light-blue darken-4 waves-effect waves-light  btn-large" -->
+<!-- 										 th:text="${getLibelleBtnValider}" onclick="showCodeSmsModal()"> -->
+<!-- 									</a> -->
+									<a id="validation" class="btn" class="modal-trigger light-blue darken-4 waves-effect waves-light  btn-large" href="#modalValidation" onclick="generateCodeSms()">Valider </a>
+									<!-- <a id="validation" 
+										class="light-blue darken-4 waves-effect waves-light  btn-large"
+										 th:text="${getLibelleBtnValider}" onclick="generateCodeSms()"></a> -->
+<!-- 								</div>
+
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<input type="hidden" name="loginRequiredId" id="loginRequiredId" value="false" />
+	<!-- Modal validation des donnees -->
+	<div id="modalValidation" class="modal validation">
+		<div class="modal-content">
+			<h5>Validation ... <span></span></h5>
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Modal Envoi SMS -->
+		<div id="modalSms" class="modal modal-fixed-footer ">
+			<div class="modal-content">
+				<h4>Verification Code SMS <span></span></h4>
+
+				<div class="card" id="recup">
+					<div class="card-content">
+						
+						<div id="modalSmsContent">
+						 <label class="center-align" for="codeSms">CODE DE VERIFICATION ENVOYE PAR SMS : </label>
+						 <input id="codeSms" type="text" />
+						 <div id="errorMsgCodeSms" class="red-text"></div>
+						 
+						 <a class="modal-action waves-effect waves-green btn-flat" onclick="validateCodeSms()">
+					<span>Valider</span>
+				</a>
+						 <a class="waves-effect waves-green btn-flat" onclick="regenerateCodeSms()">
+					<span>Renvoyer un autre SMS</span>
+				</a>
+												 
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<!-- Modal Affichage d'erreurs -->
+		<div id="modalError" class="modal center-allign">
+			<div class="modal-content">
+				<h4><span>Vous avez des erreurs </span></h4>
+				<div id="errorMsg" class="red-text"></div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" onclick="changeCaptcha()" class="modal-action modal-close waves-effect waves-green btn-flat ">
+					R&eacute;essayer </span>
+				</a>
+			</div>
+		</div>
+		<!-- Modal Success -->
+		<div style="width: 100% ; height:100%" id="modalSuccess" class="modal modal-fixed-footer ">
+			<div class="modal-content">
+				<h5>Votre commande a bien été enregistrée</h5>
+				<div style="color: orange;">Copier votre référence de paiement ou bien télécharger le PDF. </div>
+
+				<div class="card" id="recup">
+					<div class="card-content">
+						<div>
+							<!--<img width="100" height="60" src="assets/frontAssets/img/Logo-DGI-1.png" />-->
+							<h5 class="right"><span>Commande E-timbre</span></h5>
+						</div>
+						<div id="panier2" class="hide">
+							<div style="overflow-x: auto;">
+								<table class="bordered highlight centered ">
+									<thead>
+										<tr>
+											<th>Timbre</th>
+											<th>Prix</th>
+											<!-- 											<th th:text="${getLibelleTableDateexp}"></th> -->
+											<th>Quantité</th>
+										</tr>
+									</thead>
+									<tbody id="data2">
+										
+									</tbody>
+								</table>
+							</div>
+							<br />
+							<div style="overflow-x: auto;">
+
+								<div id="print"></div>
+
+								<table class="bordered highlight">
+									<tbody id="pan">
+										<tr>
+											<td><h4>Informations de paiement </h4></td>
+											<td></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td>Total &agrave; payer (Dhs)</td>
+											<td><span id="total3"></span></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+						<div id="totalpan"></div>
+						<div id="cmd"></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+
+
+
+
+				<a class="modal-action modal-close waves-effect waves-green btn-flat" onclick="refreshPage();">
+					<span>Retour </span></a>
+				<!-- 			<a href="#" onclick="genPdf()" -->
+				<!-- 				class=" waves-effect waves-green btn-flat ">PDF</a> -->
+				<a href="#" onclick="$('#print').submit()" class=" waves-effect waves-green btn-flat ">T&eacute;l&eacute;charger</a>
+			</div>
+
+		</div>
+
+	</div>
+
+		</div>
+
+
+	</div>
+
+
+
+	
+
+	
+
+
+
+	<footer>
+
+<script src="assets/frontAssets/materialize/js/materialize.min.js"></script>
+
+
+<script>
+
+clearTmbr(false);
+
+	/**
+ * Gestion front office
+ */
+// Ajout de timbre a la liste
+function addTimb() {
+	
+    if ($('#listTimbres').val() !== null) {
+        var JsonData = "";
+        var html = "";
+        var result = 0;
+        var val = {
+            id: $('#listTimbres').val(),
+            qte: $('#qte').val()
+        }
+        $.ajax({
+                url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/addToCmd',
+                "dataType": 'json',
+                "cache": false,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type","application/json");
+                },
+                type: 'POST',
+                "data": JSON.stringify(val),
+                success: function(data) {
+                    
+                    $('#data').html(' ');
+                    $('#data2').html(' ');
+                    
+                    $.each( data.objects.data,
+                            function(i, val) {
+                                var date = new Date(val.dateFin);
+                                $('#data')
+                                    .append(
+                                        "<tr id='myTimbre" + i + "'>" +
+                                        		"<td>" + val.libelle /*+ " - "+ val.libelleArabe*/ + "</td><td>" + val.prix + "</td>" 
+// +"<td>" + date.toLocaleDateString() + "</td>"
+                                        		+"<td>" + "<input id='qte" + val.id + "' disabled='disabled'" + "onchange='changedQte(" + val.id 
+                                        + ")' style='width: 30%' type='number' min='1' value ='" + val.qte + "' step='1' max='" + data.objects.limit + "'" 
+                                        + "</td>" + "<td><a href='#'  onclick='deleteFromTable(" + val.id
+                                        + ");'>X</a></td>" + "</tr>");
+                                
+                                $('#data2')
+                                .append(
+                                    "<tr>"
+                                		+"<td>" + val.libelle + " - "+ val.libelleArabe + "</td>"
+                                		+"<td>" + val.prix + "</td>" 
+// +"<td>" + date.toLocaleDateString() + "</td>"
+                                    	+"<td>" + val.qte+ "</td>" 
+                                    + "</tr>");
+                                result++;
+                               
+                            });
+                    if (result > 0) {
+                        $('#panier').removeClass('hide');
+                        $('#panier2').removeClass('hide');
+                        $('#msg').addClass('hide');
+                    }
+                    getTotalPrix();
+                    $('#nbrObj').html(result);
+                    preloader(data.messages[0]);
+                    //$("#listTimbres").select2("val", "");
+                  //  isLoginRequired();
+                }
+            });
+    } else {
+    	$('#msg').html("<span class='red-text'>- Veuillez sÃ©lectionner un timbre </span>");
+    	$('#msg').show();
+        $('#listTimbres .select2-selection__placeholder').css("color", "red");
+    }
+
+}
+
+// Changement de la quantite d'un timbre
+function changedQte(id) {
+    var val = {
+        id: id,
+        qte: $('#qte' + id).val()
+    }
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/changeqte',
+        "dataType": 'json',
+        "cache": false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        type: 'POST',
+        "data": JSON.stringify(val),
+        success: function(data) {
+           
+            $('#qteaf' + id).html($('#qte' + id).val());
+            getTotalPrix();
+        }
+    });
+
+}
+
+// Supression des timbres
+function clearTmbr(showInfoMsg = true) {
+
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/clear',
+        type: 'POST',
+        success: function(data) {
+            $('#data').html(' ');
+            $('#data2').html(' ');
+            $('#nbrObj').html('0');
+            $('#msg').removeClass('hide');
+            $('#panier').addClass('hide');
+            $('#panier2').addClass('hide');
+            getTotalPrix();
+            if(showInfoMsg)
+            	preloader("Panier vider");
+            //$("#listTimbres").select2("val", "");
+           // isLoginRequired();
+        }
+    });
+}
+
+// Recuperation du total du prix
+function getTotalPrix() {
+    $('#total').html(" ");
+    $('#total2').html(" ");
+    $('#total3').html(" ");
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/getTotalPrix',
+        type: 'POST',
+        success: function(data) {
+            $('#total').removeClass('hide');
+            $('#total').html(data + '.00 ');
+            $('#total2').html(data + '.00');
+            $('#total3').html(data + '.00 ');
+            
+        }
+    });
+}
+
+// Check if login is Required
+function isLoginRequired() {
+    $('#loginId').html("");
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/isLoginRequired',
+        type: 'POST',
+        success: function(data) {
+            
+            $('#loginId').html(data);
+            $('#loginRequiredId').val(data);
+            if(data == true){
+            	$('#authId').show();
+            	$('#usernameId').show();
+            	$('#passwordId').show();
+            }else{
+            	$('#authId').hide();
+            	$('#usernameId').hide();
+            	$('#passwordId').hide();
+            }
+        }
+    });
+}
+
+// Supression d'un timbre de la liste
+function deleteFromTable(id) {
+    var count = 0;
+    var val = {
+        id: id
+    }
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/deleteFromTable',
+        "dataType": 'json',
+        "cache": false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        type: 'POST',
+        "data": JSON.stringify(val),
+        success: function(data) {
+        	$('#data2').html(' ');
+            $.each(data, function(i, val) {
+            	var date = new Date(val.dateFin);
+            	$('#data2')
+                .append(
+                    "<tr><td>" + val.libelle + "</td><td>" + val.prix + "</td><td>" + date
+                    .toLocaleDateString() + "</td><td>" + val.qte 
+                    + "</td>" + "</tr>");
+                count++
+            });
+            $('#myTimbre' + id).hide();
+            if (count == 0) {
+                $('#msg').removeClass('hide');
+                $('#panier').addClass('hide');
+                $('#panier2').addClass('hide');
+            }
+            $('#nbrObj').html(count);
+            preloader("Timbre supprimer");
+            getTotalPrix();
+          //  isLoginRequired();
+        }
+    });
+}
+
+// Sauvgarde de la commande
+function saveCmd() {
+	
+    var val = {
+    		id: $('#idCmd').val(),
+        email: $('#email').val(),
+        tel: $('#gsm').val(),
+        modePaiement: $('input[name=mp]:checked').val(),
+        path: getContextPath(),
+        captcha: $('#captcha').val(),
+        j_username: $('#j_username').val(),
+        j_password: $('#j_password').val()
+    }
+    $.ajax({
+            url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/save',
+            "dataType": 'json',
+            "cache": false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+            },
+            type: 'POST',
+            "data": JSON.stringify(val),
+            success: function(data) {
+            	
+                if (data.errors.length > 0) {
+                    setTimeout(function() {
+                        $('#modalError').openModal();
+                        $('#modalValidation').closeModal();
+                    }, 200);
+                    $('#errorMsg').html(" ");
+                    for (var int = 0; int < data.errors.length; int++) {
+                        $('#errorMsg')
+                            .append(
+                                "<span class='red-text'>- " + data.errors[int] + "</span><br/>");
+                    }
+                    $('#idCmd').val(data.objects.idCmd)
+                } else {
+                    
+                    if ($('input[name=mp]:checked').val() == 2) {
+
+// $('#pan').html('Redirection ... ');
+                        //window.location.replace(data.messages[1]); // TODO
+ // window.location.replace(data.objects.returnedObject.tel);
+                    } else {
+                    	$('#modalSuccess').openModal({
+                            dismissible: false
+                        });
+                    	$('#pan')
+                        .append("<tr><td>R&eacute;ference de paiement</td><td>" + data.objects.returnedObject.refPaiement+"</td></tr>");
+                     	
+                    	$('#pan')
+                        .append("<tr><td>Date de la commande</td><td>" + data.objects.dateCmd+"</td></tr>");
+// $('#pan')
+// .append("<tr><td>Date d'expiration de la r&eacute;ference nonos </td><td>" +
+// data.messages[1]+"</td></tr>");
+//                    	 
+                    	 $('#idCmdToPrint').val(data.objects.returnedObject.id);
+                    	
+                    	 $('#modalValidation').closeModal();
+                    }
+                    
+                    
+                }
+            }
+        });
+}
+
+// Recuperation des codes timbres
+function findCmd() {
+	
+    var val = {
+        idTimbre: $('#listTimbres').val(),
+        email: $('#email').val(),
+        tel: $('#gsm').val(),
+        dateCommande: $('#date').val(),
+        captcha: $('#captcha').val(),
+        j_username: $('#j_username').val(),
+        j_password: $('#j_password').val()
+    }
+
+    $.ajax({
+        url: 'https://timbre-fiscal.tax.gov.ma/etimfisc/load',
+        "dataType": 'json',
+        "cache": false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        type: 'POST',
+        "data": JSON.stringify(val),
+        success: function(data) {
+// console.log(data);
+        	 setTimeout(function() {
+                 if(data.errors.length == 0){
+                	 $('#modalSuccess').openModal({
+                         dismissible: false
+                     });
+// var selectText = $('#listTimbres').select2('data')[0];
+// $("#timbreSearsh").html(selectText.text);
+// for (var int = 0; int < data.objects.returnedList.length; int++) {
+//                     	
+// $('#pan').append(
+//                     			
+// "<div style='width:50px,height:50px'
+// class='qr"+data.objects.returnedList[int].codeTimbre+"'>" +
+// "<img src='/"+context+"/qr/"+data.objects.returnedList[int].codeTimbre+"' />"
+// +
+// "</div>" +
+//                     			
+// convertDateTime(data.objects.returnedList[int].dateFinValidite)
+// );
+//                     	
+// }
+                     $('#modalValidation').closeModal();
+            	 }else{
+            		 $('#modalError').openModal();
+                     $('#modalValidation').closeModal();
+            		 $('#errorMsg').html(data.errors);
+            	 }
+                 
+             }, 200);
+        	
+        	
+        }
+    })
+    
+}
+
+// Recuperation du contextPath
+// function getContextPath() {
+// var path = window.location.origin +"/"+ context;
+// return path;
+// }
+
+// Generation des pdf
+function genPdf() {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    source = $('#recup')[0];
+    specialElementHandlers = {
+        '#bypassme': function(element, renderer) {
+            return true
+        }
+    };
+    margins = {
+        top: 80,
+        bottom: 60,
+        left: 40,
+        width: 522
+    };
+    pdf.fromHTML(source, 
+        margins.left, 
+        margins.top, { 
+            'width': margins.width, 
+            'elementHandlers': specialElementHandlers
+        },
+
+        function(dispose) {
+            pdf.save('AccusÃ©.pdf');
+        }, margins);
+}
+
+// Generation des pdf
+function genPdfVersement() {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    source = $('#recup2')[0];
+    specialElementHandlers = {
+        '#bypassme': function(element, renderer) {
+            return true
+        }
+    };
+    margins = {
+        top: 80,
+        bottom: 60,
+        left: 40,
+        width: 522
+    };
+    pdf.fromHTML(source, 
+        margins.left, 
+        margins.top, { 
+            'width': margins.width, 
+            'elementHandlers': specialElementHandlers
+        },
+
+        function(dispose) {
+            pdf.save('Accuse.pdf');
+        }, margins);
+}
+
+
+function changeCaptcha(){
+	d = new Date();
+	$("#captchaImg").attr("src",'https://timbre-fiscal.tax.gov.ma/etimfisc/captcha?'+d.getTime());
+	$("#captcha").val("");
+	
+}
+
+function changePaiementMode(value) {
+	$('#errorMsg5').hide();
+	$('#errorMsg5').html("");
+	if (value == '2') { // CB
+		$('#emailInput').show();
+		$('#emailValidationInput').show();
+	} else {
+		$('#email').val('');
+		$('#confemail').val('');		
+		$('#emailInput').hide();
+		$('#emailValidationInput').hide();		
+	}	
+}
+
+$(document).ready(function() {
+	$('#email').val('');
+	$('#confemail').val('');
+	$('#emailInput').hide();
+	$('#emailValidationInput').hide();	
+});
+</script>
+<script src="assets/frontAssets/jspdf.debug.js"></script>
+
+<script>
+/*$('.datetimepicker').datetimepicker({
+	timepicker:false,
+    lang: 'fr',
+    format:'Y-m-d'
+});*/
+
+</script>
+
+</footer>
+
+</body>
+</html>

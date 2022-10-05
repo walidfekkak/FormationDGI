@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <!--<ion-title>{{ 'TELE_SERVICES' | translate }}</ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="layout-container">
+
+      <h3 class="title">{{"TELE_SERVICES" | translate}}</h3> 
+      <div class="line-border"></div>
+
+      <div class="content teleservices-container">
+          <div class="block-item" (click) ="goToView('VerifAttestationPage')">
+            <img src="assets/img/main-menu/teleservices/item1-{{translate.currentLang}}.png"/>
+          </div>
+
+          <div class="block-item" *ngFor="let service of teleservices" (click) ="redirectWeb(service.url, {service : service, lien : service.url})" >
+              <img src="{{ service.img + translate.currentLang+'.png'}}"/>
+        </div>
+      </div>
+      
+
+    </div>
+
+</ion-content>

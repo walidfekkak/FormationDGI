@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button  ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+      <!--<ion-title>{{ 'SETTINGS' | translate}}</ion-title>-->
+      <div style="text-align: center;">
+        <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+      </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="layout-container">
+
+      <h3 class="title">{{"SETTINGS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content teleservices-container">
+        
+        <ion-item >
+            <ion-label class="colorGreen"><b>{{ 'SETTINGS' | translate}}</b></ion-label>
+        </ion-item>
+          <ion-item detail>
+            <ion-label>
+              <img src="assets/img/settings-icons/chatbot.png" class="icon floatLeft" />{{ 'TOGGLE_CHATBOT' | translate}}
+            </ion-label>
+            <ion-toggle  class="toggle" [(ngModel)]="showChatbot" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+            <ion-label>
+              <img src="assets/img/settings-icons/fingerprint.png" class="icon floatLeft" />{{ 'TOGGLE_FINGERPRINT' | translate}}
+            </ion-label>
+            <ion-toggle  class="toggle" [(ngModel)]="enableFingerPrint" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item >
+            <ion-label  class="colorGreen"><b>{{ 'ATTESTATIONS' | translate}}</b></ion-label>
+        </ion-item>
+        <ion-item detail>
+            <ion-label>
+              <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'ATTESTATION DU CHIFFRE D’AFFAIRES DECLARE' | translate}}
+            </ion-label>
+            <ion-toggle  class="toggle" [(ngModel)]="showAttestation1" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+            <ion-label>
+              <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'ATTESTATION DE RADIATION DE LA TAXE PROFESSIONNELLE' | translate}}
+            </ion-label>
+            <ion-toggle  class="toggle" [(ngModel)]="showAttestation2" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+            <ion-label>
+              <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'AttestationIMPOTH' | translate}}
+            </ion-label>
+            <ion-toggle  class="toggle" [(ngModel)]="showAttestation3" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'BULLETIN_NOTIF' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation4" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'ATTESTATION D’INSCRIPTION A LA TAXE PROFESSIONNELLE' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation5" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'ATTESTATION DE REGULARITE FISCALE' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation6" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'Attestation de revenu' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation7" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'AttestationExoPCompl' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation8" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item detail>
+          <ion-label>
+            <img src="assets/img/settings-icons/attestation.png" class="icon floatLeft" />{{ 'AttestationExoTva' | translate}}
+          </ion-label>
+          <ion-toggle  class="toggle" [(ngModel)]="showAttestation9" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+
+
+
+          <br/><br/>
+          <div style="text-align: center"><button class="blue-bg-btn outline-btn default" ion-button icon-only (click)="submit()">{{ 'MSSG_VALIDER' | translate}}</button></div>
+    </div>
+  </div>
+</ion-content>

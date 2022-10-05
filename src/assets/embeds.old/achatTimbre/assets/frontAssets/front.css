@@ -1,0 +1,91 @@
+/* Menu Css */
+
+#drop {
+	top: 60px !important;
+	width: 100px;
+	left: 100px;
+}
+
+.big {
+	font-size: 30px !important;
+	font-weight: bold;
+}
+
+.select2-selection {
+	height: 46px !important;
+}
+
+@media screen and (max-width: 1370px) {
+	.select2 {
+		width: 100% !important;
+	}
+	#logoImg {
+	width: 90% !important;
+	}
+}
+
+#qte {
+	
+	font-weight: bolder;
+	
+	
+	margin-left: 5px
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	opacity: 1;
+	cursor: pointer;
+}
+
+.select2-selection__rendered {
+	padding: 8px !important;
+}
+
+.main {
+	box-shadow: none;
+}
+
+#total2 {
+	font-weight: bloder;
+}
+
+.hide {
+	display: none;
+}
+
+td {
+	padding: 2px !important;
+}
+
+.req {
+	display: none;
+}
+
+/* .content {
+	padding-left: 240px;
+} */
+
+@media only screen and (max-width : 992px) {
+	.content {
+		padding-left: 0;
+	}
+}
+
+/* Captcha */
+#txtCaptchaDiv {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+	cursor: default;
+	font-size: 30px;
+	font-family: sans-serif;
+
+	color: #FFF;
+	padding: 3px
+}
+

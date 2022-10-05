@@ -1,0 +1,253 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+      <ion-buttons start>
+        <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+          <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+        </button>
+      </ion-buttons>
+      <!--<ion-title>{{ 'DEFAULT_DECLARATIONS' | translate}}</ion-title>-->
+      <div style="text-align: center;">
+        <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+      </div>
+  
+      <ion-buttons end>
+        <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+          <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+        </button>
+        <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+          <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content >
+    
+    <br/>
+    <div class="company-infos" style="text-align:center">
+      <div>
+        <img src="assets/img/societe-icon.png" height="40px" />
+      </div>
+      <div class="inlineBlock">
+        <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+        <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+      </div>
+    </div>
+    <br/>
+
+    <div class="layout-container noBgColor">
+      <h3 class="title">{{"DEFAULT_DECLARATIONS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+
+          <table style="margin: 0 20px;">
+            <tr>
+              <td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+              <td style="width:80%"></td>
+              <td><hr class="custom blue"/></td>
+            </tr>
+          </table>
+        
+          <!-- <ion-row class="align-items-flex-end">
+            <button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="loadData()">{{ 'RECHERCHER' | translate}}</button>
+          </ion-row> -->
+
+
+          <div>
+
+          <ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+            <div *ngFor="let yearKey of dataKeys">
+              <div class="groupTitle">{{ 'ANNEE' | translate }} {{ yearKey}}</div>
+              <div *ngFor="let item of data[yearKey]"  (click)="showDetails(item)" class="shadow-block">
+                <ion-col col-12>
+                  <div class="floatRight">
+                    <div *ngIf="!item.expanded"><ion-icon name="arrow-down"></ion-icon></div>
+                    <div *ngIf="item.expanded"><ion-icon name="arrow-up"></ion-icon></div>
+                  </div>
+                  <div>
+                      <ion-row class="colorGreen">{{item.formulaire | translate}}</ion-row>
+                      <ion-row class="colorGray light">{{item.dateDebutPeriode}}-{{item.dateFinPeriode}}</ion-row>
+                      <hr class="custom" style="margin-left: 0% !important;">
+                  </div>
+                  <div class="details-block" *ngIf="item.expanded==true">
+                    <div class="details-title">{{ 'DETAILS'| translate }}</div>
+                    <div><span class="lib">{{ 'codeTypeImpot' | translate }}:</span> {{item.codeTypeImpot | translate}}</div>
+                    <div><span class="lib">{{ 'DATE_FIN'| translate }}:</span> {{item.dateDebutPeriode}}</div>
+                    <div><span class="lib">{{ 'DATE_DEBUT' | translate }}:</span> {{item.dateFinPeriode}}</div>
+                    <div><span class="lib">{{ 'FORUMULAIRE' | translate }}:</span> {{item.formulaire}}</div>
+                  </div>
+                </ion-col>
+
+                <!--<ion-col col-3 pull-sm-4>
+                  <div>
+                      <ion-row class="colorGreen">{{item._dateHeureAccuseReception}}</ion-row> 
+                      <ion-row><div class="tag">...</div></ion-row>
+                  </div>
+                </ion-col>-->
+               
+              </div>
+
+            </div>
+             
+          </ion-grid>
+                
+          <!--<ion-grid  class="datagrid" *ngIf="data!= null && data.length != 0">
+              <ion-row *ngFor="let item of data" (click)="redirect('DetailPage', {item : item, itemType : 'defDeclaration'})">
+                  <ion-col  col-9>
+                    <div>
+                       
+                        <ion-row class="colorBlue">{{item.formulaire}}</ion-row>
+                        <ion-row class="colorBlue">{{item.dateDebutPeriode}}-{{item.dateFinPeriode}}</ion-row>
+                        <hr class="custom" style="margin-left: 0% !important;">
+                    </div>
+                  </ion-col>
+
+                  <ion-col col-3 pull-sm-4>
+                    <div>
+                        <ion-row class="colorGreen"> {{item.codeTypeImpot | translate}} </ion-row> 
+                        <ion-row><div class="tag">...</div></ion-row>
+                    </div>
+                  </ion-col>
+                 
+                </ion-row>
+               
+              </ion-grid>-->
+
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+           
+                 <ion-grid  class="datagrid" *ngIf=" data == '' || data == null ">
+
+                    <p style="text-align: center;">{{ 'no_data' | translate }} </p>            
+                   
+                  
+                 </ion-grid>
+        
+              </div>
+            <!-- <div class="margin-left">
+              <table class="datagrid" *ngIf="data!= null && data.length != 0">
+                <tr class="header">
+                  <td>Impôt</td>
+                  <td style="width:30%">Formulaire</td>
+                  <td >Date Debut</td>
+                  <td>Date Fin</td>
+                 
+                  <td></td>
+                </tr>
+                
+                <tr *ngFor="let item of data" (click)="redirect('DetailPage', {item : item, itemType : 'defDeclaration'})">
+                 
+                  
+                  <td style="text-align: center">{{item.codeTypeImpot}}</td>
+                  <td class="colorGreen">{{item.formulaire}}</td>
+                  <td>{{item.dateDebutPeriode}}</td>
+                  <td >{{item.dateFinPeriode}}</td>
+                 
+                  <td><div class="tag">...</div></td>
+                </tr>
+                 -->
+                <!--<tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>TVA</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">11-09-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IS</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+        
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+        
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>
+                <tr>
+                  <td>Déclaration mensuelle</td>
+                  <td>IR</td>
+                  <td>Sept-2018 / Déc-2019</td>
+                  <td class="colorGreen">27-03-2018</td>
+                  <td><div class="tag" (click)="redirect('DetailPage')">...</div></td>
+                </tr>-->
+              <!-- </table>
+            </div> -->
+      </div>
+    </div>
+  </ion-content>

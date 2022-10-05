@@ -1,0 +1,17 @@
+page-declarations-list {
+    .tag{
+		margin: 12px ;
+    }
+    
+
+    ion-header ion-icon.back-button-icon.icon {
+        color: map-get($colors, darkblue);
+    }
+
+    .lib{
+        color:#234874;
+        font-weight: bold;
+    }
+
+
+}

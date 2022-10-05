@@ -1,0 +1,130 @@
+
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <div style="text-align: center;">
+        <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	    
+    <div class="layout-container">
+      <h3 class="title">{{"AttestationExoPCompl" | translate}}</h3> 
+      <div class="line-border"></div>
+       <br/>
+      <div class="company-infos" style="text-align:center">
+        <div>
+          <img src="assets/img/societe-icon.png" height="40px" />
+        </div>
+        <div class="inlineBlock">
+          <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+          <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+        </div>
+      </div>
+
+
+      <table style="margin: 0 20px;">
+        <tr>
+          <td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+          <td style="width:80%"></td>
+          <td><hr class="custom blue"/></td>
+        </tr>
+      </table>
+      <br/>
+  	<div class="infos">
+  		<!-- Votre attestation d'inscription à la taxe professionnelle sera générée et envoyée à l'adresse email indiquée. -->
+    	</div>
+      <br/><br/>
+
+      <ion-item style="font-size: small;">
+        <ion-label floating class="colorGreen floating-selectbox">{{'IF_NOTAIRE' | translate}} </ion-label>
+        <ion-input [(ngModel)]="nlfu" readonly></ion-input>
+      </ion-item>
+
+      <ion-item style="font-size: small;">
+        <ion-label floating class="colorGreen floating-selectbox">{{'IF_PROMETEUR' | translate}} </ion-label>
+        <ion-input [(ngModel)]="if_prometeur" ></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="data_checked_but_not_valid" style="font-size: small;">
+        <ion-label floating class="colorGreen floating-selectbox">{{'TITRE_FONCIER_MERE' | translate}} </ion-label>
+        <ion-input [(ngModel)]="titre_foncier_mere" ></ion-input>
+      </ion-item>
+      <div class="block-titres">
+        <h5 class="title colorGreen">{{'TITRE_FONCIER_PARCELAIRE' | translate}}</h5>
+        <small>{{'LOCAL_DESTINE_A_VENTE' | translate}}</small>
+      </div>
+
+      <div *ngIf="!data_checked_but_not_valid">
+        <div *ngFor="let obj of nums_titres_fonciers; let i=index; trackBy:trackEditList">
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'NUM_TITRE_FONCIER' | translate}} {{i+1}}</ion-label>
+            <ion-input type="text" [(ngModel)]="nums_titres_fonciers[i]" ></ion-input>
+            <button  class="outline-btn default" ion-button color="primary" (click)="removeTitreFoncier(i)">X<ion-icon [name]="minus"></ion-icon></button>
+          </ion-item>
+        </div>
+        <div style="text-align: center"><img class="plus-btn" src="assets/img/misc/green-plus-btn.png" (click)="add_num_titre_foncier()"/></div>
+        <hr/>
+        <div class="block" style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="runWS_1()">{{'VALIDER' | translate }}</button></div>
+      </div>
+
+      <div *ngIf="data_checked_but_not_valid">
+        <div class="info">
+          {{'MSSG_INFO_ATTESTATION_TH_TSC_NOT_FOUND' | translate }}
+        </div> 
+        <hr/>
+        <div *ngFor="let obj of nums_titres_fonciers_details; let i=index; trackBy:trackEditList">
+          <b class="title label">Titre {{i+1}}</b>
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'NUM_TITRE_FONCIER' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].titre" ></ion-input>
+          </ion-item>
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'ADRESSE' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].adresse" ></ion-input>
+          </ion-item>
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'VILLE' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].ville" ></ion-input>
+          </ion-item>
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'COMMUNE' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].commune" ></ion-input>
+          </ion-item>
+          <!--<ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'VENTE' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].vente" ></ion-input>
+          </ion-item>-->
+          <ion-item style="font-size: small;">
+            <ion-label floating class="colorGreen floating-selectbox">{{'NATURE_BIEN' | translate}} </ion-label>
+            <ion-input [(ngModel)]="nums_titres_fonciers_details[i].natureBien" ></ion-input>
+          </ion-item>
+          
+        </div>
+        <br/>
+        <div style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="min-width: 130px; margin: auto;" (click)="add_titre_foncier_with_details()">{{'AJOUTER_TITRE' | translate }}&nbsp;<ion-icon [name]="plus"></ion-icon></button></div>
+        <hr/>
+        <div class="block" style="text-align: center"><button class="outline-btn default" ion-button color="primary" style="width: 130px; margin: auto;" (click)="runWS_2()">{{'CONFIRMER' | translate }}</button></div>
+  
+  	 <br/><br/>
+    </div>
+  </div>  
+
+</ion-content>

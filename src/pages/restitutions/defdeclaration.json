@@ -1,0 +1,106 @@
+{
+    "root": {
+        "admissionNonValeurs": null,
+        "contribuable": {
+            "abonneTelePaiement": null,
+            "adresseDirigeantPrincipale": null,
+            "adressePrincipale": "25 RUE D AZILAL",
+            "anneePatente": null,
+            "codeCategorisation": null,
+            "commune": null,
+            "dateAdhesionAbonneTelePaiement": null,
+            "dateDebutActivite": null,
+            "dateEmployeur": null,
+            "debutExercice": null,
+            "estEmployeur": null,
+            "estIr": null,
+            "estIs": null,
+            "estTva": null,
+            "finExercice": null,
+            "formeJuridique": "SOCIETE ANONYME",
+            "ifu": "1000003",
+            "libelleRc": "CASABLANCA",
+            "libelleVille": "CASABLANCA",
+            "nom": null,
+            "numCe": null,
+            "numCin": null,
+            "numCnss": null,
+            "numIce": "001527537000028",
+            "numPpr": null,
+            "numRc": "32131",
+            "numeroArticlePatente": "56119648",
+            "pays": "MAROC",
+            "prenom": null,
+            "professionPrincipale": "BUREAU  D ETUDES, D ENQUETES ET DE RECHERCHES (TENANT UN).",
+            "professionsSecondaires": null,
+            "raisonSociale": "LABORATOIRE PUBLIC D'ESSAIS ET D'ETUDES LPEE",
+            "refDirection": {
+                "adresse": " CASABLANCA",
+                "code": "1000",
+                "email": "Y.IDRISSI@TAX.GOV.MA",
+                "fax": "",
+                "libelle": "DIRECTION REGIONALE DES IMPOTS DE CASABLANCA",
+                "telephone": ""
+            },
+            "refPerception": {
+                "adresse": " ",
+                "code": null,
+                "email": null,
+                "fax": null,
+                "libelle": "CASA- DERB OMAR",
+                "telephone": null
+            },
+            "refRecetteFiscale": {
+                "adresse": "6 BOULEVARD RACHIDI CASABLANCA",
+                "code": "1035",
+                "email": "Y.LAGSSIMI@TAX.GOV.MA",
+                "fax": "",
+                "libelle": "RECETTE DE L'ADMINISTRATION FISCALE RACHIDI - CASABLANCA-",
+                "telephone": "05 22 26 35 25"
+            },
+            "refSecteur": {
+                "adresse": " ",
+                "code": "1287",
+                "email": "",
+                "fax": "",
+                "libelle": "SECTEUR 3 SUB 2 G.E CASA",
+                "telephone": ""
+            },
+            "refServiceAssiette": {
+                "adresse": " ",
+                "code": "1023",
+                "email": "",
+                "fax": "",
+                "libelle": "SUBDIVISION 2 ASS DES GRANDES ENTREPRISES CASA",
+                "telephone": ""
+            },
+            "refSubDivision": {
+                "adresse": " ",
+                "code": "1023",
+                "email": "",
+                "fax": "",
+                "libelle": "SUBDIVISION 2 ASS DES GRANDES ENTREPRISES CASA",
+                "telephone": ""
+            },
+            "regimeTVA": null,
+            "sigle": null,
+            "type": "M",
+            "typeExercice": null
+        },
+        "dateGeneration": {
+            "eon": null,
+            "year": 2019,
+            "month": 6,
+            "day": 14,
+            "timezone": 0,
+            "hour": 16,
+            "minute": 6,
+            "second": 1,
+            "fractionalSecond": 0.386
+        },
+        "defautDeclarations": null,
+        "defautPaiements": null,
+        "numeroAttestation": "1287|2019|227",
+        "observation": "ATT-REG-FISC-01 : Le contribuable est conforme"
+    }
+}

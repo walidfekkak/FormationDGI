@@ -1,0 +1,15 @@
+page-calendar-popover{
+	background: #00000055;
+	width: 100% !important;
+	height: 100% !important;
+
+
+}
+
+page-calendar-popover .modal-container{
+	background: #fff;
+	margin: 90px 60px;
+    width: calc(100% - 120px);
+    height: calc(100% - 180px);
+    border-radius: 16px;
+}

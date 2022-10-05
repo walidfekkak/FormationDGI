@@ -1,0 +1,10 @@
+{
+  "name": "DGI_MobileApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+
+
+}
+

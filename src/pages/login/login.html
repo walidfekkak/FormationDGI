@@ -1,0 +1,133 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <!--<img class="navbar-logo" src="assets/img/logo/logo-100x100.png"/>-->
+    </ion-buttons>
+    <!--<ion-title class="nav-title">{{ 'APP_TITLE' | translate }}</ion-title>-->
+    <ion-buttons end>
+      <div (click)='showRadioSelectLanguage()' class="lang-indicator" style="display: flex;align-items: center; justify-content: center;">
+        <!--div class="lang" [ngClass]="translateService.currentLang == 'fr' ? 'active' : ''">FR </div> | <div class="lang" [ngClass]="translateService.currentLang == 'ar' ? 'active' : ''"> AR</div> -->
+        <button clear style="background-color: transparent;">
+        <ion-icon name="globe" style="font-size:20px; margin:0 6px; color: #07a6b1"></ion-icon>
+      </button></div>
+    </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<div class="page-login" class="bg-img-blured" style="background-image: url('assets/img/background/splash-screen-bg-2732-new.jpg') !important; background-size: cover; background-position: top center; height: 100%">
+  <!-- <ion-content class="bg-img-blured" style="  background: url('assets/img/background/splash-screen-bg-700.png') no-repeat center center fixed !important; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; "> -->
+    <div >
+      <div style="background-color:rgba(255, 255, 255, 0.1); position: absolute; height: 100%; width:100%; padding-top: 8%">
+
+          <div style="text-align: center; margin-top: 10%;">
+            <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+          </div>
+          
+          <!--<div class="filterContainer">
+            <div class="block-1">
+              <ion-select interface="popover" interfaceOptions="selectOptions" class="custom-selectbox blue-select" [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" (ionChange)="loadData()" placeholder="{{ 'TYPE_IMPOT' | translate}}" [(ngModel)]="filter.type">
+                <ion-option  value="TVA">{{'TVA' | translate }}   </ion-option>
+                <ion-option  value="IS">{{'IS' | translate }}    </ion-option>
+                <ion-option   value="IR">{{'IR' | translate }}    </ion-option>
+              </ion-select>
+            </div>
+            <div class="block-2 date-filter" (click)="showCalendarModal()">
+              {{ 'FILTER_FROM' | translate}} <span class="date-from">{{filter.from | date: 'dd/MM/yyyy'}}</span>
+              {{ 'FILTER_TO' | translate}} <span class="date-to">{{filter.to | date: 'dd/MM/yyyy'}}</span>
+              <img src="assets/img/calendar-icon.png" class="icon"/>
+            </div>
+          </div>-->
+
+        <form  class="login-frame">
+        <!-- <div style="text-align: center; margin-top: 0%"></div>
+            <h6 >Espace Adhérent SIMPL</h6>
+          </div> -->
+          <h4 class="adherent">{{ 'AUTHENTIFICATION' | translate }}</h4>
+          <ion-list style="margin:0">
+            <ion-item>
+              <ion-label style="color:#848484"><ion-icon name="person"></ion-icon></ion-label>
+              <ion-input style="color:#848484" [(ngModel)]="account.username" name="username" placeholder="{{ 'USERNAME' | translate }}"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label style="color:#848484"><ion-icon name="unlock"></ion-icon></ion-label>
+              <ion-input style="color:#848484" type="password" [(ngModel)]="account.password" name="password" placeholder="{{ 'PASSWORD' | translate }}"></ion-input>
+            </ion-item>
+          <!-- 
+            <div style="height: 25px; margin-top:10px">
+              <div style="float:right;">
+                <div style=" font-weight: 630; color :#24407b ;font-size:94%; text-decoration: solid; display: table-cell;vertical-align: middle;">Se souvenir de moi&nbsp;&nbsp;&nbsp;</div>
+                <div style="display: table-cell;vertical-align: middle;"><ion-toggle  class="toggle" [(ngModel)]="rememberMe" [ngModelOptions]="{standalone:true}"></ion-toggle> </div>
+              </div>
+            </div> -->
+          <!--<div style="text-align: center;margin-top:12px;">
+            <button class="outline-btn default" ion-button color="primary" style="width: 130px">Connexion</button>
+          </div>-->
+          <div style=" margin-top:10px">
+            <div class="align-right">
+            <p (click)="redirectMotdepasse()" style="color :#24407b ;font-size:94%; text-decoration: underline; color:#07a6b1 "> {{'motdepasse-oublie' | translate }}</p>
+          </div> 
+            <div>
+              <div style="width: auto; display: inline-block; margin:0 8px">
+              <ion-toggle style="display: inline-block;" class="toggle remember-me floatLeft" [(ngModel)]="rememberMe" [ngModelOptions]="{standalone:true}"></ion-toggle> 
+              <div style="margin: 0 10px !important; color :#666 !important ;font-size:94%; text-decoration: solid; display: inline-block;vertical-align: middle;"> {{'REMEMBER_ME' | translate }}&nbsp;&nbsp;&nbsp;</div>
+              </div>
+               
+              <div style="display: table-cell;vertical-align: middle;"></div>
+            </div>
+          </div>
+
+  
+          <!--<div *ngIf="fingerPrintAvailable" style="float: right;height: 30px; margin-top:0px">
+        
+              <div style=" font-weight: 630; color :#1da6b0 !important ;font-size:94%; text-decoration: solid; display: table-cell;vertical-align: middle;">{{'TOGGLE_FINGERPRINT' | translate }}&nbsp;&nbsp;&nbsp;</div>
+              <div style="display: table-cell;vertical-align: middle;"><ion-toggle  class="toggle" [(ngModel)]="useFingerPrintAuth" [ngModelOptions]="{standalone:true}"></ion-toggle> </div>
+          </div>-->
+
+          <div style="text-align: center; margin:0 5px; margin-top:15px;display: flex;align-items: center;justify-content: center;">
+            <div *ngIf="fingerPrintAvailable" class="btn fingerprint" (click)="doLoginFingerPrint()" >
+              <img src="assets/img/fingerprint.png"/>
+            </div>
+            <button (click)="doLogin()" class="login-btn outline-btn default" style="width:45%; display: inline-block; margin-right:8%;" ion-button color="primary" block>{{ 'LOGIN' | translate }}</button>
+            <!--<button (click)="redirectAdhesion()" class="outline-btn gray" style="width:45%; display: inline-block;" ion-button color="primary" block>{{ 'ADHESION' | translate }}</button>-->
+          </div>
+
+          <div>
+          </div>
+
+
+        </ion-list>
+      </form>
+      
+      <div *ngIf="!footer" class="footer-menu"  style="flex: 1; position: absolute; bottom: 0px;">
+        <!--<img src="assets/img/test.png" style="width: 100%;" />-->
+
+       <div class="iconsBottom">
+
+          <div class="left-part">
+            <div class="circle-button" (click)="redirectAchatTimbre()">
+              <img src="assets/img/main-menu/new-set-2/main-achat-timbre-{{translateService.currentLang}}.png"/>
+            </div>
+            <div class="circle-button">
+              <img (click)="redirect('PaiementPage')"  src="assets/img/main-menu/new-set-2/main-payer-une-reference-{{translateService.currentLang}}.png"/>
+            </div>
+          </div>
+          <div class="middle-part" style="text-align: center">
+            <div  (click)="redirectAdhesion()" class="text">{{ 'ADHESION' | translate }}</div>
+            <div class="button" (click)="redirectAdhesion()"></div>
+          </div>
+          <div class="right-part">
+            <div class="circle-button">
+              <img (click)="redirectWeb('https://vignette.ma/attestTsava/consulterTSAVA.do?method=init')"  src="assets/img/main-menu/new-set-2/main-attestations-{{translateService.currentLang}}.png"/>
+            </div>
+            <div class="circle-button">
+              <img (click)="redirect('TeleservicesPage')"  src="assets/img/main-menu/new-set-2/main-tele-services-{{translateService.currentLang}}.png"/>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>

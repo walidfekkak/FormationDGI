@@ -1,0 +1,632 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+ion-header ion-icon.back-button-icon.icon {
+    color: map-get($colors, darkblue);
+}
+.content-ios{
+	background:#f4f4f4;
+}
+
+.footer-menu{
+	height:120px;
+}
+ion-header ion-navbar{
+	
+}
+
+ion-navbar .logo{
+	height:36px;
+}
+
+ion-navbar{
+	border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    box-shadow: 0 0 5px #0000008a;
+    /*min-height:50px !important;
+    padding: 0 22px !important;*/
+    min-height: calc( 50px) !important;
+	padding: 0 22px !important;
+	padding-top: env(safe-area-inset-top) !important;
+}
+
+page-login{
+	/*margin-top: env(safe-area-inset-top) !important;
+	height: calc(100% - env(safe-area-inset-top)) !important;*/
+	margin-top: 0;
+	height: 100%;
+}
+
+ion-header .toolbar-background {
+	background: #fff;
+	border-bottom-left-radius: 45px;
+	border-bottom-right-radius: 45px;
+}
+
+.footer-menu .left-part, .footer-menu .right-part{
+  	height: 100px;
+  	width: calc(50% - 50px);
+  	display:inline-block;
+  	float:left;
+  	display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+ .footer-menu .right-part{
+ 	float:right
+}
+
+[dir='rtl'] .footer-menu .left-part{
+	float:right
+}
+[dir='rtl'] .footer-menu .right-part{
+	float:left
+}
+
+.footer-menu .middle-part{
+	height: 122px;
+	width: 100px;
+	display:inline-block;
+	background-size: 100% 100%;
+}
+
+.footer-menu .middle-part .text{
+	width: 100px;
+	position: absolute;
+    left: calc(50% - 50px);
+    bottom: 18px;
+    font-weight: bold;
+    color:#015188;
+}
+
+.footer-menu .bottom-menu-btn{
+	position: absolute;
+	left: calc(50% - 32px);
+	bottom: 70px;
+}
+
+.footer-menu ion-toolbar{
+	overflow: visible;
+}
+
+.footer-menu .toolbar-background{
+	border:none !important;
+}
+
+.footer-menu .button{
+	width: 60px;
+    height: 94px;
+    /*background-color: #00000010;*/
+    margin-bottom: 33px;
+    position: absolute;
+    left: calc(50% - 30px);
+    bottom: 0px;
+}
+
+.footer-menu ion-toolbar, .footer-menu ion-toolbar .toolbar-content{
+	height: 100%;
+}
+
+
+.custom-loader-class{
+    --background:#F4B004;
+    --spinner-color:#F94701;
+}
+
+// .toast-network{
+//     --backgrounr: rgb(255, 255, 255);
+//     color:rgb(0, 0, 0);
+// }
+
+// chat-bot container
+#root{
+	display:none;
+}
+ion-select.select-ios {
+	/* fixing padding issue */
+	padding:0 !important;
+}
+
+/*#root .rcw-widget-container{
+	padding-bottom: 0 !important;
+}
+
+#root .rcw-launcher{
+	display: none;
+	top: 0;
+}*/
+
+#root .rcw-conversation-container.hidden{
+	height:0 !important;
+}
+
+#root .rcw-widget-container { 
+	padding-bottom:20px !important; 
+	height: 90%;  
+}
+
+#root .rcw-widget-container.hidden{
+	height: auto;
+	padding-bottom: 0 !important
+}
+
+.rcw-open-launcher {
+	margin-bottom:  30px !important;
+}
+
+.rcw-launcher {
+	margin-bottom: 10px !important;
+}
+
+.footer-menu{
+	position: absolute;
+    bottom: 0;
+    z-index: 99;
+	background-image: url('../assets/img/inapp-footer-menu.png');
+	height: 130px;
+	width: 100%;
+	background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: top center;  
+}
+
+
+
+page-login .footer-menu{
+	background-image: url('../assets/img/home-footer-menu.png');
+}
+
+@media screen and (min-width: 680px){
+	.footer-menu{
+		background-image: url('../assets/img/inapp-footer-menu.png');
+	}
+	page-login .footer-menu{
+		background-image: url('../assets/img/home-footer-menu-md.png')
+	}
+}
+
+@media screen and (min-width: 850px){
+	.footer-menu{
+		background-image: url('../assets/img/inapp-footer-menu-lg.png')
+	}
+	page-login .footer-menu{
+		background-image: url('../assets/img/home-footer-menu-md.png')
+	}
+}
+
+.iconsBottom{
+	bottom : 4% !important;
+	/*position: absolute;*/ left:0;bottom: 8%;width:100%;
+	margin-top: 40px;
+	text-align:center;
+}
+
+.circle-button{
+	/*width: 36%;*/
+	max-width: 100px;
+	display: inline-block;
+	margin: 0 2%;
+	margin-top: 3px;
+	flex-basis: 48%;
+}
+.circle-button.absolute{
+	position: absolute !important;
+}
+.circle-button.small{
+	/*width: 80px;*/
+}
+
+@media screen and (max-width: 340px){
+	.circle-button{
+		max-width: 80px;
+		width: 70px !important;
+	}
+}
+
+
+@media screen and (max-width: 800px){
+	.rcw-launcher {
+		bottom: 0;
+		margin: 20px;
+		position: initial !important;
+		right: 0;
+	}
+}
+
+#root .rcw-widget-container.hidden {
+
+	height: fit-content !important;
+}
+
+#root .rcw-widget-container {
+	display: none;
+}
+
+#chatbot-logo{
+	position: absolute;
+	bottom: 90px;
+	right: 5px;
+	width: 52px;
+	height: 50px;
+	background-image: url('../assets/img/chatbot.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+/*#chatbot-logo > div{
+	margin: 6px;
+	padding: 6px;
+}
+#chatbot-logo img{
+	width: 80px;
+}*/
+
+.company-infos .primary{
+	font-weight: bold;
+	font-size:140%;
+}
+
+.company-infos .secondary{
+	color:#07a6b1 !important;
+	font-size:110%;
+}
+
+.shadow-block{
+	background: #fff;
+    margin: 6px 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 5px 12px;
+    margin-bottom: 12px;
+}
+
+hr.custom{
+	display: none;
+}
+
+ion-menu .groupItem ion-label{
+	color: #07a6b1;
+	font-size:96%;
+}
+
+.overlayMenu-container .message{
+	width: calc(100% - 30%);
+	padding: 20px 0;
+	margin: 0 15%;
+	z-index: 200;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+  	justify-content: center;
+}
+
+.overlayMenu-container .circle-button{
+	/*width: 30%;	*/
+	flex-basis: 30%;
+}
+
+.layout-container{
+	background-color:#fff;
+	border-radius: 18px;
+	padding: 14px;  
+	margin: 6px;
+}
+
+.layout-container.noBgColor{
+	background-color: transparent !important;;
+	padding: 0;
+    margin: 0;
+}
+
+.layout-container .title{
+	font-size: 160%;
+	color: #1e4289;
+	margin-bottom: 8px;
+	font-weight: bold;
+}
+
+.layout-container > .title{
+	text-align:center;
+}
+
+.layout-container .line-border{
+	width: 70px;
+	border-top: 1px solid #ccc;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+/*.layout-container .content ion-label{
+	color:#07a6b1;	
+	font-weight: bold;
+	font-size:13px;
+}*/
+
+.filterContainer{
+	display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin: 0;
+}
+.filterContainer .block-1{
+	flex-basis: 28%;
+}
+
+.filterContainer .block-2{
+	margin-left: 8px;
+	flex-basis: calc(68% - 20px);
+	text-align:center;
+}
+.filterContainer .block-2 .icon{
+	height: 15px; 
+	float: right; 
+}
+
+[dir="rtl"] .filterContainer .block-2 .icon{
+	float: left;
+}
+.filterContainer ion-datetime{
+	display: inline-block;
+}
+
+.filterContainer .date-filter{
+	border: 1px solid #07a6b1;
+	padding: 5px;
+	border-radius: 4px;
+	color:#777;
+	font-weight: bold;
+}
+
+.filterContainer .date-from, .filterContainer .date-to{
+	color:#0c3478;
+}
+
+ion-select.blue-select{
+	background: #ccc;
+    padding: 4px 8px !important;
+    border-radius: 4px;
+    /*background-color: #003378;*/
+    background-color: #06a6b1;
+}
+
+ion-select.blue-select .select-text {
+    font-size: 12px;
+    margin-top: 1px;
+    color: #fff;
+    font-weight: bold;
+}
+
+ion-select.blue-select .select-icon{
+	margin-right: 2px;
+}
+
+ion-select.blue-select .select-icon .select-icon-inner{
+	color:#fff;
+}
+
+ion-select .item-cover{
+	position: intial;
+	width: auto;
+}
+
+page-calendar-popover .ion-content{
+	position: relative;
+    transform: translate(0px, -50%);
+    border: 1px solid #AA0000;
+    top: 50%;
+}
+
+page-calendar-popover .scroll-content{
+    vertical-align: middle;
+    display: inline-grid;
+}
+    
+
+/*.floating-selectbox{
+	transform: translate3d(0, 17px, 0) !important;
+}*/
+
+[dir="ltr"] .label-ios[floating], [dir="rtl"] .label-ios[floating]{
+	transform: translate3d(0, 20px, 0);
+	pointer-events: none;
+}
+
+.input-cover {
+  pointer-events: auto;
+}
+
+ion-select.floatingLabel button.item-cover {
+	top: initial;
+	position: absolute;
+    width: 100% !important;
+    height: 32px;
+}
+
+ion-select.floatingLabel .select-icon{
+	width: 18px;
+}
+
+.floatLeft {
+  float: left !important;
+}
+
+.floatRight {
+  float: right !important;
+}
+
+[dir='rtl'] .floatLeft {
+  float: right !important;
+}
+
+[dir='rtl'] .floatRight {
+  float: left !important;
+}
+
+
+/* BEGIN: custom checkbox ##################################################################### */
+
+.toggle-ios.toggle-checked .toggle-icon{
+	background-color: #fff !important;
+}
+ion-toggle{
+	/*height: 34px !important;*/
+	box-shadow: 0 0 5px #00000061;
+  border-radius: 30px;
+}
+ion-toggle.toggle-checked .toggle-inner {
+    background-color: #047897 !important;
+}
+ion-toggle .toggle-inner {
+  top: 6px !important;
+  width: 22px !important;
+  height: 22px !important;
+  background-color: #888 !important;
+  left: 5px !important;
+}
+
+[dir="rtl"] ion-toggle .toggle-inner {
+	right: 5px !important;
+}
+
+/* END: custom checkbox #####################################################################*/
+
+
+/* BEGIN: custom selectbox popover ##################################################################### */
+
+ion-popover .popover-arrow:after{
+	background-color:#06a6b1 !important;
+}
+
+ion-popover .popover-content{
+	background:#06a6b1 !important;
+	margin: auto;
+	width: auto !important;
+	borde-radius:8px !important;
+}
+
+ion-popover ion-item {
+	font-weight: bold !important;
+	font-size:95% !important;
+	display: none;
+}
+
+ion-popover ion-list{
+	padding: 4px 8px !important;
+}
+ion-popover ion-item {
+	background-color:transparent !important; 
+	color:#fff !important;
+	margin: 0 10px !important;
+}
+
+ion-popover ion-item input-wrapper{
+	height: 22px !important;
+}
+ion-popover .item-block:first-child{
+	border:none !important;
+}
+
+ion-popover ion-item .item-inner{
+	border:none !important;
+	border-bottom: none !important;
+}
+
+ion-popover ion-list{
+	padding: 0 5px;
+}
+
+.item-input-has-focus .select-ios .select-icon .select-icon-inner{
+	border-top: none !important;
+	border-bottom: 5px solid ion-popover  !important;
+}
+
+ion-popover ion-item {
+	padding-left: 0 !important;
+	margin: 0 10px !important;
+	margin-left: 0 !important;
+}
+
+ion-popover ion-item ion-label{
+	margin: 0px 5px 0px 5px !important;
+}
+
+
+/*ion-popover ion-item ion-radio{
+	visibility: hidden !important;	
+}
+*/
+
+ion-popover ion-item.item-block{
+	min-height: 14px;
+}
+
+ion-popover ion-item.item-radio-checked{
+	background: rgb(204,204,204) !important;
+	background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(238,238,238,1) 100%) !important;
+	color: #06a6b1 !important;
+	border-radius:26px !important;
+}
+
+ion-popover ion-item.item-radio-checked ion-label{
+	color: #606060 !important;
+}
+
+/* END: custom selectbox popover ##################################################################### */
+
+.lang-chooser-container button{
+	margin: 10px;	
+	min-width: 100px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.lang-chooser-container .scroll-content{
+	overflow: hidden !important;
+}
+
+.groupTitle{
+	margin: 0 20px;
+	font-weight: bold;
+	color: #888;
+	font-size:130%;
+}
+
+.details-block{
+	margin-top: 4px;
+}
+
+.shadow-block ion-icon{
+	color:#888 !important;
+	margin-top: 10px !important;
+}
+
+.details-title{
+	border-top: 2px solid #3b9595;
+	color:#3b9595;
+	font-weight: bold;
+	min-width: 200px; 
+	padding-top: 5px;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-top: 4px;
+	padding-top: 8px;
+	margin-bottom: 6px;
+}

@@ -1,0 +1,361 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="backToPrevious()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <!--<ion-title>{{ 'DETAILS' | translate }} </ion-title>-->
+    <div style="text-align: center;">
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding *ngIf="item == null">
+  <br/><br/><br/>
+  <div class="infosData-container">{{ 'NO_DETAILS_FOUND' | translate }}</div>
+</ion-content>
+<ion-content padding *ngIf="item != null">
+	 <br/>
+    <div class="company-infos" style="text-align:center">
+      <div>
+        <img src="assets/img/societe-icon.png" height="40px" />
+      </div>
+      <div class="inlineBlock">
+        <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+        <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+      </div>
+    </div>
+    <br/>
+    
+
+  <div class="layout-container">
+    <h3 class="title">{{"DETAILS" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content">
+
+        	<table style="width:100%">
+        		<tr>
+        			<td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+        			<td style="width:80%"></td>
+        			<td><hr class="custom blue"/></td>
+        		</tr>
+        	</table>
+        	<br/>
+      	  <div class="infosData-container" *ngIf="itemType == 'versementOLD'">
+              <table class="infosData" >
+              	<tr>
+                  <td>{{ 'RECETTE' | translate }}:</td>
+                  <td class="colorBlue">{{item.natureOperationRecouvrement}}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'DATE' | translate }}:</td>
+                  <td class="colorBlue">{{item._dateOperation}}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'MONTANT_TOTAL_DU' | translate }}:</td>
+                  <td class="colorBlue">{{item.montantTotalDu}} {{ 'DH'  | translate }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'TOTAL_PAYE' | translate }}:</td>
+                  <td class="colorBlue">{{item.montantTotalPaye}} {{ 'DH'  | translate }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'AMENDES' | translate }}:</td>
+                  <td class="colorBlue">{{item._montantAmendes}} {{ 'DH'  | translate }}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="infosData-container"  *ngIf="itemType == 'declaration'">
+              <table class="infosData" >
+                <tr>
+                  <td>{{ 'IMPOT' | translate }}:</td>
+                  <td class="colorBlue">{{item.codeTypeImpot | translate}}</td>
+                </tr>
+                <!-- <tr>
+                  <td>{{ 'ETAT' | translate }}:</td>
+                  <td class="colorBlue">{{item.etat}}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'MODELE' | translate }}:</td>
+                  <td class="colorBlue">{{item.modele | translate}}</td>
+                </tr> -->
+                <tr>
+                  <td>{{ 'PERIODE_IMPOSITION' | translate }}:</td>
+                  <td class="colorBlue">{{item.dateDebutImpLettre}} <-> {{item.dateFinImpoLettre}} </td>
+                </tr>
+                <tr>
+                  <td>{{ 'DATE_IMPOT' | translate }}:</td>
+                  <td class="colorBlue">{{item._dateHeureAccuseReception}}</td>
+                </tr>
+
+                <tr>
+                  <td>{{ 'NUMERO_DEPOT' | translate }}:</td>
+                  <td class="colorBlue">{{item.numeroDepot}}</td>
+                </tr>
+                <!-- <tr>
+                  <td>{{ 'RECTIFICATIVE' | translate }}:</td>
+                  <td class="colorBlue">{{item._estRectificative}}</td>
+                </tr> -->
+              </table>
+           </div>  	
+
+           <div class="infosData-container"  *ngIf="itemType == 'demande'">
+            <table class="infosData" >
+              <tr>
+                <td>{{ 'IMPOT' | translate }}:</td>
+                <td class="colorBlue">{{item.codeTypeImpot | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'NUMERO_DEPOT' | translate }}:</td>
+                <td class="colorBlue">{{item.numeroDepot}}</td>
+              </tr>
+             
+              <tr>
+                <td>{{ 'TYPE_DEMANDE_REMBOURSEMENT' | translate }}:</td>
+                <td class="colorBlue">{{item.typeDemandeRemboursement}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'PERIODE_IMPOSITION' | translate }}:</td>
+                <td class="colorBlue">{{item.dateDebutImpLettre}} <-> {{item.dateFinImpoLettre}} </td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_DEPOT' | translate }}:</td>
+                <td class="colorBlue">{{item._dateHeureAccuseReception}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'ETAT' | translate }}:</td>
+                <td class="colorBlue">{{item.etat}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'FORUMULAIRE' | translate }}:</td>
+                <td class="colorBlue">{{item.formulaire}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_DEMANDE' | translate }}:</td>
+                <td class="colorBlue">{{item.montantDemande}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_ORDONNANCE' | translate }}:</td>
+                <td class="colorBlue">{{item.montantOrdonnance}} {{ 'DH'  | translate }}</td>
+              </tr>
+            </table>
+         </div>  	
+
+          <div class="infosData-container"  *ngIf="itemType == 'defDeclaration'">
+            <table class="infosData">
+              <tr>
+                <td>{{ 'IMPOT' | translate }}:</td>
+                <td class="colorBlue">{{item.codeTypeImpot | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_DEBUT' | translate }}:</td>
+                <td class="colorBlue">{{item.dateDebutPeriode}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_FIN' | translate }}:</td>
+                <td class="colorBlue">{{item.dateFinPeriode}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'FORUMULAIRE' | translate }}:</td>
+                <td class="colorBlue">{{item.formulaire}}</td>
+              </tr>
+            </table>
+          </div>  	
+           
+          <div class="infosData-container"  *ngIf="itemType == 'resteapayer'">
+            <table class="infosData" >
+              <tr>
+                <td>{{ 'ANNEE' | translate }}:</td>
+                <td class="colorBlue">{{item.annee | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'IMPOT' | translate }}:</td>
+                <td class="colorBlue">{{item.typeImpot | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'NUMERO_ARTICLE' | translate }}:</td>
+                <td class="colorBlue">{{item.numArticle | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_EMISSION' | translate }}:</td>
+                <td class="colorBlue">{{item.dateEmission}}</td>
+              </tr>
+                      <tr>
+                <td>{{ 'DATE_EXIGIBILITE' | translate }}:</td>
+                <td class="colorBlue">{{item.dateExigibilite}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_RECOUVREMENT' | translate }}:</td>
+                <td class="colorBlue">{{item.dateRecouvrement}} </td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_PRINCIPAL' | translate }}</td>
+                <td class="colorBlue">{{item.montantPrincipal}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_SANCTION' | translate }}</td>
+                <td class="colorBlue">{{item.montantSanction}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_TOTAL' | translate }}</td>
+                <td class="colorBlue">{{item.montantTotal}} {{ 'DH'  | translate }}</td>
+              </tr>
+            </table>
+          </div>  
+
+          <div class="infosData-container"  *ngIf="itemType == 'versement'">
+            <table class="infosData" >
+              <tr>
+                <td>{{ 'NATURE_OPERATION' | translate }}</td>
+                <td class="colorBlue">{{item.raf}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'DATE_OPERATION' | translate }}</td>
+                <td class="colorBlue">{{item._dateOperation}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'PERIODE_IMPOSITION' | translate }}</td>
+                <td class="colorBlue">{{item._dateDebutImposition}} <-> {{item._finImposition}}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_PRINCIPAL' | translate }}</td>
+                <td class="colorBlue">{{item._montantPrincipal}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_MAJORATION' | translate }}</td>
+                <td class="colorBlue">{{item.montantMajorations}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_PENALITE' | translate }}</td>
+                <td class="colorBlue">{{item.montantAmendes}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_FRAIS_POURSUITE' | translate }}</td>
+                <td class="colorBlue">{{item.montantFraisPoursuites}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_MAJORATION_RETARD_ASSIETTE' | translate }}</td>
+                <td class="colorBlue">{{item._montantMajorationsRetardAssiette}} {{ 'DH'  | translate }}</td>
+              </tr>
+              <tr>
+                <td>{{ 'MONTANT_TOTAL_PAYE' | translate }}</td>
+                <td class="colorBlue">{{item._montantTotalPaye}} {{ 'DH'  | translate }}</td>
+              </tr>
+            </table>
+        </div>
+
+               
+        <div class="infosData-container"  *ngIf="itemType == 'restitutions'">
+          <table class="infosData" >
+            <tr>
+              <td>{{ 'IMPOT' | translate }}:</td>
+              <td class="colorBlue">{{item.codeTypeImpot | translate}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'TYPE_DEPENSE' | translate }}:</td>
+              <td class="colorBlue">{{item.typeDepense}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'DATE_OPERATION' | translate }}:</td>
+              <td class="colorBlue">{{item._dateHeureOperation}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'MONTANT_DEPENSE' | translate }}:</td>
+              <td class="colorBlue">{{item.montantDepense}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'NUMERO_DEPENSE' | translate }}:</td>
+              <td class="colorBlue">{{item.numeroDepense}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'RECETTE' | translate }}:</td>
+              <td class="colorBlue">{{item.raf}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="infosData-container"  *ngIf="itemType == 'avis-imposition'">
+          <table class="infosData" >
+            <tr>
+              <td>{{ 'IMPOT' | translate }}:</td>
+              <td class="colorBlue">{{item.codeTypeImpot | translate}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'NUMERO_ARTICLE' | translate }}:</td>
+              <td class="colorBlue">{{item.numTaxe}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'ANNEE_EMISSION' | translate }}:</td>
+              <td class="colorBlue">{{item.anneeImposition}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'MONTANT_DROITS_DUS_PRINCIPAL' | translate }}:</td>
+              <td class="colorBlue">{{item.montantDroitsDusPrincipal}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'MONTANT_MAJORATIONS' | translate }}:</td>
+              <td class="colorBlue">{{item.montantMajorations}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'MAJORATIONS_RETARD' | translate }}:</td>
+              <td class="colorBlue">{{item.montantMajRetard}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'PENALITES' | translate }}:</td>
+              <td class="colorBlue">{{item.montantPenalites}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'AMENDES' | translate }}:</td>
+              <td class="colorBlue">{{item.montantAmendes}} {{ 'DH'  | translate }}</td>
+            </tr>
+            <tr>
+              <td>{{ 'MONTANT_TOTAL_DROITS_DUS' | translate }}:</td>
+              <td class="colorBlue">{{item.montantTotalDroitsDus}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'REFERENCE_PAIEMENT' | translate }}s:</td>
+              <td class="colorBlue">{{item.refPaiementTGR}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="infosData-container"  *ngIf="itemType == 'reclamation'">
+          <table class="infosData"  *ngFor="let item of item" >
+            <tr>
+              <td><hr class="custom" style="align-items: center !important; " /></td>
+            </tr>
+            <tr>             
+              <td>{{ 'TYPE_IMPOT' | translate }}:</td>
+              <td class="colorBlue">{{item.typeImpot | translate }}</td>
+            </tr>
+
+            <tr>
+              <td>{{ 'periodeDebutReclamation' | translate }}:</td>
+              <td class="colorBlue">{{item.periodeDebut}}</td>
+            </tr>
+            <tr>
+              <td>{{ 'periodeFinReclamation' | translate }}:</td>
+              <td class="colorBlue">{{item.periodeFin}} </td>
+            </tr>
+            <tr>
+              <td>{{ 'numeroArticleReclamation' | translate }}:</td>
+              <td class="colorBlue">{{item.numeroArticle}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+</ion-content>

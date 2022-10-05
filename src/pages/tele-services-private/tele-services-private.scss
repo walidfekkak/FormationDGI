@@ -1,0 +1,21 @@
+page-tele-services-private {
+
+    h3,  h4,h5,  h6 {
+        font-weight: 700 !important;
+    }
+
+
+    .teleservices-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .block-item{
+        /*width: 33%;*/
+        flex-basis: calc(33% - 10px);
+        margin: 5px
+    }
+
+
+
+}

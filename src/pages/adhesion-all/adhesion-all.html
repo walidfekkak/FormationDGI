@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'ADHESION' | translate }} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+ 
+  <br/>    <br/>  <br/>    <br/>
+  <br/>    <br/>
+  <br/>    <br/>
+<div>
+    <!--<button style="border:double" class="button-ios-p" ion-button (click)="redirectAdhesionCPU()" block>
+      {{ 'ADHESION_PARTICULIER_CPU' | translate }}</button>-->
+   
+      <br/>
+      <br/>    
+      <br/> 
+      <br/>
+      
+  </div>
+
+  <div class="container">
+    <div class="block-item" (click) ="redirectAdhesionCPU()" style="margin-right: 10px;">
+        <img src="assets/img/main-menu/teleservices/item2-{{translate.currentLang}}.png"/>
+    </div>
+
+    <div class="block-item" (click) ="redirectAdhesion()" style="margin-left: 10px;">
+        <img src="assets/img/main-menu/teleservices/item3-{{translate.currentLang}}.png"/>
+    </div>
+  </div>
+
+
+
+  <div >
+    <!--<ion-button  style="border:double" shape="round" fill="outline-btn" class="button-ios-p" ion-button (click)="redirectAdhesion()" block>{{ 'ADHESION_PARTICULIERS' | translate }}   </ion-button>-->
+
+    
+  <div style="margin :40px 10px 40px" id="paiement-pb" *ngIf="ppb"> 
+      <ion-card-content style="font-weight: bold ;text-align: center;color:brown">
+          {{ 'ADHESION_PARTICULIERS' | translate }}
+      </ion-card-content>
+      <ion-list>
+          <div *ngFor="let service of teleservices">  
+            <ion-item *ngFor="let lien of keys(service)" (click) ="redirectWeb(service, {service : service, lien : service[lien] })" >
+                
+             
+                <ion-icon size ="small" name="arrow-forward" item-right></ion-icon>
+                <ion-icon name="globe" item-left></ion-icon>
+                <ion-label>
+                  <h3 class="colorBlue" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"> 
+                     {{lien | translate}} </h3> 
+                  <!-- <p> {{service[lien]}}</p> -->
+                </ion-label>
+            </ion-item>
+            </div>
+        </ion-list>
+    </div>
+  </div>
+</ion-content>

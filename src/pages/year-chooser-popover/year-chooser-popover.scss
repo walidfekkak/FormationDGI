@@ -1,0 +1,33 @@
+year-chooser-popover{
+	background: #fff;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.year-chooser-container .title{
+	text-align:center;
+	color:#fff;
+}
+
+.year-chooser-container button{
+	/*background:#ccc;*/
+	/*background-color:#fff;*/
+	color: #fff;
+	background-color:#06a6b1 !important;
+	font-weight: bold;
+	margin: 4px 10px;
+	width: 100px;
+}
+
+
+year-chooser-popover .modal-container{
+	background: #fff;
+	margin: 90px 60px;
+    width: calc(100% - 120px);
+    height: calc(100% - 180px);
+    border-radius: 16px;
+}
+
+/*page-year-chooser-popover ion-content{
+	background-color:#06a6b1 !important
+}*/

@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button class="blue-bg-btn inlineBlock" ion-button icon-only menuToggle style="display: inline-block !important;">
+        <img height="24px" src="assets/img/title-bar/menu-icon-primary.png"/>
+      </button>
+    </ion-buttons>
+    <!--<ion-title>{{ 'MES_DONNEES_IDENTIFICATION' | translate }}</ion-title>-->
+    <div >
+      <img class="logo" src="assets/img/logo/splash-screen-logo-new.png"/>
+    </div>
+    <ion-buttons end>
+      <button class="blue-bg-btn" ion-button icon-only (click)="redirect('ListMasterPage',null,{animate: true, direction: back})">
+        <img height="28px" src="assets/img/title-bar/home-primary.png"/>
+      </button>
+      <button class="blue-bg-btn" ion-button icon-only (click)="logout()">
+        <img height="28px" src="assets/img/title-bar/log-out-primary.png"/>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<br/>
+    <div class="company-infos" style="text-align:center">
+      <div>
+        <img src="assets/img/societe-icon.png" height="40px" />
+      </div>
+      <div class="inlineBlock">
+        <b><span class="colorBlue primary" >{{user._user.raisonSociale}}</span><br/></b>
+        <span class="colorBlue secondary"> {{'IF' | translate }}: {{user._user.identifiantFiscal}}</span>
+      </div>
+    </div>
+    <br/>
+    <table style="margin: 0 20px;">
+      <tr>
+        <td><hr class="custom blue" style="margin-left: 0 !important"/></td>
+        <td style="width:80%"></td>
+        <td><hr class="custom blue"/></td>
+      </tr>
+    </table>
+  	<br/>
+		<div class="layout-container">
+
+      <h3 class="title">{{"MES_DONNEES_IDENTIFICATION" | translate}}</h3> 
+      <div class="line-border"></div>
+      <div class="content infosData-container">
+      <table class="infosData" *ngIf="data!= null && data.length != 0">	
+				<tr>
+						<td>{{ 'RAISON_SOCIALE' | translate }} :</td>
+						<td  class="colorBlue">{{user._user.raisonSociale}}</td>
+					</tr>
+				<tr>
+						<td>{{ 'FORME_JURIDIQUE' | translate }} :</td>
+						<td  class="colorBlue">{{data.formeJuridique}}</td>
+					</tr>
+				<tr>
+					<td>{{ 'ICE' | translate}} :</td>
+					<td  class="colorBlue">{{data.numIce}}</td>
+				</tr>
+		      	<!-- <tr>
+		      		<td>Centre de registre de commerce :</td>
+		      		<td  class="colorBlue">{{data.refDirection.adresse}}</td>
+				  </tr> -->
+				  
+			  	<tr>
+					<td>{{ 'NUM_REGISTRE_COMMERCE' | translate}} :</td>
+					<td  class="colorBlue">{{data.numRc}}</td>
+				</tr>
+		      	
+		      	<tr>
+		      		<td>{{ 'CNSS' | translate}} :</td>
+		      		<td  class="colorBlue">{{data.numCnss}}</td>
+			  	</tr>
+
+			  	<tr>
+					<td>{{ 'TAXE_PROFESSIONNELLE' | translate}} :</td>
+					<td  class="colorBlue">{{data.numeroArticlePatente}}</td>
+				</tr>
+				  
+
+				<tr>
+					<td>{{ 'ADRESSE' | translate}} :</td>
+					<td  class="colorBlue">{{data.adressePrincipale}}</td>
+				</tr>
+					
+
+				<tr>
+					<td>{{ 'VILLE' | translate}} :</td>
+					<td  class="colorBlue">{{data.libelleVille}}</td>
+				</tr>
+
+						<!-- <tr>
+								<td>Téléphone :</td>
+								<td  class="colorBlue">{{data.libelleVille}}</td>
+							</tr>
+
+							<tr>
+									<td>GSM :</td>
+									<td  class="colorBlue">{{data.libelleVille}}</td>
+								</tr>
+
+								<tr>
+										<td>Email :</td>
+										<td  class="colorBlue">{{data.libelleVille}}</td>
+									</tr> -->
+		      	<!-- <tr>
+		      		<td> TVA (option):</td>
+		      		<td  class="colorBlue"><ion-checkbox checked={{data.estTVA}} disabled="true"></ion-checkbox> OUI <ion-checkbox checked=!{{data.estTVA}} disabled="true"></ion-checkbox> NON</td>
+				  </tr>
+				  
+				  <tr>
+						<td> TVA (régime):</td>
+						<td  class="colorBlue">{{data.regimeTVA}}</td>
+					</tr> -->
+
+				<tr>
+					<td>{{ 'UNITE_GESTION' | translate }}:</td>
+					<td class="colorBlue"  >{{data.refSecteur.libelle}}</td>
+				</tr>
+						
+		      </table>
+  		</div>  	
+  	</div>
+</ion-content>

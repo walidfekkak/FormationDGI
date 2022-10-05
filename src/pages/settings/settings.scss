@@ -1,0 +1,20 @@
+page-settings {
+	.blue-bg-btn{
+		padding: 5px 15px !important;
+		color:#fff !important;
+	}
+	img.icon {
+		height: 32px;
+	    margin-top: -8px;
+	    margin-right: 4px;
+	}
+
+	[dir='rtl'] img.icon {
+	  margin-right: 0;
+	  margin-left: 4px;
+	}
+
+	.layout-container{
+		padding: 20px 10px;
+	}
+}
